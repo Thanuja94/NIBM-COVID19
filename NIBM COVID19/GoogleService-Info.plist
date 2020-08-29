@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>656154895277-vlhkgqkti125qr11ec348i0sf3t0kubg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.656154895277-vlhkgqkti125qr11ec348i0sf3t0kubg</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAODheSdfYisw3xP2pnCym3jqCEIErLBZU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>656154895277</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Thanuja-cobsccomp191p-001.NIBM-COVID19</string>
+	<key>PROJECT_ID</key>
+	<string>nibm-covid-19-7bc96</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nibm-covid-19-7bc96.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:656154895277:ios:62c805c73505ca1453f724</string>
+	<key>DATABASE_URL</key>
+	<string>https://nibm-covid-19-7bc96.firebaseio.com</string>
+</dict>
+</plist>
