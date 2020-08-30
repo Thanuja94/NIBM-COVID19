@@ -21,6 +21,13 @@ class LoginViewController: UIViewController {
             
             return label
         }()
+    
+        private let emailContainerView: UIView = {
+            let view = UIView()
+            view.backgroundColor = .red
+            
+            return view
+        }()
     // MARK: - LifeCycles
 
     
@@ -34,6 +41,10 @@ class LoginViewController: UIViewController {
          titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
          titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         
+        
+        view.addSubview(emailContainerView)
+        emailContainerView.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16, height: 50)
+
     }
     
 
