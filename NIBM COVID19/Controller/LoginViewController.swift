@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Properties
     
-        private let titleLabel: UILabel = {
+        private let SignupLabel: UILabel = {
             let label = UILabel()
             label.text = "Sign Up with Email"
             label.font = UIFont(name: "Avenir-Light" , size: 25)
@@ -28,6 +28,17 @@ class LoginViewController: UIViewController {
             
             return view
         }()
+    
+        private let emailTextFiled: UIView = {
+              let emailtf = UITextField()
+              emailtf.borderStyle = .none
+              emailtf.font = UIFont.systemFont(ofSize: 16)
+              emailtf.textColor = .white
+              emailtf.keyboardAppearance = .dark
+              emailtf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+              
+              return emailtf
+          }()
     // MARK: - LifeCycles
 
     
@@ -36,14 +47,15 @@ class LoginViewController: UIViewController {
 
         view.backgroundColor = .gray
         
-        view.addSubview(titleLabel)
-         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-         titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-        
+        view.addSubview(SignupLabel)
+        SignupLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor )
+        SignupLabel.centerX(inView: view)
         
         view.addSubview(emailContainerView)
-        emailContainerView.anchor(top: titleLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16, height: 50)
+        emailContainerView.anchor(top: SignupLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16, height: 50)
+        
+        //view.addSubview(emailTextFiled)
+        //emailTextFiled.anchor(top: emailContainerView.bottomAnchor,)
 
     }
     
