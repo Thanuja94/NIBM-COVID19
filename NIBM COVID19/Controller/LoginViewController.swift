@@ -41,22 +41,33 @@ class LoginViewController: UIViewController {
         private let passwordTextFiled: UIView = {
             return UITextField().textField(withPlaceholder: "Password", isSecureTextEntry: true)
         }()
+    
+    private let loginButton: UIButton = {
+           let button = UIButton(type: .system)
+           button.setTitle("Sign In", for: .normal)
+        // button.font = UIFont(name: "Avenir-Light", size: 35) ?? <#default value#>
+           button.setTitleColor(UIColor(white: 1, alpha: 1), for: .normal)
+        button.backgroundColor = colors.cynaite
+           button.layer.cornerRadius = 5
+           button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+           
+           return button
+       }()
+
     // MARK: - LifeCycles
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .gray
+        view.backgroundColor = colors.silver
         
         view.addSubview(SignupLabel)
         SignupLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor )
         SignupLabel.centerX(inView: view)
         
-//        view.addSubview(emailContainerView)
-//        emailContainerView.anchor(top: SignupLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16, height: 50)
-        
-        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView])
+
+        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 16
