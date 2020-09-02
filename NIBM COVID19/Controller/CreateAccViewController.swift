@@ -84,6 +84,30 @@ class CreateAccViewController: UIViewController {
               
               return button
           }()
+    
+    private let BysigninLabel: UILabel = {
+        let label = UILabel()
+        label.text = "By signin up, you agree with the terms of services and privacy policy"
+        label.font = UIFont(name: "Avenir-Light" , size: 15)
+        label.textColor = UIColor(white: 1, alpha: 0.8)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+       
+        
+        return label
+    }()
+    
+    private let alreadyhaveButton: UIButton = {
+           let button = UIButton(type: .system)
+           button.setTitle("Already have an Account?", for: .normal)
+       
+           button.setTitleColor(UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1), for: .normal)
+           button.backgroundColor = .gray
+           button.layer.cornerRadius = 10
+           button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+           
+           return button
+       }()
     // MARK: - LifeCycles
 
     
@@ -92,17 +116,28 @@ class CreateAccViewController: UIViewController {
 
         view.backgroundColor = colors.silver
         
+       
         view.addSubview(CreateAccLabel)
-        CreateAccLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor )
-        CreateAccLabel.centerX(inView: view)
+               CreateAccLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor )
+               CreateAccLabel.centerX(inView: view)
         
-        let stack = UIStackView(arrangedSubviews: [firstnameContainerView, LastnameContainerView, emailContainerView, RoleContainerView, passwordContainerView, SignupButton])
+     
+        
+        let stack = UIStackView(arrangedSubviews: [firstnameContainerView, LastnameContainerView, emailContainerView, RoleContainerView, passwordContainerView, SignupButton,BysigninLabel,alreadyhaveButton])
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 16
         
         view.addSubview(stack)
         stack.anchor(top: CreateAccLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16)
+        
+//        view.addSubview(BysigninLabel)
+//        BysigninLabel.anchor(top: stack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: 10, paddingLeft: 16, paddingRight: 16, height: 30)
+//        BysigninLabel.centerX(inView: view)
+//
+//        view.addSubview(alreadyhaveButton)
+//        alreadyhaveButton.anchor(top: BysigninLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: 10, paddingLeft: 16, paddingRight: 16)
+//        alreadyhaveButton.centerX(inView: view)
     }
     
     // MARK: - Fuctions
