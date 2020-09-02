@@ -42,18 +42,29 @@ class LoginViewController: UIViewController {
             return UITextField().textField(withPlaceholder: "Password", isSecureTextEntry: true)
         }()
     
-    private let loginButton: UIButton = {
+    private let SigninButton: UIButton = {
            let button = UIButton(type: .system)
            button.setTitle("Sign In", for: .normal)
         // button.font = UIFont(name: "Avenir-Light", size: 35) ?? <#default value#>
            button.setTitleColor(UIColor(white: 1, alpha: 1), for: .normal)
-        button.backgroundColor = colors.cynaite
-           button.layer.cornerRadius = 5
+           button.backgroundColor = colors.cynaite
+           button.layer.cornerRadius = 10
            button.heightAnchor.constraint(equalToConstant: 60).isActive = true
            
            return button
        }()
 
+    private let NeedAccButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Need an Account?", for: .normal)
+     // button.font = UIFont(name: "Avenir-Light", size: 35) ?? <#default value#>
+        button.setTitleColor(UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1), for: .normal)
+        button.backgroundColor = .gray
+        button.layer.cornerRadius = 10
+        button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        return button
+    }()
     // MARK: - LifeCycles
 
     
@@ -67,7 +78,7 @@ class LoginViewController: UIViewController {
         SignupLabel.centerX(inView: view)
         
 
-        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
+        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, SigninButton, NeedAccButton])
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 16
