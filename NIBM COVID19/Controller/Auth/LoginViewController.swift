@@ -62,6 +62,7 @@ class LoginViewController: UIViewController {
         button.backgroundColor = .gray
         button.layer.cornerRadius = 10
         button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        button.addTarget(self, action: #selector(ShowCreateAcc), for: .touchUpInside)
         
         return button
     }()
@@ -86,10 +87,15 @@ class LoginViewController: UIViewController {
         view.addSubview(stack)
         stack.anchor(top: SignupLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16)
        
-
+        navigationController?.navigationBar.isHidden = true
     }
     
 
    // MARK: - Fuctions
+    
+    @objc func ShowCreateAcc() {
+        let createaccviewcontroller = CreateAccViewController()
+        navigationController?.pushViewController(createaccviewcontroller, animated: true)
+    }
 
 }

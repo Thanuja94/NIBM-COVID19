@@ -118,6 +118,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4449780F2504394B0046E178 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				44DF6C4024FAE8E100199EBE /* LoginViewController.swift */,
+				4449780C24FFBC9C0046E178 /* CreateAccViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		44DF6C3B24FACFF700199EBE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,8 +160,7 @@
 		44DF6C3F24FAD01700199EBE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				44DF6C4024FAE8E100199EBE /* LoginViewController.swift */,
-				4449780C24FFBC9C0046E178 /* CreateAccViewController.swift */,
+				4449780F2504394B0046E178 /* Auth */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
