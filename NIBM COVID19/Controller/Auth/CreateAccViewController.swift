@@ -105,6 +105,7 @@ class CreateAccViewController: UIViewController {
            button.backgroundColor = .gray
            button.layer.cornerRadius = 10
            button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+           button.addTarget(self, action: #selector(ShowLogin), for: .touchUpInside)
            
            return button
        }()
@@ -114,33 +115,34 @@ class CreateAccViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = colors.silver
+       setupUI()
         
-       
-        view.addSubview(CreateAccLabel)
-               CreateAccLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor )
-               CreateAccLabel.centerX(inView: view)
-        
-     
-        
-        let stack = UIStackView(arrangedSubviews: [firstnameContainerView, LastnameContainerView, emailContainerView, RoleContainerView, passwordContainerView, SignupButton,BysigninLabel,alreadyhaveButton])
-        stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.spacing = 16
-        
-        view.addSubview(stack)
-        stack.anchor(top: CreateAccLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16)
-        
-//        view.addSubview(BysigninLabel)
-//        BysigninLabel.anchor(top: stack.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: 10, paddingLeft: 16, paddingRight: 16, height: 30)
-//        BysigninLabel.centerX(inView: view)
-//
-//        view.addSubview(alreadyhaveButton)
-//        alreadyhaveButton.anchor(top: BysigninLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: 10, paddingLeft: 16, paddingRight: 16)
-//        alreadyhaveButton.centerX(inView: view)
     }
     
     // MARK: - Fuctions
     
+    func setupUI(){
+        view.backgroundColor = colors.silver
+               
+              
+               view.addSubview(CreateAccLabel)
+                      CreateAccLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor )
+                      CreateAccLabel.centerX(inView: view)
+               
+            
+               
+               let stack = UIStackView(arrangedSubviews: [firstnameContainerView, LastnameContainerView, emailContainerView, RoleContainerView, passwordContainerView, SignupButton,BysigninLabel,alreadyhaveButton])
+               stack.axis = .vertical
+               stack.distribution = .fillEqually
+               stack.spacing = 16
+               
+               view.addSubview(stack)
+               stack.anchor(top: CreateAccLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 40, paddingLeft: 16, paddingRight: 16)
+    }
+    
+    @objc func ShowLogin() {
+        let loginviewcontroller = LoginViewController()
+        navigationController?.pushViewController(loginviewcontroller, animated: true)
+    }
 
 }

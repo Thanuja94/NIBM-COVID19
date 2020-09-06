@@ -56,6 +56,25 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
+        
+    }
+    
+    
+    // MARK: - Fuctions
+    
+    @objc func loginview() {
+           let loginviewcontroller = LoginViewController()
+           navigationController?.pushViewController(loginviewcontroller, animated: true)
+       }
+
+    @objc func ShowCreateAcc() {
+         let createaccviewcontroller = CreateAccViewController()
+         navigationController?.pushViewController(createaccviewcontroller, animated: true)
+     }
+    
+    func setupUI() {
+        
         view.backgroundColor = .white
         
         view.addSubview(imageviewVirus)
@@ -75,19 +94,5 @@ class SignUpViewController: UIViewController {
         BysigninLabel.centerX(inView: view)
         
         navigationController?.navigationBar.isHidden = true
-        
     }
-    
-    
-    // MARK: - Fuctions
-    
-    @objc func loginview() {
-           let loginviewcontroller = LoginViewController()
-           navigationController?.pushViewController(loginviewcontroller, animated: true)
-       }
-
-    @objc func ShowCreateAcc() {
-         let createaccviewcontroller = CreateAccViewController()
-         navigationController?.pushViewController(createaccviewcontroller, animated: true)
-     }
 }
