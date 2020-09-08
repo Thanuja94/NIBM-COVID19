@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -50,6 +51,7 @@ class LoginViewController: UIViewController {
         button.backgroundColor = colors.cynaite
         button.layer.cornerRadius = 10
         button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+         button.addTarget(self, action: #selector(handlesignin), for: .touchUpInside)
         
         return button
     }()
@@ -78,6 +80,10 @@ class LoginViewController: UIViewController {
     
     
     // MARK: - Fuctions
+    
+    @objc func handlesignin() {
+   
+        }
     
     @objc func ShowCreateAcc() {
 //        let createaccviewcontroller = CreateAccViewController()
