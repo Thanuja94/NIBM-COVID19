@@ -9,7 +9,11 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+ 
+    // MARK: - Properties
+    
+    // MARK: - Lifecycale
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

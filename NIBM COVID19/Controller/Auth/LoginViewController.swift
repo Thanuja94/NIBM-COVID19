@@ -24,22 +24,22 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var emailContainerView: UIView = {
-        let view = UIView().inputContainerView(image: #imageLiteral(resourceName: "ic_mail_outline_white_2x"), textField: emailTextFiled as! UITextField)
+        let view = UIView().inputContainerView(image: #imageLiteral(resourceName: "ic_mail_outline_white_2x"), textField: emailTextFiled )
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return view
     }()
     
     private lazy var passwordContainerView: UIView = {
-        let view = UIView().inputContainerView(image: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: passwordTextFiled as! UITextField)
+        let view = UIView().inputContainerView(image: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: passwordTextFiled )
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return view
     }()
     
-    private let emailTextFiled: UIView = {
+    private let emailTextFiled: UITextField = {
         return UITextField().textField(withPlaceholder: "Email", isSecureTextEntry: false)
     }()
     
-    private let passwordTextFiled: UIView = {
+    private let passwordTextFiled: UITextField = {
         return UITextField().textField(withPlaceholder: "Password", isSecureTextEntry: true)
     }()
     
@@ -82,9 +82,22 @@ class LoginViewController: UIViewController {
     // MARK: - Fuctions
     
     @objc func handlesignin() {
+        guard let email = emailTextFiled.text else { return }
+        guard let password = passwordTextFiled.text else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("DEBUG: Faild to login user with error \(error.localizedDescription)")
+                return
+            }
+            
+            //  guard let uid = result?.user.uid else { return }
+            
+            print("DEBUG: Login Successful..")
+        }
    
         }
-    
+     
     @objc func ShowCreateAcc() {
 //        let createaccviewcontroller = CreateAccViewController()
 //        navigationController?.pushViewController(createaccviewcontroller, animated: true)
