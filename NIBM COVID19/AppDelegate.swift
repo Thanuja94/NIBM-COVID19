@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         window?.makeKeyAndVisible()
-        //window?.rootViewController = HomeViewController()
-        window?.rootViewController = UINavigationController(rootViewController: SignUpViewController())
+        window?.rootViewController = HomeViewController()
+        //window?.rootViewController = UINavigationController(rootViewController: SignUpViewController())
         
         return true
     }

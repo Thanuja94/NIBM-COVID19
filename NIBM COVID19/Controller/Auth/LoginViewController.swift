@@ -92,8 +92,9 @@ class LoginViewController: UIViewController {
             }
             
             //  guard let uid = result?.user.uid else { return }
-            
             print("DEBUG: Login Successful..")
+            self.dismiss(animated: true, completion: nil)
+            
         }
    
         }

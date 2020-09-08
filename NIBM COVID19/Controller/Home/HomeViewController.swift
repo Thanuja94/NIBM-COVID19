@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
  
@@ -16,10 +17,31 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+checkIsUserLoggedIn()
         view.backgroundColor = .yellow
     }
     
+    // MARK: - Functions
+    
+    func checkIsUserLoggedIn() {
+        if(Auth.auth().currentUser?.uid == nil) {
+            DispatchQueue.main.async {
+                           let navigation = UINavigationController(rootViewController: LoginViewController())
+                            navigation.modalPresentationStyle = .fullScreen
+                           self.present(navigation, animated: true, completion: nil)
+                       }
+        } else {
+            print("DEBUG: User is logged in..")
+        }
+    }
+    
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("DEBUG: sign out error")
+        }
+    }
 
     
 }
