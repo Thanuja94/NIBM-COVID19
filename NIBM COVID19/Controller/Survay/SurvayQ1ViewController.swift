@@ -56,6 +56,15 @@ class SurvayQ1ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       setupUi()
+        
+       
+        
+    }
+    
+    // MARK: - Functions
+    
+    func setupUi(){
         view.backgroundColor = colors.silver
         
         view.addSubview(YesButton)
@@ -72,12 +81,8 @@ class SurvayQ1ViewController: UIViewController {
         view.addSubview(Question)
         Question.anchor(top: syntomsimage.bottomAnchor , left: view.leftAnchor ,right: view.rightAnchor , paddingTop: 20, paddingLeft:20 , paddingRight: 20 )
         Question.centerX(inView: view)
-
         
     }
-    
-    // MARK: - Functions
-    
 
     
 
