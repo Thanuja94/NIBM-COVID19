@@ -8,10 +8,15 @@
 
 import UIKit
 
+
+
 class SurvayQ1ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
 
         
     }
