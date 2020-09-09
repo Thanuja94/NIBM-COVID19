@@ -14,6 +14,8 @@ class SurvayQ1ViewController: UIViewController {
     
       // MARK: - Properties
     
+    let syntomsimage = UIImageView(image: #imageLiteral(resourceName: "survayq1"))
+    
     let YesButton: UIButton = {
               let button = UIButton(type: .system)
               let attributedTitle = NSMutableAttributedString(string: "Yes", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
@@ -51,6 +53,10 @@ class SurvayQ1ViewController: UIViewController {
         
         view.addSubview(NoButton)
         NoButton.anchor( bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,  paddingBottom: 50, paddingRight: 40)
+        
+        view.addSubview(syntomsimage)
+        syntomsimage.anchor(top: view.safeAreaLayoutGuide.topAnchor ,paddingTop: 100)
+        syntomsimage.centerX(inView: view)
 
 
         
