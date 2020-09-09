@@ -12,7 +12,7 @@ class SurvayQ2ViewController: UIViewController {
     
     // MARK: - Properties
     
-    let syntomsimage = UIImageView(image: #imageLiteral(resourceName: "survayq1"))
+    let syntomsimage = UIImageView(image: #imageLiteral(resourceName: "Image"))
     
     let YesButton: UIButton = {
               let button = UIButton(type: .system)
@@ -38,7 +38,7 @@ class SurvayQ2ViewController: UIViewController {
     
     private let Question: UILabel = {
           let label = UILabel()
-          label.text = "Are you have any symptoms above?"
+          label.text = "Have you been travelling in between last 14 days?"
           label.font = UIFont(name: "Avenir-Light" , size: 25)
           label.textColor = .black//UIColor(white: 1, alpha: 0.8)
           label.numberOfLines = 0
@@ -77,6 +77,7 @@ class SurvayQ2ViewController: UIViewController {
            Question.anchor(top: syntomsimage.bottomAnchor , left: view.leftAnchor ,right: view.rightAnchor , paddingTop: 20, paddingLeft:20 , paddingRight: 20 )
            Question.centerX(inView: view)
            
+         navigationController?.navigationBar.isHidden = true
        }
     
 

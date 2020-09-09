@@ -20,7 +20,7 @@ class SurvayQ1ViewController: UIViewController {
               let button = UIButton(type: .system)
               let attributedTitle = NSMutableAttributedString(string: "Yes", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
               
-             // button.addTarget(self, action: #selector(handleYes), for: .touchUpInside)
+              button.addTarget(self, action: #selector(handleYes), for: .touchUpInside)
              
               
               button.setAttributedTitle(attributedTitle, for: .normal)
@@ -81,9 +81,16 @@ class SurvayQ1ViewController: UIViewController {
         view.addSubview(Question)
         Question.anchor(top: syntomsimage.bottomAnchor , left: view.leftAnchor ,right: view.rightAnchor , paddingTop: 20, paddingLeft:20 , paddingRight: 20 )
         Question.centerX(inView: view)
+         
+        navigationController?.navigationBar.isHidden = true
         
     }
 
+     @objc func handleYes() {
+            let survayq2viewconntroller = SurvayQ2ViewController()
+            navigationController?.pushViewController(survayq2viewconntroller, animated: true)
+             
+        }
     
 
 }
