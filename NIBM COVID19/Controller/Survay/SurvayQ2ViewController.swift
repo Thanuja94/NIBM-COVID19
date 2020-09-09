@@ -1,18 +1,16 @@
 //
-//  SurvayQ1ViewController.swift
+//  Survayq2ViewController.swift
 //  NIBM COVID19
 //
-//  Created by Thanuja Nayanajith on 9/8/20.
+//  Created by Thanuja Nayanajith on 9/9/20.
 //  Copyright © 2020 NIBM. All rights reserved.
 //
 
 import UIKit
 
-
-
-class SurvayQ1ViewController: UIViewController {
+class SurvayQ2ViewController: UIViewController {
     
-      // MARK: - Properties
+    // MARK: - Properties
     
     let syntomsimage = UIImageView(image: #imageLiteral(resourceName: "survayq1"))
     
@@ -20,7 +18,7 @@ class SurvayQ1ViewController: UIViewController {
               let button = UIButton(type: .system)
               let attributedTitle = NSMutableAttributedString(string: "Yes", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
               
-             // button.addTarget(self, action: #selector(handleYes), for: .touchUpInside)
+              //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
              
               
               button.setAttributedTitle(attributedTitle, for: .normal)
@@ -51,39 +49,35 @@ class SurvayQ1ViewController: UIViewController {
       }()
     // MARK: - Lifecycale
 
-   
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       setupUi()
-        
-       
+
+        setupUi()
         
     }
     
-    // MARK: - Functions
+
+     // MARK: - Functions
     
     func setupUi(){
-        view.backgroundColor = colors.silver
-        
-        view.addSubview(YesButton)
-        YesButton.anchor( left: view.leftAnchor,   bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeft: 40, paddingBottom: 50 )
-        //YesButton.centerX(inView: view)
-        
-        view.addSubview(NoButton)
-        NoButton.anchor( bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,  paddingBottom: 50, paddingRight: 40)
-        
-        view.addSubview(syntomsimage)
-        syntomsimage.anchor(top: view.safeAreaLayoutGuide.topAnchor ,paddingTop: 100)
-        syntomsimage.centerX(inView: view)
-        
-        view.addSubview(Question)
-        Question.anchor(top: syntomsimage.bottomAnchor , left: view.leftAnchor ,right: view.rightAnchor , paddingTop: 20, paddingLeft:20 , paddingRight: 20 )
-        Question.centerX(inView: view)
-        
-    }
-
+           view.backgroundColor = colors.silver
+           
+           view.addSubview(YesButton)
+           YesButton.anchor( left: view.leftAnchor,   bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeft: 40, paddingBottom: 50 )
+           //YesButton.centerX(inView: view)
+           
+           view.addSubview(NoButton)
+           NoButton.anchor( bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,  paddingBottom: 50, paddingRight: 40)
+           
+           view.addSubview(syntomsimage)
+           syntomsimage.anchor(top: view.safeAreaLayoutGuide.topAnchor ,paddingTop: 100)
+           syntomsimage.centerX(inView: view)
+           
+           view.addSubview(Question)
+           Question.anchor(top: syntomsimage.bottomAnchor , left: view.leftAnchor ,right: view.rightAnchor , paddingTop: 20, paddingLeft:20 , paddingRight: 20 )
+           Question.centerX(inView: view)
+           
+       }
     
 
 }
