@@ -38,6 +38,17 @@ class SurvayQ1ViewController: UIViewController {
                  return button
              }()
     
+    private let Question: UILabel = {
+          let label = UILabel()
+          label.text = "Are you have any symptoms above?"
+          label.font = UIFont(name: "Avenir-Light" , size: 25)
+          label.textColor = .black//UIColor(white: 1, alpha: 0.8)
+          label.numberOfLines = 0
+          label.textAlignment = .center
+         
+          
+          return label
+      }()
     // MARK: - Lifecycale
 
    
@@ -57,7 +68,10 @@ class SurvayQ1ViewController: UIViewController {
         view.addSubview(syntomsimage)
         syntomsimage.anchor(top: view.safeAreaLayoutGuide.topAnchor ,paddingTop: 100)
         syntomsimage.centerX(inView: view)
-
+        
+        view.addSubview(Question)
+        Question.anchor(top: syntomsimage.bottomAnchor , left: view.leftAnchor ,right: view.rightAnchor , paddingTop: 20, paddingLeft:20 , paddingRight: 20 )
+        Question.centerX(inView: view)
 
         
     }
