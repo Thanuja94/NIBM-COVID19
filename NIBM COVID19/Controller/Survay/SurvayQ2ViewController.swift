@@ -47,6 +47,17 @@ class SurvayQ2ViewController: UIViewController {
           
           return label
       }()
+    
+    private let pageController:  UIPageControl = {
+        let pc = UIPageControl()
+        pc.currentPage = 2
+        pc.numberOfPages = 4
+        pc.currentPageIndicatorTintColor = colors.aquavelvet
+        pc.pageIndicatorTintColor = .gray
+        
+        return pc
+        
+    }()
     // MARK: - Lifecycale
 
     override func viewDidLoad() {
@@ -65,6 +76,9 @@ class SurvayQ2ViewController: UIViewController {
            view.addSubview(YesButton)
            YesButton.anchor( left: view.leftAnchor,   bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeft: 40, paddingBottom: 50 )
            //YesButton.centerX(inView: view)
+        view.addSubview(pageController)
+               pageController.anchor(left: YesButton.rightAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeft: 100)
+               pageController.centerX(inView: view)
            
            view.addSubview(NoButton)
            NoButton.anchor( bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,  paddingBottom: 50, paddingRight: 40)

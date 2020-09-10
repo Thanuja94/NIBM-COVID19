@@ -49,6 +49,17 @@ class SurvayQ1ViewController: UIViewController {
           
           return label
       }()
+    
+    private let pageController:  UIPageControl = {
+        let pc = UIPageControl()
+        pc.currentPage = 0
+        pc.numberOfPages = 4
+        pc.currentPageIndicatorTintColor = colors.aquavelvet
+        pc.pageIndicatorTintColor = .gray
+        
+        return pc
+        
+    }()
     // MARK: - Lifecycale
 
    
@@ -67,9 +78,15 @@ class SurvayQ1ViewController: UIViewController {
     func setupUi(){
         view.backgroundColor = colors.silver
         
+       
+        
         view.addSubview(YesButton)
         YesButton.anchor( left: view.leftAnchor,   bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeft: 40, paddingBottom: 50 )
         //YesButton.centerX(inView: view)
+        view.addSubview(pageController)
+        pageController.anchor(left: YesButton.rightAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeft: 100)
+        pageController.centerX(inView: view)
+
         
         view.addSubview(NoButton)
         NoButton.anchor( bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,  paddingBottom: 50, paddingRight: 40)
