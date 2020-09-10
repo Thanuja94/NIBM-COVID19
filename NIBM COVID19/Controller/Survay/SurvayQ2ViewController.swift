@@ -12,7 +12,7 @@ class SurvayQ2ViewController: UIViewController {
     
     // MARK: - Properties
     
-    let syntomsimage = UIImageView(image: #imageLiteral(resourceName: "Image"))
+    let survayq2image = UIImageView(image: #imageLiteral(resourceName: "survayq2"))
     
     let YesButton: UIButton = {
               let button = UIButton(type: .system)
@@ -69,12 +69,12 @@ class SurvayQ2ViewController: UIViewController {
            view.addSubview(NoButton)
            NoButton.anchor( bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,  paddingBottom: 50, paddingRight: 40)
            
-           view.addSubview(syntomsimage)
-           syntomsimage.anchor(top: view.safeAreaLayoutGuide.topAnchor ,paddingTop: 100)
-           syntomsimage.centerX(inView: view)
+           view.addSubview(survayq2image)
+           survayq2image.anchor(top: view.safeAreaLayoutGuide.topAnchor ,paddingTop: 100)
+           survayq2image.centerX(inView: view)
            
            view.addSubview(Question)
-           Question.anchor(top: syntomsimage.bottomAnchor , left: view.leftAnchor ,right: view.rightAnchor , paddingTop: 20, paddingLeft:20 , paddingRight: 20 )
+           Question.anchor(top: survayq2image.bottomAnchor , left: view.leftAnchor ,right: view.rightAnchor , paddingTop: 20, paddingLeft:20 , paddingRight: 20 )
            Question.centerX(inView: view)
            
          navigationController?.navigationBar.isHidden = true
