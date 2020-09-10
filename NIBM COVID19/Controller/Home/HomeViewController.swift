@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     
     let HomeButton: UIButton = {
                        let button = UIButton(type: .system)
-                       let attributedTitle = NSMutableAttributedString(string: "No", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
+                       let attributedTitle = NSMutableAttributedString(string: "Home", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
                        
                        //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
                       
@@ -23,13 +23,42 @@ class HomeViewController: UIViewController {
                        button.setAttributedTitle(attributedTitle, for: .normal)
                        return button
                    }()
+    let plusButton: UIButton = {
+                          let button = UIButton(type: .system)
+                          let attributedTitle = NSMutableAttributedString(string: "Update", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
+                          
+                          //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+                         
+                          
+                          button.setAttributedTitle(attributedTitle, for: .normal)
+                          return button
+                      }()
+    
+    let settingButton: UIButton = {
+                          let button = UIButton(type: .system)
+                          let attributedTitle = NSMutableAttributedString(string: "Settings", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
+                          
+                          //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+                         
+                          
+                          button.setAttributedTitle(attributedTitle, for: .normal)
+                          return button
+                      }()
     
     // MARK: - Lifecycale
     
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIsUserLoggedIn()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
+        
+        let buttonControlStack = UIStackView(arrangedSubviews: [HomeButton, plusButton ,settingButton])
+        view.addSubview(buttonControlStack)
+        
+        buttonControlStack.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor , right: view.rightAnchor)
+        
+        
+        buttonControlStack.distribution = .fillEqually
     }
     
     // MARK: - Functions
