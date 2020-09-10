@@ -14,22 +14,29 @@ class HomeViewController: UIViewController {
     // MARK: - Properties
     
     let HomeButton: UIButton = {
-                       let button = UIButton(type: .system)
-                       let attributedTitle = NSMutableAttributedString(string: "Home", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
-                       
-                       //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
-                      
-                       
-                       button.setAttributedTitle(attributedTitle, for: .normal)
-                       return button
-                   }()
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Home", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
+        
+        //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+        
+        button.setImage(UIImage(systemName: "house.fill"), for: .normal)
+        button.alignImageAndTitleVertically(padding: 20)
+        
+        button.tintColor = colors.aquavelvet
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        return button
+    }()
+    
     let plusButton: UIButton = {
                           let button = UIButton(type: .system)
                           let attributedTitle = NSMutableAttributedString(string: "Update", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
                           
                           //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
                          
-                          
+                          button.setImage(UIImage(systemName: "plus"), for: .normal)
+                                 button.alignImageAndTitleVertically(padding: 20)
+                                 
+                                 button.tintColor = colors.aquavelvet
                           button.setAttributedTitle(attributedTitle, for: .normal)
                           return button
                       }()
@@ -40,7 +47,10 @@ class HomeViewController: UIViewController {
                           
                           //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
                          
+                          button.setImage(UIImage(systemName: "gear"), for: .normal)
+                          button.alignImageAndTitleVertically(padding: 20)
                           
+                          button.tintColor = colors.aquavelvet
                           button.setAttributedTitle(attributedTitle, for: .normal)
                           return button
                       }()
@@ -54,7 +64,7 @@ class HomeViewController: UIViewController {
         
         let buttonControlStack = UIStackView(arrangedSubviews: [HomeButton, plusButton ,settingButton])
         view.addSubview(buttonControlStack)
-        
+        buttonControlStack.heightAnchor.constraint(equalToConstant: 60).isActive = true
         buttonControlStack.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor , right: view.rightAnchor)
         
         
