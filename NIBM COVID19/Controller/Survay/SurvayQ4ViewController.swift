@@ -12,7 +12,7 @@ class SurvayQ4ViewController: UIViewController {
 
     // MARK: - Properties
        
-       let survayq4image = UIImageView(image: #imageLiteral(resourceName: "survayq3"))
+       let survayq4image = UIImageView(image: #imageLiteral(resourceName: "survayq4"))
        
        let YesButton: UIButton = {
                  let button = UIButton(type: .system)
