@@ -18,7 +18,7 @@ class SurvayQ3ViewController: UIViewController {
               let button = UIButton(type: .system)
               let attributedTitle = NSMutableAttributedString(string: "Yes", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
               
-              //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+              button.addTarget(self, action: #selector(handleYes), for: .touchUpInside)
              
               
               button.setAttributedTitle(attributedTitle, for: .normal)
@@ -29,7 +29,7 @@ class SurvayQ3ViewController: UIViewController {
                  let button = UIButton(type: .system)
                  let attributedTitle = NSMutableAttributedString(string: "No", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
                  
-                 //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+                 button.addTarget(self, action: #selector(handleNo), for: .touchUpInside)
                 
                  
                  button.setAttributedTitle(attributedTitle, for: .normal)
@@ -76,5 +76,16 @@ class SurvayQ3ViewController: UIViewController {
          navigationController?.navigationBar.isHidden = true
        }
 
-    
+    @objc func handleYes() {
+                  let survayq4viewconntroller = SurvayQ4ViewController()
+                  navigationController?.pushViewController(survayq4viewconntroller, animated: true)
+                   
+              }
+          
+
+          @objc func handleNo() {
+                     let survayq4viewconntroller = SurvayQ4ViewController()
+                     navigationController?.pushViewController(survayq4viewconntroller, animated: true)
+                      
+                 }
 }
