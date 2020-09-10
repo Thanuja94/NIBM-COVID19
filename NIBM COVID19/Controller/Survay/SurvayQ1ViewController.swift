@@ -31,7 +31,7 @@ class SurvayQ1ViewController: UIViewController {
                  let button = UIButton(type: .system)
                  let attributedTitle = NSMutableAttributedString(string: "No", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
                  
-                 //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+                 button.addTarget(self, action: #selector(handleNo), for: .touchUpInside)
                 
                  
                  button.setAttributedTitle(attributedTitle, for: .normal)
@@ -93,4 +93,9 @@ class SurvayQ1ViewController: UIViewController {
         }
     
 
+    @objc func handleNo() {
+               let survayq2viewconntroller = SurvayQ2ViewController()
+               navigationController?.pushViewController(survayq2viewconntroller, animated: true)
+                
+           }
 }
