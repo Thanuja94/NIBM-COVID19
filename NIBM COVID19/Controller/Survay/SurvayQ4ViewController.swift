@@ -69,10 +69,12 @@ class SurvayQ4ViewController: UIViewController {
         survayq4image.anchor(top: view.safeAreaLayoutGuide.topAnchor ,paddingTop: 100)
         survayq4image.centerX(inView: view)
         
+        
         view.addSubview(Question)
         Question.anchor(top: survayq4image.bottomAnchor , left: view.leftAnchor ,right: view.rightAnchor , paddingTop: 20, paddingLeft:20 , paddingRight: 20 )
         Question.centerX(inView: view)
         
+    
       navigationController?.navigationBar.isHidden = true
     }
     

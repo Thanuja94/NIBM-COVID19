@@ -144,8 +144,9 @@ class CreateAccViewController: UIViewController {
     }
     
     @objc func ShowLogin() {
-        let loginviewcontroller = LoginViewController()
-        navigationController?.pushViewController(loginviewcontroller, animated: true)
+//        let loginviewcontroller = LoginViewController()
+//        navigationController?.pushViewController(loginviewcontroller, animated: true)
+         navigationController?.popViewController(animated: true)
     }
     
     @objc func handleSignUp(){

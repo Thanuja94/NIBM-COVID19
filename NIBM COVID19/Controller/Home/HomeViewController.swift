@@ -13,11 +13,22 @@ class HomeViewController: UIViewController {
  
     // MARK: - Properties
     
+    let HomeButton: UIButton = {
+                       let button = UIButton(type: .system)
+                       let attributedTitle = NSMutableAttributedString(string: "No", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
+                       
+                       //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+                      
+                       
+                       button.setAttributedTitle(attributedTitle, for: .normal)
+                       return button
+                   }()
+    
     // MARK: - Lifecycale
     
     override func viewDidLoad() {
         super.viewDidLoad()
-checkIsUserLoggedIn()
+        checkIsUserLoggedIn()
         view.backgroundColor = .yellow
     }
     
