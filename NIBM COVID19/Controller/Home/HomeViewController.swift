@@ -57,15 +57,13 @@ class HomeViewController: UIViewController {
     
     let homepicview = UIView()
     let safeactionview = UIView()
+    
     let homepic = UIImageView(image: #imageLiteral(resourceName: "homepic"))
     
     let safeactionButton: UIButton = {
             let button = UIButton(type: .system)
             let attributedTitle = NSMutableAttributedString(string: "Safe actions > ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
             
-//        attributedTitle.append(NSAttributedString(string: "Stay at Home", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: colors.midnightblue]))
-//
-//        attributedTitle.append(NSAttributedString(string: "safe actions", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: colors.aquavelvet]))
             
             button.setAttributedTitle(attributedTitle, for: .normal)
       
@@ -91,13 +89,19 @@ class HomeViewController: UIViewController {
            return label
        }()
     
+    let notificationBellview = UIView()
+    let notificationTextview = UIView()
+
+    
     // MARK: - Lifecycale
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Home"
         checkIsUserLoggedIn()
        setupUI()
-
+        
+       
     }
     
     // MARK: - Functions
@@ -123,36 +127,84 @@ class HomeViewController: UIViewController {
     }
 
     func setupUI()   {
-        view.backgroundColor = .white
+        view.backgroundColor = .white //colors.silver
         
         let buttonControlStack = UIStackView(arrangedSubviews: [HomeButton, plusButton ,settingButton])
+        
         view.addSubview(buttonControlStack)
         buttonControlStack.heightAnchor.constraint(equalToConstant: 60).isActive = true
         buttonControlStack.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor , right: view.rightAnchor, paddingLeft: 10, paddingRight: 20)
         buttonControlStack.distribution = .fillEqually
         
         view.addSubview(homepicview)
-        homepicview.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 20, paddingLeft: 20, height: 200, width: 200)
+        homepicview.translatesAutoresizingMaskIntoConstraints = false
+        homepicview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        homepicview.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 5).isActive = true
+        homepicview.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.5).isActive = true
+        homepicview.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.2).isActive = true
+
         
-                view.addSubview(safeactionview)
-        safeactionview.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: homepicview.rightAnchor, paddingTop: 20, paddingLeft: 20, height: 200, width: 150)
+
+        view.addSubview(safeactionview)
+        safeactionview.translatesAutoresizingMaskIntoConstraints = false
+               safeactionview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+               safeactionview.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -5).isActive = true
+               safeactionview.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.5).isActive = true
+               safeactionview.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.2).isActive = true
+
         
-        homepicview.addSubview(homepic)
-        homepic.anchor(top: homepicview.topAnchor ,left: homepicview.leftAnchor, bottom: homepicview.bottomAnchor, right: homepicview.rightAnchor, paddingTop: 0, paddingLeft: 5, paddingBottom: 5, paddingRight: 5 )
+        notificationBellview.backgroundColor = .red
         
-        safeactionview.addSubview(alluoneedlabel)
-        alluoneedlabel.anchor(top:safeactionview.topAnchor, left: safeactionview.leftAnchor,  right: safeactionview.rightAnchor, paddingTop: 40, paddingLeft: 20, paddingRight: 5)
+        view.addSubview(notificationBellview)
+        notificationBellview.translatesAutoresizingMaskIntoConstraints = false
+                      notificationBellview.topAnchor.constraint(equalTo: homepicview.bottomAnchor, constant: 10).isActive = true
+                      notificationBellview.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 5).isActive = true
+                      notificationBellview.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.3).isActive = true
+                      notificationBellview.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
+
         
+       homepicview.addSubview(homepic)
+        homepic.translatesAutoresizingMaskIntoConstraints = false
+
+        homepic.topAnchor.constraint(equalTo: homepicview.topAnchor).isActive = true
+        homepic.leadingAnchor.constraint(equalTo: homepicview.leadingAnchor).isActive = true
+        homepic.trailingAnchor.constraint(equalTo: homepicview.trailingAnchor).isActive = true
+        homepic.bottomAnchor.constraint(equalTo: homepicview.bottomAnchor).isActive = true
+
+       
+        
+ 
+       safeactionview.addSubview(alluoneedlabel)
+        alluoneedlabel.translatesAutoresizingMaskIntoConstraints = false
+
+        alluoneedlabel.topAnchor.constraint(equalTo: safeactionview.topAnchor,constant: 45).isActive = true
+               alluoneedlabel.leadingAnchor.constraint(equalTo: safeactionview.leadingAnchor, constant: 25).isActive = true
 
         safeactionview.addSubview(stayhomelabel)
-        stayhomelabel.anchor(top:alluoneedlabel.bottomAnchor, left: safeactionview.leftAnchor, right: safeactionview.rightAnchor, paddingTop:10, paddingLeft: 20,  paddingRight: 5)
+        stayhomelabel.translatesAutoresizingMaskIntoConstraints = false
 
+        stayhomelabel.topAnchor.constraint(equalTo: alluoneedlabel.topAnchor,constant: 20).isActive = true
+               stayhomelabel.leadingAnchor.constraint(equalTo: safeactionview.leadingAnchor, constant: 25).isActive = true
 
 
         safeactionview.addSubview(safeactionButton)
-        safeactionButton.anchor(top:stayhomelabel.topAnchor, left: safeactionview.leftAnchor, bottom: safeactionview.bottomAnchor, right: safeactionview.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 5, paddingRight: 5)
+        safeactionButton.translatesAutoresizingMaskIntoConstraints = false
 
+        safeactionButton.topAnchor.constraint(equalTo: stayhomelabel.topAnchor,constant: 20).isActive = true
+                      safeactionButton.leadingAnchor.constraint(equalTo: safeactionview.leadingAnchor, constant: 25).isActive = true
+
+        notificationTextview.backgroundColor  = .blue
+        view.addSubview(notificationTextview)
+        notificationTextview.translatesAutoresizingMaskIntoConstraints = false
+        notificationTextview.topAnchor.constraint(equalTo: homepicview.bottomAnchor, constant: 10).isActive = true
+        notificationTextview.leadingAnchor.constraint(equalTo: notificationBellview.trailingAnchor, constant: 5).isActive = true
+        notificationTextview.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.3).isActive = true
+        notificationTextview.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
+        
         navigationController?.navigationBar.isHidden = true
-    }
+               
+
+
+            }
     
 }
