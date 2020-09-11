@@ -91,6 +91,10 @@ class HomeViewController: UIViewController {
     
     let notificationBellview = UIView()
     let notificationTextview = UIView()
+    let notificationArrowview = UIView()
+    let notificationBellImage = UIImageView(image: #imageLiteral(resourceName: "notificationbell"))
+
+
 
     
     // MARK: - Lifecycale
@@ -152,9 +156,7 @@ class HomeViewController: UIViewController {
                safeactionview.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.5).isActive = true
                safeactionview.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.2).isActive = true
 
-        
-        notificationBellview.backgroundColor = .red
-        
+   
         view.addSubview(notificationBellview)
         notificationBellview.translatesAutoresizingMaskIntoConstraints = false
                       notificationBellview.topAnchor.constraint(equalTo: homepicview.bottomAnchor, constant: 10).isActive = true
@@ -198,13 +200,30 @@ class HomeViewController: UIViewController {
         notificationTextview.translatesAutoresizingMaskIntoConstraints = false
         notificationTextview.topAnchor.constraint(equalTo: homepicview.bottomAnchor, constant: 10).isActive = true
         notificationTextview.leadingAnchor.constraint(equalTo: notificationBellview.trailingAnchor, constant: 5).isActive = true
-        notificationTextview.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.3).isActive = true
+        notificationTextview.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.5).isActive = true
         notificationTextview.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
         
-        navigationController?.navigationBar.isHidden = true
-               
+       
+            
+        notificationArrowview.backgroundColor = .green
+        view.addSubview(notificationArrowview)
+        notificationArrowview.translatesAutoresizingMaskIntoConstraints = false
+        notificationArrowview.topAnchor.constraint(equalTo: homepicview.bottomAnchor, constant: 10).isActive = true
+        notificationArrowview.leadingAnchor.constraint(equalTo: notificationTextview.trailingAnchor, constant: 5).isActive = true
+        notificationArrowview.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.2).isActive = true
+        notificationArrowview.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
+        notificationArrowview.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -2).isActive = true
+        
+        notificationBellview.addSubview(notificationBellImage)
+         notificationBellImage.translatesAutoresizingMaskIntoConstraints = false
+
+         notificationBellImage.topAnchor.constraint(equalTo: notificationBellview.topAnchor, constant: 15).isActive = true
+         notificationBellImage.leadingAnchor.constraint(equalTo: notificationBellview.leadingAnchor, constant: 5).isActive = true
+         notificationBellImage.trailingAnchor.constraint(equalTo: notificationBellview.trailingAnchor, constant: -5).isActive = true
+         notificationBellImage.bottomAnchor.constraint(equalTo: notificationBellview.bottomAnchor).isActive = true
 
 
+         navigationController?.navigationBar.isHidden = true
             }
     
 }
