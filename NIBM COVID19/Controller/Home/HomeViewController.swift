@@ -93,6 +93,16 @@ class HomeViewController: UIViewController {
     let notificationTextview = UIView()
     let notificationArrowview = UIView()
     let notificationBellImage = UIImageView(image: #imageLiteral(resourceName: "notificationbell"))
+    
+    private let notificationLabel: UILabel = {
+           let label = UILabel()
+           label.text = "NIBM is closed until further notice"
+           label.font = UIFont(name: "Avenir-Light" , size: 15)
+           label.textColor = .black
+        label.numberOfLines = 0
+           
+           return label
+       }()
 
 
 
@@ -195,7 +205,6 @@ class HomeViewController: UIViewController {
         safeactionButton.topAnchor.constraint(equalTo: stayhomelabel.topAnchor,constant: 20).isActive = true
                       safeactionButton.leadingAnchor.constraint(equalTo: safeactionview.leadingAnchor, constant: 25).isActive = true
 
-        notificationTextview.backgroundColor  = .blue
         view.addSubview(notificationTextview)
         notificationTextview.translatesAutoresizingMaskIntoConstraints = false
         notificationTextview.topAnchor.constraint(equalTo: homepicview.bottomAnchor, constant: 10).isActive = true
@@ -221,6 +230,15 @@ class HomeViewController: UIViewController {
          notificationBellImage.leadingAnchor.constraint(equalTo: notificationBellview.leadingAnchor, constant: 5).isActive = true
          notificationBellImage.trailingAnchor.constraint(equalTo: notificationBellview.trailingAnchor, constant: -5).isActive = true
          notificationBellImage.bottomAnchor.constraint(equalTo: notificationBellview.bottomAnchor).isActive = true
+        
+        notificationTextview.addSubview(notificationLabel)
+        notificationLabel.translatesAutoresizingMaskIntoConstraints = false
+        notificationLabel.topAnchor.constraint(equalTo: notificationTextview.topAnchor, constant: 10).isActive = true
+         notificationLabel.leadingAnchor.constraint(equalTo: notificationTextview.leadingAnchor, constant: 5).isActive = true
+        notificationLabel.trailingAnchor.constraint(equalTo: notificationTextview.trailingAnchor, constant: -5).isActive = true
+
+         
+        
 
 
          navigationController?.navigationBar.isHidden = true
