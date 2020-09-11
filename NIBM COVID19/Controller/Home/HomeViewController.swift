@@ -59,6 +59,38 @@ class HomeViewController: UIViewController {
     let safeactionview = UIView()
     let homepic = UIImageView(image: #imageLiteral(resourceName: "homepic"))
     
+    let safeactionButton: UIButton = {
+            let button = UIButton(type: .system)
+            let attributedTitle = NSMutableAttributedString(string: "Safe actions > ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
+            
+//        attributedTitle.append(NSAttributedString(string: "Stay at Home", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: colors.midnightblue]))
+//
+//        attributedTitle.append(NSAttributedString(string: "safe actions", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: colors.aquavelvet]))
+            
+            button.setAttributedTitle(attributedTitle, for: .normal)
+      
+            return button
+        }()
+    
+    private let alluoneedlabel: UILabel = {
+        let label = UILabel()
+        label.text = "All you need is"
+        label.font = UIFont(name: "Avenir-Light" , size: 19)
+        label.textColor = .black
+        
+        return label
+    }()
+    
+    private let stayhomelabel: UILabel = {
+           let label = UILabel()
+           label.text = "Stay at Home"
+           label.font = UIFont(name: "Avenir-Light" , size: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+           label.textColor = .black
+           
+           return label
+       }()
+    
     // MARK: - Lifecycale
     
     override func viewDidLoad() {
@@ -102,13 +134,24 @@ class HomeViewController: UIViewController {
         view.addSubview(homepicview)
         homepicview.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 20, paddingLeft: 20, height: 200, width: 200)
         
-        safeactionview.backgroundColor = .green
-        view.addSubview(safeactionview)
+                view.addSubview(safeactionview)
         safeactionview.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: homepicview.rightAnchor, paddingTop: 20, paddingLeft: 20, height: 200, width: 150)
         
         homepicview.addSubview(homepic)
         homepic.anchor(top: homepicview.topAnchor ,left: homepicview.leftAnchor, bottom: homepicview.bottomAnchor, right: homepicview.rightAnchor, paddingTop: 0, paddingLeft: 5, paddingBottom: 5, paddingRight: 5 )
         
+        safeactionview.addSubview(alluoneedlabel)
+        alluoneedlabel.anchor(top:safeactionview.topAnchor, left: safeactionview.leftAnchor,  right: safeactionview.rightAnchor, paddingTop: 40, paddingLeft: 20, paddingRight: 5)
+        
+
+        safeactionview.addSubview(stayhomelabel)
+        stayhomelabel.anchor(top:alluoneedlabel.bottomAnchor, left: safeactionview.leftAnchor, right: safeactionview.rightAnchor, paddingTop:10, paddingLeft: 20,  paddingRight: 5)
+
+
+
+        safeactionview.addSubview(safeactionButton)
+        safeactionButton.anchor(top:stayhomelabel.topAnchor, left: safeactionview.leftAnchor, bottom: safeactionview.bottomAnchor, right: safeactionview.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 5, paddingRight: 5)
+
         navigationController?.navigationBar.isHidden = true
     }
     
