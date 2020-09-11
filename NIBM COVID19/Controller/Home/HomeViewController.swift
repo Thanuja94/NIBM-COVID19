@@ -55,20 +55,17 @@ class HomeViewController: UIViewController {
                           return button
                       }()
     
+    let homepicview = UIView()
+    let safeactionview = UIView()
+    let homepic = UIImageView(image: #imageLiteral(resourceName: "homepic"))
+    
     // MARK: - Lifecycale
     
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIsUserLoggedIn()
-        view.backgroundColor = .white
-        
-        let buttonControlStack = UIStackView(arrangedSubviews: [HomeButton, plusButton ,settingButton])
-        view.addSubview(buttonControlStack)
-        buttonControlStack.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        buttonControlStack.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor , right: view.rightAnchor)
-        
-        
-        buttonControlStack.distribution = .fillEqually
+       setupUI()
+
     }
     
     // MARK: - Functions
@@ -93,5 +90,26 @@ class HomeViewController: UIViewController {
         }
     }
 
+    func setupUI()   {
+        view.backgroundColor = .white
+        
+        let buttonControlStack = UIStackView(arrangedSubviews: [HomeButton, plusButton ,settingButton])
+        view.addSubview(buttonControlStack)
+        buttonControlStack.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        buttonControlStack.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor , right: view.rightAnchor, paddingLeft: 10, paddingRight: 20)
+        buttonControlStack.distribution = .fillEqually
+        
+        view.addSubview(homepicview)
+        homepicview.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 20, paddingLeft: 20, height: 200, width: 200)
+        
+        safeactionview.backgroundColor = .green
+        view.addSubview(safeactionview)
+        safeactionview.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: homepicview.rightAnchor, paddingTop: 20, paddingLeft: 20, height: 200, width: 150)
+        
+        homepicview.addSubview(homepic)
+        homepic.anchor(top: homepicview.topAnchor ,left: homepicview.leftAnchor, bottom: homepicview.bottomAnchor, right: homepicview.rightAnchor, paddingTop: 0, paddingLeft: 5, paddingBottom: 5, paddingRight: 5 )
+        
+        navigationController?.navigationBar.isHidden = true
+    }
     
 }
