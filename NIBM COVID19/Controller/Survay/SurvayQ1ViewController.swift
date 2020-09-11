@@ -52,8 +52,9 @@ class SurvayQ1ViewController: UIViewController {
     
     private let pageController:  UIPageControl = {
         let pc = UIPageControl()
-        pc.currentPage = 0
-        pc.numberOfPages = 4
+         pc.numberOfPages = 4
+         pc.currentPage = 0
+       
         pc.currentPageIndicatorTintColor = colors.aquavelvet
         pc.pageIndicatorTintColor = .gray
         
