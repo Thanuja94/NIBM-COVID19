@@ -107,40 +107,64 @@ class UpdateViewController: UIViewController {
     }()
     
     private let tempUnit: UILabel = {
-           let label = UILabel()
-           label.text = "C"
-           label.font = UIFont(name: "Avenir-Light" , size: 25)
-           label.textColor = .gray
-           
-           return label
-       }()
-     
+        let label = UILabel()
+        label.text = "C"
+        label.font = UIFont(name: "Avenir-Light" , size: 25)
+        label.textColor = .gray
+        
+        return label
+    }()
+    
     private let tempDegree: UILabel = {
-              let label = UILabel()
-              label.text = "o"
-              label.font = UIFont(name: "Avenir-Light" , size: 15)
-              label.textColor = .gray
-              
-              return label
-          }()
+        let label = UILabel()
+        label.text = "o"
+        label.font = UIFont(name: "Avenir-Light" , size: 15)
+        label.textColor = .gray
+        
+        return label
+    }()
     
     private let tempUpdatetimeLable: UILabel = {
-          let label = UILabel()
-          label.text = "Last Update :"
-          label.font = UIFont(name: "Avenir-Light" , size: 15)
-          label.textColor = .gray
-          
-          return label
-      }()
-      
-      private let tempUpdatetime: UILabel = {
-          let label = UILabel()
-          label.text = "1 day ago"
-          label.font = UIFont(name: "Avenir-Light" , size: 15)
-          label.textColor = .gray
-          
-          return label
-      }()
+        let label = UILabel()
+        label.text = "Last Update :"
+        label.font = UIFont(name: "Avenir-Light" , size: 15)
+        label.textColor = .gray
+        
+        return label
+    }()
+    
+    private let tempUpdatetime: UILabel = {
+        let label = UILabel()
+        label.text = "1 day ago"
+        label.font = UIFont(name: "Avenir-Light" , size: 15)
+        label.textColor = .gray
+        
+        return label
+    }()
+    
+    private let temperatureTextFiled: UITextField = {
+        let textfield = UITextField()
+        textfield.borderStyle = .line
+        textfield.textColor = .black
+        
+        
+        return textfield
+        
+    }()
+    
+    private let updateButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Update", for: .normal)
+        // button.font = UIFont(name: "Avenir-Light", size: 35) ?? <#default value#>
+        button.setTitleColor(UIColor(white: 1, alpha: 1), for: .normal)
+        button.backgroundColor = colors.cynaite
+        button.layer.cornerRadius = 10
+        //           button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        //button.addTarget(self, action: #selector(handlesignin), for: .touchUpInside)
+        
+        return button
+    }()
+    
     // MARK: - Lifecycale
     
     override func viewDidLoad() {
@@ -207,7 +231,6 @@ class UpdateViewController: UIViewController {
         survayButtonView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor , constant: -5).isActive = true
         
         
-        tempUpdateView.backgroundColor = .green
         view.addSubview(tempUpdateView)
         tempUpdateView.translatesAutoresizingMaskIntoConstraints = false
         tempUpdateView.topAnchor.constraint(equalTo: survayLabelView.bottomAnchor, constant: 10).isActive = true
@@ -275,28 +298,43 @@ class UpdateViewController: UIViewController {
         temperatureValue.centerXAnchor.constraint(equalTo: tempUpdateView.centerXAnchor).isActive = true
         
         tempUpdateView.addSubview(tempUnit)
-               tempUnit.translatesAutoresizingMaskIntoConstraints = false
-               tempUnit.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
+        tempUnit.translatesAutoresizingMaskIntoConstraints = false
+        tempUnit.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
         tempUnit.leadingAnchor.constraint(equalTo: temperatureValue.trailingAnchor, constant: 10).isActive = true
-               tempUnit.topAnchor.constraint(equalTo: tempUpdateView.topAnchor, constant: 25).isActive = true
+        tempUnit.topAnchor.constraint(equalTo: tempUpdateView.topAnchor, constant: 25).isActive = true
         
         tempUpdateView.addSubview(tempDegree)
-               tempDegree.translatesAutoresizingMaskIntoConstraints = false
-               tempDegree.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
+        tempDegree.translatesAutoresizingMaskIntoConstraints = false
+        tempDegree.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
         tempDegree.leadingAnchor.constraint(equalTo: temperatureValue.trailingAnchor, constant: 4).isActive = true
-               tempDegree.topAnchor.constraint(equalTo: tempUpdateView.topAnchor, constant: 15).isActive = true
+        tempDegree.topAnchor.constraint(equalTo: tempUpdateView.topAnchor, constant: 15).isActive = true
         
         tempUpdateView.addSubview(tempUpdatetimeLable)
-               tempUpdatetimeLable.translatesAutoresizingMaskIntoConstraints = false
-               tempUpdatetimeLable.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
-               tempUpdatetimeLable.topAnchor.constraint(equalTo: temperatureValue.bottomAnchor, constant: 10).isActive = true
-         tempUpdatetimeLable.leadingAnchor.constraint(equalTo: tempUpdateView.leadingAnchor, constant: 85).isActive = true
-                       
+        tempUpdatetimeLable.translatesAutoresizingMaskIntoConstraints = false
+        tempUpdatetimeLable.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
+        tempUpdatetimeLable.topAnchor.constraint(equalTo: temperatureValue.bottomAnchor, constant: 10).isActive = true
+        tempUpdatetimeLable.leadingAnchor.constraint(equalTo: tempUpdateView.leadingAnchor, constant: 85).isActive = true
+        
         tempUpdateView.addSubview(tempUpdatetime)
-              tempUpdatetime.translatesAutoresizingMaskIntoConstraints = false
-              tempUpdatetime.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
-              tempUpdatetime.topAnchor.constraint(equalTo: temperatureValue.bottomAnchor, constant: 10).isActive = true
+        tempUpdatetime.translatesAutoresizingMaskIntoConstraints = false
+        tempUpdatetime.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
+        tempUpdatetime.topAnchor.constraint(equalTo: temperatureValue.bottomAnchor, constant: 10).isActive = true
         tempUpdatetime.leadingAnchor.constraint(equalTo: tempUpdatetimeLable.trailingAnchor, constant: 15).isActive = true
+        
+        tempUpdateView.addSubview(temperatureTextFiled)
+        temperatureTextFiled.translatesAutoresizingMaskIntoConstraints = false
+        temperatureTextFiled.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.2).isActive = true
+        temperatureTextFiled.topAnchor.constraint(equalTo: tempUpdatetime.bottomAnchor, constant: 10).isActive = true
+        temperatureTextFiled.centerXAnchor.constraint(equalTo: tempUpdateView.centerXAnchor).isActive = true
+        temperatureTextFiled.widthAnchor.constraint(equalTo: tempUpdateView.widthAnchor, multiplier: 0.4).isActive = true
+        
+        tempUpdateView.addSubview(updateButton)
+        updateButton.translatesAutoresizingMaskIntoConstraints = false
+        updateButton.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.2).isActive = true
+        updateButton.topAnchor.constraint(equalTo: temperatureTextFiled.bottomAnchor, constant: 10).isActive = true
+        updateButton.centerXAnchor.constraint(equalTo: tempUpdateView.centerXAnchor).isActive = true
+        updateButton.widthAnchor.constraint(equalTo: tempUpdateView.widthAnchor, multiplier: 0.4).isActive = true
+        
         
         navigationController?.navigationBar.isHidden = true
         
