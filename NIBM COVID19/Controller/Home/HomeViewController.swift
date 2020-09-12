@@ -151,6 +151,11 @@ class HomeViewController: UIViewController {
         return label
     }()
 
+    let infectedView = UIView()
+    
+    let DeathsView = UIView()
+    
+    let recoveredView = UIView()
     
        // MARK: - Lifecycale
     
@@ -288,22 +293,22 @@ class HomeViewController: UIViewController {
          
         
         caseUpdateTitleView.backgroundColor = .gray
-               view.addSubview(caseUpdateTitleView)
-               caseUpdateTitleView.translatesAutoresizingMaskIntoConstraints = false
-               caseUpdateTitleView.topAnchor.constraint(equalTo: notificationBellview.bottomAnchor, constant: 10).isActive = true
-               caseUpdateTitleView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 5).isActive = true
-               caseUpdateTitleView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.6).isActive = true
-               caseUpdateTitleView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.06).isActive = true
+        view.addSubview(caseUpdateTitleView)
+        caseUpdateTitleView.translatesAutoresizingMaskIntoConstraints = false
+        caseUpdateTitleView.topAnchor.constraint(equalTo: notificationBellview.bottomAnchor, constant: 10).isActive = true
+        caseUpdateTitleView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 5).isActive = true
+        caseUpdateTitleView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.6).isActive = true
+        caseUpdateTitleView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.06).isActive = true
         
         seeMoreButtonView.backgroundColor = .gray
-                     view.addSubview(seeMoreButtonView)
-                     seeMoreButtonView.translatesAutoresizingMaskIntoConstraints = false
-                     seeMoreButtonView.topAnchor.constraint(equalTo: notificationBellview.bottomAnchor, constant: 10).isActive = true
-                     seeMoreButtonView.leadingAnchor.constraint(equalTo: caseUpdateTitleView.trailingAnchor, constant: 5).isActive = true
-                     seeMoreButtonView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.4).isActive = true
-                     seeMoreButtonView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.06).isActive = true
-              
-                    seeMoreButtonView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -5).isActive = true
+        view.addSubview(seeMoreButtonView)
+        seeMoreButtonView.translatesAutoresizingMaskIntoConstraints = false
+        seeMoreButtonView.topAnchor.constraint(equalTo: notificationBellview.bottomAnchor, constant: 10).isActive = true
+        seeMoreButtonView.leadingAnchor.constraint(equalTo: caseUpdateTitleView.trailingAnchor, constant: 5).isActive = true
+        seeMoreButtonView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.4).isActive = true
+        seeMoreButtonView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.06).isActive = true
+        
+        seeMoreButtonView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -5).isActive = true
         
         caseUpdateTitleView.addSubview(caseUpdateLabel)
         caseUpdateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -322,6 +327,30 @@ class HomeViewController: UIViewController {
         seeMoreButton.topAnchor.constraint(equalTo: seeMoreButtonView.topAnchor, constant: 5).isActive = true
          seeMoreButton.leadingAnchor.constraint(equalTo: seeMoreButtonView.leadingAnchor, constant: 20).isActive = true
         seeMoreButton.trailingAnchor.constraint(equalTo: seeMoreButtonView.trailingAnchor, constant: -5).isActive = true
+
+        infectedView.backgroundColor = .blue
+        view.addSubview(infectedView)
+        infectedView.translatesAutoresizingMaskIntoConstraints = false
+        infectedView.topAnchor.constraint(equalTo: caseUpdateTitleView.bottomAnchor, constant: 10).isActive = true
+        infectedView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 7).isActive = true
+        infectedView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.3).isActive = true
+        infectedView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.2).isActive = true
+
+        DeathsView.backgroundColor = .blue
+        view.addSubview(DeathsView)
+        DeathsView.translatesAutoresizingMaskIntoConstraints = false
+        DeathsView.topAnchor.constraint(equalTo: caseUpdateTitleView.bottomAnchor, constant: 10).isActive = true
+        DeathsView.leadingAnchor.constraint(equalTo: infectedView.trailingAnchor, constant: 5).isActive = true
+        DeathsView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.3).isActive = true
+        DeathsView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.2).isActive = true
+
+        recoveredView.backgroundColor = .blue
+        view.addSubview(recoveredView)
+        recoveredView.translatesAutoresizingMaskIntoConstraints = false
+        recoveredView.topAnchor.constraint(equalTo: caseUpdateTitleView.bottomAnchor, constant: 10).isActive = true
+        recoveredView.leadingAnchor.constraint(equalTo: DeathsView.trailingAnchor, constant: 5).isActive = true
+        recoveredView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.3).isActive = true
+        recoveredView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.2).isActive = true
 
                
          navigationController?.navigationBar.isHidden = true
