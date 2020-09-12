@@ -256,13 +256,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func signOut() {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print("DEBUG: sign out error")
-        }
-    }
+    
 
     func setupUI()   {
         view.backgroundColor = .white //colors.silver

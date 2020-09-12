@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SettingsViewController: UIViewController {
     
@@ -89,7 +90,7 @@ class SettingsViewController: UIViewController {
            let button = UIButton(type: .system)
            let attributedTitle = NSMutableAttributedString(string: "LOGOUT", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
            
-           //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+           button.addTarget(self, action: #selector(signOut), for: .touchUpInside)
           
            
            button.setAttributedTitle(attributedTitle, for: .normal)
@@ -206,6 +207,13 @@ class SettingsViewController: UIViewController {
 
     }
 
+    @objc func signOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("DEBUG: sign out error")
+        }
+    }
    
 
 }
