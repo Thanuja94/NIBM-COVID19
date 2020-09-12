@@ -61,7 +61,21 @@ class UpdateViewController: UIViewController {
         return button
     }()
 
+    private let createSurvayLable: UILabel = {
+           let label = UILabel()
+           label.text = "New Survay"
+           label.font = UIFont(name: "Avenir-Light" , size: 20)
+           label.textColor = .black
+           
+           return label
+       }()
     
+    let survayArrowButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
     // MARK: - Lifecycale
     
     override func viewDidLoad() {
@@ -110,7 +124,7 @@ class UpdateViewController: UIViewController {
         notificationButtonView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.09).isActive = true
         notificationButtonView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor , constant: -5).isActive = true
         
-        survayLabelView.backgroundColor = .orange
+       
         view.addSubview(survayLabelView)
         survayLabelView.translatesAutoresizingMaskIntoConstraints = false
         survayLabelView.topAnchor.constraint(equalTo: notificationLabelView.bottomAnchor, constant: 10).isActive = true
@@ -118,7 +132,7 @@ class UpdateViewController: UIViewController {
         survayLabelView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.6).isActive = true
         survayLabelView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.09).isActive = true
         
-        survayButtonView.backgroundColor = .orange
+       
         view.addSubview(survayButtonView)
         survayButtonView.translatesAutoresizingMaskIntoConstraints = false
         survayButtonView.topAnchor.constraint(equalTo: notificationLabelView.bottomAnchor, constant: 10).isActive = true
@@ -153,7 +167,7 @@ class UpdateViewController: UIViewController {
          notificationLabelView.addSubview(createNotificationLable)
          createNotificationLable.translatesAutoresizingMaskIntoConstraints = false
          createNotificationLable.heightAnchor.constraint(equalTo: notificationLabelView.heightAnchor, multiplier: 0.3).isActive = true
-        createNotificationLable.trailingAnchor.constraint(equalTo: notificationLabelView.trailingAnchor, constant: -5).isActive = true
+        createNotificationLable.leadingAnchor.constraint(equalTo: notificationLabelView.leadingAnchor, constant: 5).isActive = true
         createNotificationLable.centerYAnchor.constraint(equalTo: notificationLabelView.centerYAnchor).isActive = true
 
          notificationButtonView.addSubview(notificationArrowButton)
@@ -162,7 +176,19 @@ class UpdateViewController: UIViewController {
          notificationArrowButton.trailingAnchor.constraint(equalTo: notificationButtonView.trailingAnchor, constant: -15).isActive = true
          notificationArrowButton.centerYAnchor.constraint(equalTo: notificationButtonView.centerYAnchor).isActive = true
 
+        survayLabelView.addSubview(createSurvayLable)
+                createSurvayLable.translatesAutoresizingMaskIntoConstraints = false
+                createSurvayLable.heightAnchor.constraint(equalTo: survayLabelView.heightAnchor, multiplier: 0.3).isActive = true
+               createSurvayLable.leadingAnchor.constraint(equalTo: survayLabelView.leadingAnchor, constant: 5).isActive = true
+               createSurvayLable.centerYAnchor.constraint(equalTo: survayLabelView.centerYAnchor).isActive = true
+
           
+        survayButtonView.addSubview(survayArrowButton)
+         survayArrowButton.translatesAutoresizingMaskIntoConstraints = false
+         survayArrowButton.heightAnchor.constraint(equalTo: survayButtonView.heightAnchor, multiplier: 0.3).isActive = true
+        survayArrowButton.trailingAnchor.constraint(equalTo: survayButtonView.trailingAnchor, constant: -15).isActive = true
+        survayArrowButton.centerYAnchor.constraint(equalTo: survayButtonView.centerYAnchor).isActive = true
+
 
         
         
