@@ -114,7 +114,7 @@ class SettingsViewController: UIViewController {
         profileView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1).isActive = true
         profileView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
         
-        aboutUsView.backgroundColor = .gray
+        
         view.addSubview(aboutUsView)
         aboutUsView.translatesAutoresizingMaskIntoConstraints = false
         aboutUsView.topAnchor.constraint(equalTo: profileView.bottomAnchor, constant: 10).isActive = true
@@ -122,7 +122,6 @@ class SettingsViewController: UIViewController {
         aboutUsView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1).isActive = true
         aboutUsView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
         
-        shareWithView.backgroundColor = .green
         view.addSubview(shareWithView)
         shareWithView.translatesAutoresizingMaskIntoConstraints = false
         shareWithView.topAnchor.constraint(equalTo: aboutUsView.bottomAnchor, constant: 10).isActive = true
@@ -174,7 +173,17 @@ class SettingsViewController: UIViewController {
                aboutUsArrowButton.topAnchor.constraint(equalTo: aboutUsView.topAnchor, constant: 10).isActive = true
                aboutUsArrowButton.trailingAnchor.constraint(equalTo: aboutUsView.trailingAnchor, constant: -10).isActive = true
         
+        shareWithView.addSubview(shareWithLabel)
+               shareWithLabel.translatesAutoresizingMaskIntoConstraints = false
+               shareWithLabel.heightAnchor.constraint(equalTo: shareWithView.heightAnchor, multiplier: 0.5).isActive = true
+               shareWithLabel.topAnchor.constraint(equalTo: shareWithView.topAnchor, constant: 10).isActive = true
+               shareWithLabel.leadingAnchor.constraint(equalTo: shareWithView.leadingAnchor, constant: 10).isActive = true
         
+        shareWithView.addSubview(shareWithArrowButton)
+        shareWithArrowButton.translatesAutoresizingMaskIntoConstraints = false
+        shareWithArrowButton.heightAnchor.constraint(equalTo: shareWithView.heightAnchor, multiplier: 0.5).isActive = true
+        shareWithArrowButton.topAnchor.constraint(equalTo: shareWithView.topAnchor, constant: 10).isActive = true
+        shareWithArrowButton.trailingAnchor.constraint(equalTo: shareWithView.trailingAnchor, constant: -10).isActive = true
                
         
         navigationController?.navigationBar.isHidden = true
