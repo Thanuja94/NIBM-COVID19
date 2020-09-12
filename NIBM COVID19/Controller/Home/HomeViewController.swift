@@ -188,11 +188,54 @@ class HomeViewController: UIViewController {
         return label
     }()
     
+    private let deathLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Deaths"
+    label.font = UIFont(name: "Avenir-Light" , size: 15)
+    
+        label.textColor = .black
+     label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private let deathCount: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+    label.font = UIFont(name: "Avenir-Light" , size: 55)
+    
+        label.textColor = .black
+     label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private let reacoveredLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Recovered"
+    label.font = UIFont(name: "Avenir-Light" , size: 15)
+    
+        label.textColor = .black
+     label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private let recoveredCount: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+    label.font = UIFont(name: "Avenir-Light" , size: 55)
+    
+        label.textColor = .black
+     label.numberOfLines = 0
+        
+        return label
+    }()
+
        // MARK: - Lifecycale
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Home"
         checkIsUserLoggedIn()
        setupUI()
         
@@ -358,7 +401,6 @@ class HomeViewController: UIViewController {
          seeMoreButton.leadingAnchor.constraint(equalTo: seeMoreButtonView.leadingAnchor, constant: 20).isActive = true
         seeMoreButton.trailingAnchor.constraint(equalTo: seeMoreButtonView.trailingAnchor, constant: -5).isActive = true
 
-        infectedView.backgroundColor = .gray
         view.addSubview(infectedView)
         infectedView.translatesAutoresizingMaskIntoConstraints = false
         infectedView.topAnchor.constraint(equalTo: caseUpdateTitleView.bottomAnchor, constant: 10).isActive = true
@@ -366,7 +408,6 @@ class HomeViewController: UIViewController {
         infectedView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.3).isActive = true
         infectedView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.2).isActive = true
 
-        deathsView.backgroundColor = .blue
         view.addSubview(deathsView)
         deathsView.translatesAutoresizingMaskIntoConstraints = false
         deathsView.topAnchor.constraint(equalTo: caseUpdateTitleView.bottomAnchor, constant: 10).isActive = true
@@ -374,7 +415,6 @@ class HomeViewController: UIViewController {
         deathsView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.3).isActive = true
         deathsView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.2).isActive = true
 
-        recoveredView.backgroundColor = .blue
         view.addSubview(recoveredView)
         recoveredView.translatesAutoresizingMaskIntoConstraints = false
         recoveredView.topAnchor.constraint(equalTo: caseUpdateTitleView.bottomAnchor, constant: 10).isActive = true
@@ -424,6 +464,34 @@ class HomeViewController: UIViewController {
         infectedLabel.topAnchor.constraint(equalTo: infectedCount.bottomAnchor, constant: 1).isActive = true
         infectedLabel.heightAnchor.constraint(equalTo: infectedView.heightAnchor, multiplier: 0.2).isActive = true
         infectedLabel.centerXAnchor.constraint(equalTo: infectedView.centerXAnchor).isActive = true
+        
+        deathsView.addSubview(deathCount)
+        deathCount.translatesAutoresizingMaskIntoConstraints = false
+        deathCount.topAnchor.constraint(equalTo: deathSymbol.bottomAnchor, constant: 15).isActive = true
+        deathCount.widthAnchor.constraint(equalTo: deathsView.widthAnchor, multiplier: 0.3).isActive = true
+        deathCount.heightAnchor.constraint(equalTo: deathsView.heightAnchor, multiplier: 0.3).isActive = true
+        deathCount.centerXAnchor.constraint(equalTo: deathsView.centerXAnchor).isActive = true
+        
+        deathsView.addSubview(deathLabel)
+        deathLabel.translatesAutoresizingMaskIntoConstraints = false
+        deathLabel.topAnchor.constraint(equalTo: deathCount.bottomAnchor, constant: 1).isActive = true
+        deathLabel.heightAnchor.constraint(equalTo: deathsView.heightAnchor, multiplier: 0.2).isActive = true
+        deathLabel.centerXAnchor.constraint(equalTo: deathsView.centerXAnchor).isActive = true
+        
+        recoveredView.addSubview(recoveredCount)
+              recoveredCount.translatesAutoresizingMaskIntoConstraints = false
+              recoveredCount.topAnchor.constraint(equalTo: deathSymbol.bottomAnchor, constant: 15).isActive = true
+              recoveredCount.widthAnchor.constraint(equalTo: recoveredView.widthAnchor, multiplier: 0.3).isActive = true
+              recoveredCount.heightAnchor.constraint(equalTo: recoveredView.heightAnchor, multiplier: 0.3).isActive = true
+              recoveredCount.centerXAnchor.constraint(equalTo: recoveredView.centerXAnchor).isActive = true
+              
+              recoveredView.addSubview(reacoveredLabel)
+              reacoveredLabel.translatesAutoresizingMaskIntoConstraints = false
+              reacoveredLabel.topAnchor.constraint(equalTo: recoveredCount.bottomAnchor, constant: 1).isActive = true
+              reacoveredLabel.heightAnchor.constraint(equalTo: recoveredView.heightAnchor, multiplier: 0.2).isActive = true
+              reacoveredLabel.centerXAnchor.constraint(equalTo: recoveredView.centerXAnchor).isActive = true
+
+        
        
         
          navigationController?.navigationBar.isHidden = true
