@@ -45,7 +45,7 @@ class HomeViewController: UIViewController {
                           let button = UIButton(type: .system)
                           let attributedTitle = NSMutableAttributedString(string: "Settings", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
                           
-                          //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+                          button.addTarget(self, action: #selector(handleSetting), for: .touchUpInside)
                          
                           button.setImage(UIImage(systemName: "gear"), for: .normal)
                           button.alignImageAndTitleVertically(padding: 20)
@@ -497,5 +497,11 @@ class HomeViewController: UIViewController {
          navigationController?.navigationBar.isHidden = true
         
             }
+    
+    @objc func handleSetting() {
+            let settingViewController = SettingsViewController()
+            navigationController?.pushViewController(settingViewController, animated: true)
+    //         navigationController?.popViewController(animated: true)
+        }
     
 }

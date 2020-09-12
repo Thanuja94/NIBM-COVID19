@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
 //        window?.rootViewController = HomeViewController()
-        window?.rootViewController = UINavigationController(rootViewController: UpdateViewController())
+        window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
         //window?.rootViewController = SurvayQ1ViewController()
         return true
     }
