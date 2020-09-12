@@ -85,6 +85,17 @@ class SettingsViewController: UIViewController {
           button.tintColor = .black
           return button
       }()
+    let logOutButton: UIButton = {
+           let button = UIButton(type: .system)
+           let attributedTitle = NSMutableAttributedString(string: "LOGOUT", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
+           
+           //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+          
+           
+           button.setAttributedTitle(attributedTitle, for: .normal)
+           return button
+       }()
+    
      // MARK: - Lifecycale
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,7 +140,7 @@ class SettingsViewController: UIViewController {
         shareWithView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1).isActive = true
         shareWithView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
         
-        logOutButtonView.backgroundColor = .orange
+        
                view.addSubview(logOutButtonView)
                logOutButtonView.translatesAutoresizingMaskIntoConstraints = false
                logOutButtonView.bottomAnchor.constraint(equalTo:  view.layoutMarginsGuide.bottomAnchor, constant: 10).isActive = true
@@ -185,7 +196,12 @@ class SettingsViewController: UIViewController {
         shareWithArrowButton.topAnchor.constraint(equalTo: shareWithView.topAnchor, constant: 10).isActive = true
         shareWithArrowButton.trailingAnchor.constraint(equalTo: shareWithView.trailingAnchor, constant: -10).isActive = true
                
-        
+        logOutButtonView.addSubview(logOutButton)
+              logOutButton.translatesAutoresizingMaskIntoConstraints = false
+              logOutButton.heightAnchor.constraint(equalTo: logOutButtonView.heightAnchor, multiplier: 0.5).isActive = true
+              logOutButton.topAnchor.constraint(equalTo: logOutButtonView.topAnchor, constant: 10).isActive = true
+              logOutButton.centerXAnchor.constraint(equalTo: logOutButtonView.centerXAnchor).isActive = true
+              
         navigationController?.navigationBar.isHidden = true
 
     }
