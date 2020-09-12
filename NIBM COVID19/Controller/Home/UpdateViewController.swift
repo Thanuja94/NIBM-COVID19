@@ -48,7 +48,7 @@ class UpdateViewController: UIViewController {
     private let createNotificationLable: UILabel = {
         let label = UILabel()
         label.text = "Create Notifications"
-        label.font = UIFont(name: "Avenir-Light" , size: 25)
+        label.font = UIFont(name: "Avenir-Light" , size: 20)
         label.textColor = .black
         
         return label
@@ -143,6 +143,13 @@ class UpdateViewController: UIViewController {
          closeButton.topAnchor.constraint(equalTo: closeButtonView.topAnchor, constant: 15).isActive = true
          closeButton.heightAnchor.constraint(equalTo: closeButtonView.heightAnchor, multiplier: 0.3).isActive = true
         closeButton.trailingAnchor.constraint(equalTo: closeButtonView.trailingAnchor, constant: -5).isActive = true
+        
+         notificationLabelView.addSubview(createNotificationLable)
+         createNotificationLable.translatesAutoresizingMaskIntoConstraints = false
+         createNotificationLable.heightAnchor.constraint(equalTo: notificationLabelView.heightAnchor, multiplier: 0.3).isActive = true
+        createNotificationLable.trailingAnchor.constraint(equalTo: notificationLabelView.trailingAnchor, constant: -5).isActive = true
+        createNotificationLable.centerYAnchor.constraint(equalTo: notificationLabelView.centerYAnchor).isActive = true
+
          
 
         
