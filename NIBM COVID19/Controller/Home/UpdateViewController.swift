@@ -53,6 +53,13 @@ class UpdateViewController: UIViewController {
         
         return label
     }()
+    
+    let notificationArrowButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
 
     
     // MARK: - Lifecycale
@@ -87,7 +94,6 @@ class UpdateViewController: UIViewController {
         closeButtonView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.4).isActive = true
         closeButtonView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.08).isActive = true
         
-        notificationLabelView.backgroundColor = .gray
         view.addSubview(notificationLabelView)
         notificationLabelView.translatesAutoresizingMaskIntoConstraints = false
         notificationLabelView.topAnchor.constraint(equalTo: titleLableView.bottomAnchor, constant: 10).isActive = true
@@ -95,7 +101,7 @@ class UpdateViewController: UIViewController {
         notificationLabelView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.6).isActive = true
         notificationLabelView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.09).isActive = true
         
-        notificationButtonView.backgroundColor = .gray
+        
         view.addSubview(notificationButtonView)
         notificationButtonView.translatesAutoresizingMaskIntoConstraints = false
         notificationButtonView.topAnchor.constraint(equalTo: titleLableView.bottomAnchor, constant: 10).isActive = true
@@ -150,7 +156,13 @@ class UpdateViewController: UIViewController {
         createNotificationLable.trailingAnchor.constraint(equalTo: notificationLabelView.trailingAnchor, constant: -5).isActive = true
         createNotificationLable.centerYAnchor.constraint(equalTo: notificationLabelView.centerYAnchor).isActive = true
 
-         
+         notificationButtonView.addSubview(notificationArrowButton)
+          notificationArrowButton.translatesAutoresizingMaskIntoConstraints = false
+          notificationArrowButton.heightAnchor.constraint(equalTo: notificationButtonView.heightAnchor, multiplier: 0.3).isActive = true
+         notificationArrowButton.trailingAnchor.constraint(equalTo: notificationButtonView.trailingAnchor, constant: -15).isActive = true
+         notificationArrowButton.centerYAnchor.constraint(equalTo: notificationButtonView.centerYAnchor).isActive = true
+
+          
 
         
         
