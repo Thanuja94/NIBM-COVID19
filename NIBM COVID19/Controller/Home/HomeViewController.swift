@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
                           let button = UIButton(type: .system)
                           let attributedTitle = NSMutableAttributedString(string: "Update", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
                           
-                          //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+                          button.addTarget(self, action: #selector(handleUpdate), for: .touchUpInside)
                          
                           button.setImage(UIImage(systemName: "plus"), for: .normal)
                                  button.alignImageAndTitleVertically(padding: 20)
@@ -501,7 +501,12 @@ class HomeViewController: UIViewController {
     @objc func handleSetting() {
             let settingViewController = SettingsViewController()
             navigationController?.pushViewController(settingViewController, animated: true)
-    //         navigationController?.popViewController(animated: true)
+   
         }
     
+    @objc func handleUpdate() {
+               let updateViewController = UpdateViewController()
+               navigationController?.pushViewController(updateViewController, animated: true)
+      
+           }
 }
