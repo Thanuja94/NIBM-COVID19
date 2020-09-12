@@ -31,7 +31,7 @@ class SettingsViewController: UIViewController {
         
         return label
     }()
-
+    
     let backArrowButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
@@ -51,12 +51,14 @@ class SettingsViewController: UIViewController {
     }()
     
     let profileArrowButton: UIButton = {
-          let button = UIButton(type: .system)
-          button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-          button.tintColor = .black
-          return button
-      }()
-
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(handleProfile), for: .touchUpInside)
+        
+        return button
+    }()
+    
     private let aboutUsLable: UILabel = {
         let label = UILabel()
         label.text = "Contact Us/ About Us"
@@ -67,13 +69,13 @@ class SettingsViewController: UIViewController {
     }()
     
     let aboutUsArrowButton: UIButton = {
-          let button = UIButton(type: .system)
-          button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-          button.tintColor = .black
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.tintColor = .black
         button.addTarget(self, action: #selector(handleAboutUs), for: .touchUpInside)
-          return button
-      }()
-
+        return button
+    }()
+    
     private let shareWithLabel: UILabel = {
         let label = UILabel()
         label.text = "Share with Friend"
@@ -84,26 +86,26 @@ class SettingsViewController: UIViewController {
     }()
     
     let shareWithArrowButton: UIButton = {
-          let button = UIButton(type: .system)
-          button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-          button.tintColor = .black
-          return button
-      }()
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
     let logOutButton: UIButton = {
-           let button = UIButton(type: .system)
-           let attributedTitle = NSMutableAttributedString(string: "LOGOUT", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
-           
-           button.addTarget(self, action: #selector(signOut), for: .touchUpInside)
-          
-           
-           button.setAttributedTitle(attributedTitle, for: .normal)
-           return button
-       }()
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "LOGOUT", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
+        
+        button.addTarget(self, action: #selector(signOut), for: .touchUpInside)
+        
+        
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        return button
+    }()
     
-     // MARK: - Lifecycale
+    // MARK: - Lifecycale
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupUI()
         
     }
@@ -111,7 +113,7 @@ class SettingsViewController: UIViewController {
     // MARK: - Functions
     
     func setupUI()  {
-          view.backgroundColor = .white
+        view.backgroundColor = .white
         
         
         view.addSubview(titleLableView)
@@ -121,7 +123,7 @@ class SettingsViewController: UIViewController {
         titleLableView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1).isActive = true
         titleLableView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
         
-       
+        
         view.addSubview(profileView)
         profileView.translatesAutoresizingMaskIntoConstraints = false
         profileView.topAnchor.constraint(equalTo: titleLableView.bottomAnchor, constant: 10).isActive = true
@@ -145,12 +147,12 @@ class SettingsViewController: UIViewController {
         shareWithView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
         
         
-               view.addSubview(logOutButtonView)
-               logOutButtonView.translatesAutoresizingMaskIntoConstraints = false
-               logOutButtonView.bottomAnchor.constraint(equalTo:  view.layoutMarginsGuide.bottomAnchor, constant: 10).isActive = true
-               logOutButtonView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 5).isActive = true
-               logOutButtonView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1).isActive = true
-               logOutButtonView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
+        view.addSubview(logOutButtonView)
+        logOutButtonView.translatesAutoresizingMaskIntoConstraints = false
+        logOutButtonView.bottomAnchor.constraint(equalTo:  view.layoutMarginsGuide.bottomAnchor, constant: 10).isActive = true
+        logOutButtonView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 5).isActive = true
+        logOutButtonView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1).isActive = true
+        logOutButtonView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
         
         titleLableView.addSubview(settingsLable)
         settingsLable.translatesAutoresizingMaskIntoConstraints = false
@@ -163,12 +165,12 @@ class SettingsViewController: UIViewController {
         backArrowButton.heightAnchor.constraint(equalTo: titleLableView.heightAnchor, multiplier: 0.5).isActive = true
         backArrowButton.topAnchor.constraint(equalTo: titleLableView.topAnchor, constant: 10).isActive = true
         backArrowButton.leadingAnchor.constraint(equalTo: titleLableView.leadingAnchor, constant: 10).isActive = true
-                
+        
         profileView.addSubview(profileLable)
-               profileLable.translatesAutoresizingMaskIntoConstraints = false
-               profileLable.heightAnchor.constraint(equalTo: profileView.heightAnchor, multiplier: 0.5).isActive = true
-               profileLable.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 10).isActive = true
-               profileLable.leadingAnchor.constraint(equalTo: profileView.leadingAnchor, constant: 10).isActive = true
+        profileLable.translatesAutoresizingMaskIntoConstraints = false
+        profileLable.heightAnchor.constraint(equalTo: profileView.heightAnchor, multiplier: 0.5).isActive = true
+        profileLable.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 10).isActive = true
+        profileLable.leadingAnchor.constraint(equalTo: profileView.leadingAnchor, constant: 10).isActive = true
         
         profileView.addSubview(profileArrowButton)
         profileArrowButton.translatesAutoresizingMaskIntoConstraints = false
@@ -177,39 +179,39 @@ class SettingsViewController: UIViewController {
         profileArrowButton.trailingAnchor.constraint(equalTo: profileView.trailingAnchor, constant: -10).isActive = true
         
         aboutUsView.addSubview(aboutUsLable)
-                      aboutUsLable.translatesAutoresizingMaskIntoConstraints = false
-                      aboutUsLable.heightAnchor.constraint(equalTo: aboutUsView.heightAnchor, multiplier: 0.5).isActive = true
-                      aboutUsLable.topAnchor.constraint(equalTo: aboutUsView.topAnchor, constant: 10).isActive = true
-                      aboutUsLable.leadingAnchor.constraint(equalTo: aboutUsView.leadingAnchor, constant: 10).isActive = true
-               
-               aboutUsView.addSubview(aboutUsArrowButton)
-               aboutUsArrowButton.translatesAutoresizingMaskIntoConstraints = false
-               aboutUsArrowButton.heightAnchor.constraint(equalTo: aboutUsView.heightAnchor, multiplier: 0.5).isActive = true
-               aboutUsArrowButton.topAnchor.constraint(equalTo: aboutUsView.topAnchor, constant: 10).isActive = true
-               aboutUsArrowButton.trailingAnchor.constraint(equalTo: aboutUsView.trailingAnchor, constant: -10).isActive = true
+        aboutUsLable.translatesAutoresizingMaskIntoConstraints = false
+        aboutUsLable.heightAnchor.constraint(equalTo: aboutUsView.heightAnchor, multiplier: 0.5).isActive = true
+        aboutUsLable.topAnchor.constraint(equalTo: aboutUsView.topAnchor, constant: 10).isActive = true
+        aboutUsLable.leadingAnchor.constraint(equalTo: aboutUsView.leadingAnchor, constant: 10).isActive = true
+        
+        aboutUsView.addSubview(aboutUsArrowButton)
+        aboutUsArrowButton.translatesAutoresizingMaskIntoConstraints = false
+        aboutUsArrowButton.heightAnchor.constraint(equalTo: aboutUsView.heightAnchor, multiplier: 0.5).isActive = true
+        aboutUsArrowButton.topAnchor.constraint(equalTo: aboutUsView.topAnchor, constant: 10).isActive = true
+        aboutUsArrowButton.trailingAnchor.constraint(equalTo: aboutUsView.trailingAnchor, constant: -10).isActive = true
         
         shareWithView.addSubview(shareWithLabel)
-               shareWithLabel.translatesAutoresizingMaskIntoConstraints = false
-               shareWithLabel.heightAnchor.constraint(equalTo: shareWithView.heightAnchor, multiplier: 0.5).isActive = true
-               shareWithLabel.topAnchor.constraint(equalTo: shareWithView.topAnchor, constant: 10).isActive = true
-               shareWithLabel.leadingAnchor.constraint(equalTo: shareWithView.leadingAnchor, constant: 10).isActive = true
+        shareWithLabel.translatesAutoresizingMaskIntoConstraints = false
+        shareWithLabel.heightAnchor.constraint(equalTo: shareWithView.heightAnchor, multiplier: 0.5).isActive = true
+        shareWithLabel.topAnchor.constraint(equalTo: shareWithView.topAnchor, constant: 10).isActive = true
+        shareWithLabel.leadingAnchor.constraint(equalTo: shareWithView.leadingAnchor, constant: 10).isActive = true
         
         shareWithView.addSubview(shareWithArrowButton)
         shareWithArrowButton.translatesAutoresizingMaskIntoConstraints = false
         shareWithArrowButton.heightAnchor.constraint(equalTo: shareWithView.heightAnchor, multiplier: 0.5).isActive = true
         shareWithArrowButton.topAnchor.constraint(equalTo: shareWithView.topAnchor, constant: 10).isActive = true
         shareWithArrowButton.trailingAnchor.constraint(equalTo: shareWithView.trailingAnchor, constant: -10).isActive = true
-               
+        
         logOutButtonView.addSubview(logOutButton)
-              logOutButton.translatesAutoresizingMaskIntoConstraints = false
-              logOutButton.heightAnchor.constraint(equalTo: logOutButtonView.heightAnchor, multiplier: 0.5).isActive = true
-              logOutButton.topAnchor.constraint(equalTo: logOutButtonView.topAnchor, constant: 10).isActive = true
-              logOutButton.centerXAnchor.constraint(equalTo: logOutButtonView.centerXAnchor).isActive = true
-              
+        logOutButton.translatesAutoresizingMaskIntoConstraints = false
+        logOutButton.heightAnchor.constraint(equalTo: logOutButtonView.heightAnchor, multiplier: 0.5).isActive = true
+        logOutButton.topAnchor.constraint(equalTo: logOutButtonView.topAnchor, constant: 10).isActive = true
+        logOutButton.centerXAnchor.constraint(equalTo: logOutButtonView.centerXAnchor).isActive = true
+        
         navigationController?.navigationBar.isHidden = true
-
+        
     }
-
+    
     @objc func signOut() {
         do {
             try Auth.auth().signOut()
@@ -218,17 +220,23 @@ class SettingsViewController: UIViewController {
         }
     }
     
-      @objc func handleBack() {
-            
-             navigationController?.popViewController(animated: true)
-        }
+    @objc func handleBack() {
+        
+        navigationController?.popViewController(animated: true)
+    }
     
     @objc func handleAboutUs() {
-               let aboutUsViewController = AboutUsViewController()
-               navigationController?.pushViewController(aboutUsViewController, animated: true)
-                
-           }
-   
+        let aboutUsViewController = AboutUsViewController()
+        navigationController?.pushViewController(aboutUsViewController, animated: true)
+        
+    }
     
-
+    @objc func handleProfile() {
+        let profileViewController = ProfileViewController()
+        navigationController?.pushViewController(profileViewController, animated: true)
+        
+    }
+    
+    
+    
 }
