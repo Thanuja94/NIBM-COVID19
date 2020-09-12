@@ -56,6 +56,7 @@ class HomeViewController: UIViewController {
                       }()
     
     let homepicview = UIView()
+    
     let safeactionview = UIView()
     
     let homepic = UIImageView(image: #imageLiteral(resourceName: "homepic"))
@@ -90,8 +91,11 @@ class HomeViewController: UIViewController {
        }()
     
     let notificationBellview = UIView()
+    
     let notificationTextview = UIView()
+    
     let notificationArrowview = UIView()
+    
     let notificationBellImage = UIImageView(image: #imageLiteral(resourceName: "notificationbell"))
     
     private let notificationLabel: UILabel = {
@@ -112,6 +116,41 @@ class HomeViewController: UIViewController {
     }()
 
     let caseUpdateTitleView = UIView()
+    
+    let seeMoreButtonView = UIView()
+    
+    let seeMoreButton: UIButton = {
+               let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "See More >> ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: colors.cynaite])
+               
+               
+               button.setAttributedTitle(attributedTitle, for: .normal)
+         
+               return button
+           }()
+    
+    private let caseUpdateLabel: UILabel = {
+            let label = UILabel()
+            label.text = "University Case Updates"
+        label.font = UIFont(name: "Avenir-Light" , size: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+            label.textColor = .black
+         label.numberOfLines = 0
+            
+            return label
+        }()
+    
+    private let caseUpdateTimeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "1 mins ago"
+    label.font = UIFont(name: "Avenir-Light" , size: 15)
+    
+        label.textColor = .black
+     label.numberOfLines = 0
+        
+        return label
+    }()
+
     
        // MARK: - Lifecycale
     
@@ -219,8 +258,6 @@ class HomeViewController: UIViewController {
         notificationTextview.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
         
        
-            
-        notificationArrowview.backgroundColor = .green
         view.addSubview(notificationArrowview)
         notificationArrowview.translatesAutoresizingMaskIntoConstraints = false
         notificationArrowview.topAnchor.constraint(equalTo: homepicview.bottomAnchor, constant: 10).isActive = true
@@ -249,6 +286,44 @@ class HomeViewController: UIViewController {
          notificationArrowButton.leadingAnchor.constraint(equalTo: notificationArrowview.leadingAnchor, constant: 5).isActive = true
         notificationArrowButton.trailingAnchor.constraint(equalTo: notificationArrowview.trailingAnchor, constant: -5).isActive = true
          
+        
+        caseUpdateTitleView.backgroundColor = .gray
+               view.addSubview(caseUpdateTitleView)
+               caseUpdateTitleView.translatesAutoresizingMaskIntoConstraints = false
+               caseUpdateTitleView.topAnchor.constraint(equalTo: notificationBellview.bottomAnchor, constant: 10).isActive = true
+               caseUpdateTitleView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 5).isActive = true
+               caseUpdateTitleView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.6).isActive = true
+               caseUpdateTitleView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.06).isActive = true
+        
+        seeMoreButtonView.backgroundColor = .gray
+                     view.addSubview(seeMoreButtonView)
+                     seeMoreButtonView.translatesAutoresizingMaskIntoConstraints = false
+                     seeMoreButtonView.topAnchor.constraint(equalTo: notificationBellview.bottomAnchor, constant: 10).isActive = true
+                     seeMoreButtonView.leadingAnchor.constraint(equalTo: caseUpdateTitleView.trailingAnchor, constant: 5).isActive = true
+                     seeMoreButtonView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.4).isActive = true
+                     seeMoreButtonView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.06).isActive = true
+              
+                    seeMoreButtonView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -5).isActive = true
+        
+        caseUpdateTitleView.addSubview(caseUpdateLabel)
+        caseUpdateLabel.translatesAutoresizingMaskIntoConstraints = false
+        caseUpdateLabel.topAnchor.constraint(equalTo: caseUpdateTitleView.topAnchor, constant: 10).isActive = true
+         caseUpdateLabel.leadingAnchor.constraint(equalTo: caseUpdateTitleView.leadingAnchor, constant: 5).isActive = true
+        caseUpdateLabel.trailingAnchor.constraint(equalTo: caseUpdateTitleView.trailingAnchor, constant: -5).isActive = true
+         
+        caseUpdateTitleView.addSubview(caseUpdateTimeLabel)
+        caseUpdateTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        caseUpdateTimeLabel.topAnchor.constraint(equalTo: caseUpdateLabel.topAnchor, constant: 15).isActive = true
+         caseUpdateTimeLabel.leadingAnchor.constraint(equalTo: caseUpdateTitleView.leadingAnchor, constant: 5).isActive = true
+        caseUpdateTimeLabel.trailingAnchor.constraint(equalTo: caseUpdateTitleView.trailingAnchor, constant: -5).isActive = true
+         
+        seeMoreButtonView.addSubview(seeMoreButton)
+        seeMoreButton.translatesAutoresizingMaskIntoConstraints = false
+        seeMoreButton.topAnchor.constraint(equalTo: seeMoreButtonView.topAnchor, constant: 5).isActive = true
+         seeMoreButton.leadingAnchor.constraint(equalTo: seeMoreButtonView.leadingAnchor, constant: 20).isActive = true
+        seeMoreButton.trailingAnchor.constraint(equalTo: seeMoreButtonView.trailingAnchor, constant: -5).isActive = true
+
+               
          navigationController?.navigationBar.isHidden = true
             }
     
