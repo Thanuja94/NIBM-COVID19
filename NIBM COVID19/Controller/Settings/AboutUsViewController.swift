@@ -26,7 +26,7 @@ class AboutUsViewController: UIViewController {
           let button = UIButton(type: .system)
           button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
           button.tintColor = .black
-//          button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+          button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
           return button
           
       }()
@@ -62,6 +62,11 @@ class AboutUsViewController: UIViewController {
                backArrowButton.topAnchor.constraint(equalTo: titleLableView.topAnchor, constant: 10).isActive = true
                backArrowButton.leadingAnchor.constraint(equalTo: titleLableView.leadingAnchor, constant: 10).isActive = true
                        
+    }
+    
+    @objc func handleBack() {
+        
+         navigationController?.popViewController(animated: true)
     }
     
 }
