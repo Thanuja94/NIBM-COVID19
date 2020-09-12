@@ -286,6 +286,18 @@ class UpdateViewController: UIViewController {
         tempDegree.leadingAnchor.constraint(equalTo: temperatureValue.trailingAnchor, constant: 4).isActive = true
                tempDegree.topAnchor.constraint(equalTo: tempUpdateView.topAnchor, constant: 15).isActive = true
         
+        tempUpdateView.addSubview(tempUpdatetimeLable)
+               tempUpdatetimeLable.translatesAutoresizingMaskIntoConstraints = false
+               tempUpdatetimeLable.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
+               tempUpdatetimeLable.topAnchor.constraint(equalTo: temperatureValue.bottomAnchor, constant: 10).isActive = true
+         tempUpdatetimeLable.leadingAnchor.constraint(equalTo: tempUpdateView.leadingAnchor, constant: 85).isActive = true
+                       
+        tempUpdateView.addSubview(tempUpdatetime)
+              tempUpdatetime.translatesAutoresizingMaskIntoConstraints = false
+              tempUpdatetime.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
+              tempUpdatetime.topAnchor.constraint(equalTo: temperatureValue.bottomAnchor, constant: 10).isActive = true
+        tempUpdatetime.leadingAnchor.constraint(equalTo: tempUpdatetimeLable.trailingAnchor, constant: 15).isActive = true
+        
         navigationController?.navigationBar.isHidden = true
         
         
