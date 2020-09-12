@@ -70,6 +70,7 @@ class SettingsViewController: UIViewController {
           let button = UIButton(type: .system)
           button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
           button.tintColor = .black
+        button.addTarget(self, action: #selector(handleAboutUs), for: .touchUpInside)
           return button
       }()
 
@@ -221,6 +222,13 @@ class SettingsViewController: UIViewController {
             
              navigationController?.popViewController(animated: true)
         }
+    
+    @objc func handleAboutUs() {
+               let aboutUsViewController = AboutUsViewController()
+               navigationController?.pushViewController(aboutUsViewController, animated: true)
+                
+           }
    
+    
 
 }
