@@ -76,6 +76,24 @@ class UpdateViewController: UIViewController {
         button.tintColor = .black
         return button
     }()
+    
+    private let survayUpdatetimeLable: UILabel = {
+        let label = UILabel()
+        label.text = "Last Update :"
+        label.font = UIFont(name: "Avenir-Light" , size: 15)
+        label.textColor = .gray
+        
+        return label
+    }()
+    
+    private let survayUpdatetime: UILabel = {
+        let label = UILabel()
+        label.text = "2020-01-01"
+        label.font = UIFont(name: "Avenir-Light" , size: 15)
+        label.textColor = .gray
+        
+        return label
+    }()
     // MARK: - Lifecycale
     
     override func viewDidLoad() {
@@ -190,7 +208,19 @@ class UpdateViewController: UIViewController {
         survayArrowButton.centerYAnchor.constraint(equalTo: survayButtonView.centerYAnchor).isActive = true
 
 
-        
+        survayLabelView.addSubview(survayUpdatetimeLable)
+         survayUpdatetimeLable.translatesAutoresizingMaskIntoConstraints = false
+         survayUpdatetimeLable.heightAnchor.constraint(equalTo: survayLabelView.heightAnchor, multiplier: 0.3).isActive = true
+        survayUpdatetimeLable.leadingAnchor.constraint(equalTo: survayLabelView.leadingAnchor, constant: 5).isActive = true
+        survayUpdatetimeLable.topAnchor.constraint(equalTo: createSurvayLable.topAnchor, constant: 20).isActive = true
+
+        survayLabelView.addSubview(survayUpdatetime)
+         survayUpdatetime.translatesAutoresizingMaskIntoConstraints = false
+         survayUpdatetime.heightAnchor.constraint(equalTo: survayLabelView.heightAnchor, multiplier: 0.3).isActive = true
+        survayUpdatetime.leadingAnchor.constraint(equalTo: survayUpdatetimeLable.trailingAnchor, constant: 5).isActive = true
+        survayUpdatetime.topAnchor.constraint(equalTo: createSurvayLable.topAnchor, constant: 20).isActive = true
+
+
         
         navigationController?.navigationBar.isHidden = true
         

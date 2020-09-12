@@ -495,6 +495,7 @@ class HomeViewController: UIViewController {
        
         
          navigationController?.navigationBar.isHidden = true
+        
             }
     
 }
