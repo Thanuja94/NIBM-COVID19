@@ -479,17 +479,17 @@ class HomeViewController: UIViewController {
         deathLabel.centerXAnchor.constraint(equalTo: deathsView.centerXAnchor).isActive = true
         
         recoveredView.addSubview(recoveredCount)
-              recoveredCount.translatesAutoresizingMaskIntoConstraints = false
-              recoveredCount.topAnchor.constraint(equalTo: deathSymbol.bottomAnchor, constant: 15).isActive = true
-              recoveredCount.widthAnchor.constraint(equalTo: recoveredView.widthAnchor, multiplier: 0.3).isActive = true
-              recoveredCount.heightAnchor.constraint(equalTo: recoveredView.heightAnchor, multiplier: 0.3).isActive = true
-              recoveredCount.centerXAnchor.constraint(equalTo: recoveredView.centerXAnchor).isActive = true
-              
-              recoveredView.addSubview(reacoveredLabel)
-              reacoveredLabel.translatesAutoresizingMaskIntoConstraints = false
-              reacoveredLabel.topAnchor.constraint(equalTo: recoveredCount.bottomAnchor, constant: 1).isActive = true
-              reacoveredLabel.heightAnchor.constraint(equalTo: recoveredView.heightAnchor, multiplier: 0.2).isActive = true
-              reacoveredLabel.centerXAnchor.constraint(equalTo: recoveredView.centerXAnchor).isActive = true
+        recoveredCount.translatesAutoresizingMaskIntoConstraints = false
+        recoveredCount.topAnchor.constraint(equalTo: deathSymbol.bottomAnchor, constant: 15).isActive = true
+        recoveredCount.widthAnchor.constraint(equalTo: recoveredView.widthAnchor, multiplier: 0.3).isActive = true
+        recoveredCount.heightAnchor.constraint(equalTo: recoveredView.heightAnchor, multiplier: 0.3).isActive = true
+        recoveredCount.centerXAnchor.constraint(equalTo: recoveredView.centerXAnchor).isActive = true
+        
+        recoveredView.addSubview(reacoveredLabel)
+        reacoveredLabel.translatesAutoresizingMaskIntoConstraints = false
+        reacoveredLabel.topAnchor.constraint(equalTo: recoveredCount.bottomAnchor, constant: 1).isActive = true
+        reacoveredLabel.heightAnchor.constraint(equalTo: recoveredView.heightAnchor, multiplier: 0.2).isActive = true
+        reacoveredLabel.centerXAnchor.constraint(equalTo: recoveredView.centerXAnchor).isActive = true
 
         
        
