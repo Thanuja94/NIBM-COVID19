@@ -104,10 +104,16 @@ class HomeViewController: UIViewController {
            return label
        }()
 
+    let notificationArrowButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
 
-
+    let caseUpdateTitleView = UIView()
     
-    // MARK: - Lifecycale
+       // MARK: - Lifecycale
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -237,10 +243,12 @@ class HomeViewController: UIViewController {
          notificationLabel.leadingAnchor.constraint(equalTo: notificationTextview.leadingAnchor, constant: 5).isActive = true
         notificationLabel.trailingAnchor.constraint(equalTo: notificationTextview.trailingAnchor, constant: -5).isActive = true
 
+        notificationArrowview.addSubview(notificationArrowButton)
+        notificationArrowButton.translatesAutoresizingMaskIntoConstraints = false
+        notificationArrowButton.topAnchor.constraint(equalTo: notificationArrowview.topAnchor, constant: 12).isActive = true
+         notificationArrowButton.leadingAnchor.constraint(equalTo: notificationArrowview.leadingAnchor, constant: 5).isActive = true
+        notificationArrowButton.trailingAnchor.constraint(equalTo: notificationArrowview.trailingAnchor, constant: -5).isActive = true
          
-        
-
-
          navigationController?.navigationBar.isHidden = true
             }
     
