@@ -35,15 +35,15 @@ class UpdateViewController: UIViewController {
     }()
     
     let closeButton: UIButton = {
-               let button = UIButton(type: .system)
+        let button = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "close", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)])
-               
+        
         button.tintColor = .black
-               
-               button.setAttributedTitle(attributedTitle, for: .normal)
-         
-               return button
-           }()
+        
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        
+        return button
+    }()
     
     private let createNotificationLable: UILabel = {
         let label = UILabel()
@@ -60,15 +60,15 @@ class UpdateViewController: UIViewController {
         button.tintColor = .black
         return button
     }()
-
+    
     private let createSurvayLable: UILabel = {
-           let label = UILabel()
-           label.text = "New Survay"
-           label.font = UIFont(name: "Avenir-Light" , size: 20)
-           label.textColor = .black
-           
-           return label
-       }()
+        let label = UILabel()
+        label.text = "New Survay"
+        label.font = UIFont(name: "Avenir-Light" , size: 20)
+        label.textColor = .black
+        
+        return label
+    }()
     
     let survayArrowButton: UIButton = {
         let button = UIButton(type: .system)
@@ -94,6 +94,53 @@ class UpdateViewController: UIViewController {
         
         return label
     }()
+    
+    private let temperatureValue: UILabel = {
+        let label = UILabel()
+        label.text = "36.3"
+        label.font = UIFont(name: "Avenir-Light" , size: 60)
+        
+        label.textColor = .black
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private let tempUnit: UILabel = {
+           let label = UILabel()
+           label.text = "C"
+           label.font = UIFont(name: "Avenir-Light" , size: 25)
+           label.textColor = .gray
+           
+           return label
+       }()
+     
+    private let tempDegree: UILabel = {
+              let label = UILabel()
+              label.text = "o"
+              label.font = UIFont(name: "Avenir-Light" , size: 15)
+              label.textColor = .gray
+              
+              return label
+          }()
+    
+    private let tempUpdatetimeLable: UILabel = {
+          let label = UILabel()
+          label.text = "Last Update :"
+          label.font = UIFont(name: "Avenir-Light" , size: 15)
+          label.textColor = .gray
+          
+          return label
+      }()
+      
+      private let tempUpdatetime: UILabel = {
+          let label = UILabel()
+          label.text = "1 day ago"
+          label.font = UIFont(name: "Avenir-Light" , size: 15)
+          label.textColor = .gray
+          
+          return label
+      }()
     // MARK: - Lifecycale
     
     override func viewDidLoad() {
@@ -118,7 +165,7 @@ class UpdateViewController: UIViewController {
         titleLableView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.5).isActive = true
         titleLableView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.08).isActive = true
         
-
+        
         view.addSubview(closeButtonView)
         closeButtonView.translatesAutoresizingMaskIntoConstraints = false
         closeButtonView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
@@ -142,7 +189,7 @@ class UpdateViewController: UIViewController {
         notificationButtonView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.09).isActive = true
         notificationButtonView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor , constant: -5).isActive = true
         
-       
+        
         view.addSubview(survayLabelView)
         survayLabelView.translatesAutoresizingMaskIntoConstraints = false
         survayLabelView.topAnchor.constraint(equalTo: notificationLabelView.bottomAnchor, constant: 10).isActive = true
@@ -150,7 +197,7 @@ class UpdateViewController: UIViewController {
         survayLabelView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.6).isActive = true
         survayLabelView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.09).isActive = true
         
-       
+        
         view.addSubview(survayButtonView)
         survayButtonView.translatesAutoresizingMaskIntoConstraints = false
         survayButtonView.topAnchor.constraint(equalTo: notificationLabelView.bottomAnchor, constant: 10).isActive = true
@@ -171,56 +218,73 @@ class UpdateViewController: UIViewController {
         
         
         titleLableView.addSubview(createLable)
-         createLable.translatesAutoresizingMaskIntoConstraints = false
-         createLable.topAnchor.constraint(equalTo: titleLableView.topAnchor, constant: 15).isActive = true
-         createLable.heightAnchor.constraint(equalTo: titleLableView.heightAnchor, multiplier: 0.5).isActive = true
-         createLable.centerXAnchor.constraint(equalTo: titleLableView.centerXAnchor).isActive = true
-
-         closeButtonView.addSubview(closeButton)
-         closeButton.translatesAutoresizingMaskIntoConstraints = false
-         closeButton.topAnchor.constraint(equalTo: closeButtonView.topAnchor, constant: 15).isActive = true
-         closeButton.heightAnchor.constraint(equalTo: closeButtonView.heightAnchor, multiplier: 0.3).isActive = true
+        createLable.translatesAutoresizingMaskIntoConstraints = false
+        createLable.topAnchor.constraint(equalTo: titleLableView.topAnchor, constant: 15).isActive = true
+        createLable.heightAnchor.constraint(equalTo: titleLableView.heightAnchor, multiplier: 0.5).isActive = true
+        createLable.centerXAnchor.constraint(equalTo: titleLableView.centerXAnchor).isActive = true
+        
+        closeButtonView.addSubview(closeButton)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.topAnchor.constraint(equalTo: closeButtonView.topAnchor, constant: 15).isActive = true
+        closeButton.heightAnchor.constraint(equalTo: closeButtonView.heightAnchor, multiplier: 0.3).isActive = true
         closeButton.trailingAnchor.constraint(equalTo: closeButtonView.trailingAnchor, constant: -5).isActive = true
         
-         notificationLabelView.addSubview(createNotificationLable)
-         createNotificationLable.translatesAutoresizingMaskIntoConstraints = false
-         createNotificationLable.heightAnchor.constraint(equalTo: notificationLabelView.heightAnchor, multiplier: 0.3).isActive = true
+        notificationLabelView.addSubview(createNotificationLable)
+        createNotificationLable.translatesAutoresizingMaskIntoConstraints = false
+        createNotificationLable.heightAnchor.constraint(equalTo: notificationLabelView.heightAnchor, multiplier: 0.3).isActive = true
         createNotificationLable.leadingAnchor.constraint(equalTo: notificationLabelView.leadingAnchor, constant: 5).isActive = true
         createNotificationLable.centerYAnchor.constraint(equalTo: notificationLabelView.centerYAnchor).isActive = true
-
-         notificationButtonView.addSubview(notificationArrowButton)
-          notificationArrowButton.translatesAutoresizingMaskIntoConstraints = false
-          notificationArrowButton.heightAnchor.constraint(equalTo: notificationButtonView.heightAnchor, multiplier: 0.3).isActive = true
-         notificationArrowButton.trailingAnchor.constraint(equalTo: notificationButtonView.trailingAnchor, constant: -15).isActive = true
-         notificationArrowButton.centerYAnchor.constraint(equalTo: notificationButtonView.centerYAnchor).isActive = true
-
+        
+        notificationButtonView.addSubview(notificationArrowButton)
+        notificationArrowButton.translatesAutoresizingMaskIntoConstraints = false
+        notificationArrowButton.heightAnchor.constraint(equalTo: notificationButtonView.heightAnchor, multiplier: 0.3).isActive = true
+        notificationArrowButton.trailingAnchor.constraint(equalTo: notificationButtonView.trailingAnchor, constant: -15).isActive = true
+        notificationArrowButton.centerYAnchor.constraint(equalTo: notificationButtonView.centerYAnchor).isActive = true
+        
         survayLabelView.addSubview(createSurvayLable)
-                createSurvayLable.translatesAutoresizingMaskIntoConstraints = false
-                createSurvayLable.heightAnchor.constraint(equalTo: survayLabelView.heightAnchor, multiplier: 0.3).isActive = true
-               createSurvayLable.leadingAnchor.constraint(equalTo: survayLabelView.leadingAnchor, constant: 5).isActive = true
-               createSurvayLable.centerYAnchor.constraint(equalTo: survayLabelView.centerYAnchor).isActive = true
-
-          
+        createSurvayLable.translatesAutoresizingMaskIntoConstraints = false
+        createSurvayLable.heightAnchor.constraint(equalTo: survayLabelView.heightAnchor, multiplier: 0.3).isActive = true
+        createSurvayLable.leadingAnchor.constraint(equalTo: survayLabelView.leadingAnchor, constant: 5).isActive = true
+        createSurvayLable.centerYAnchor.constraint(equalTo: survayLabelView.centerYAnchor).isActive = true
+        
+        
         survayButtonView.addSubview(survayArrowButton)
-         survayArrowButton.translatesAutoresizingMaskIntoConstraints = false
-         survayArrowButton.heightAnchor.constraint(equalTo: survayButtonView.heightAnchor, multiplier: 0.3).isActive = true
+        survayArrowButton.translatesAutoresizingMaskIntoConstraints = false
+        survayArrowButton.heightAnchor.constraint(equalTo: survayButtonView.heightAnchor, multiplier: 0.3).isActive = true
         survayArrowButton.trailingAnchor.constraint(equalTo: survayButtonView.trailingAnchor, constant: -15).isActive = true
         survayArrowButton.centerYAnchor.constraint(equalTo: survayButtonView.centerYAnchor).isActive = true
-
-
+        
+        
         survayLabelView.addSubview(survayUpdatetimeLable)
-         survayUpdatetimeLable.translatesAutoresizingMaskIntoConstraints = false
-         survayUpdatetimeLable.heightAnchor.constraint(equalTo: survayLabelView.heightAnchor, multiplier: 0.3).isActive = true
+        survayUpdatetimeLable.translatesAutoresizingMaskIntoConstraints = false
+        survayUpdatetimeLable.heightAnchor.constraint(equalTo: survayLabelView.heightAnchor, multiplier: 0.3).isActive = true
         survayUpdatetimeLable.leadingAnchor.constraint(equalTo: survayLabelView.leadingAnchor, constant: 5).isActive = true
         survayUpdatetimeLable.topAnchor.constraint(equalTo: createSurvayLable.topAnchor, constant: 20).isActive = true
-
+        
         survayLabelView.addSubview(survayUpdatetime)
-         survayUpdatetime.translatesAutoresizingMaskIntoConstraints = false
-         survayUpdatetime.heightAnchor.constraint(equalTo: survayLabelView.heightAnchor, multiplier: 0.3).isActive = true
+        survayUpdatetime.translatesAutoresizingMaskIntoConstraints = false
+        survayUpdatetime.heightAnchor.constraint(equalTo: survayLabelView.heightAnchor, multiplier: 0.3).isActive = true
         survayUpdatetime.leadingAnchor.constraint(equalTo: survayUpdatetimeLable.trailingAnchor, constant: 5).isActive = true
         survayUpdatetime.topAnchor.constraint(equalTo: createSurvayLable.topAnchor, constant: 20).isActive = true
-
-
+        
+        
+        tempUpdateView.addSubview(temperatureValue)
+        temperatureValue.translatesAutoresizingMaskIntoConstraints = false
+        temperatureValue.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.3).isActive = true
+        temperatureValue.topAnchor.constraint(equalTo: tempUpdateView.topAnchor, constant: 10).isActive = true
+        temperatureValue.centerXAnchor.constraint(equalTo: tempUpdateView.centerXAnchor).isActive = true
+        
+        tempUpdateView.addSubview(tempUnit)
+               tempUnit.translatesAutoresizingMaskIntoConstraints = false
+               tempUnit.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
+        tempUnit.leadingAnchor.constraint(equalTo: temperatureValue.trailingAnchor, constant: 10).isActive = true
+               tempUnit.topAnchor.constraint(equalTo: tempUpdateView.topAnchor, constant: 25).isActive = true
+        
+        tempUpdateView.addSubview(tempDegree)
+               tempDegree.translatesAutoresizingMaskIntoConstraints = false
+               tempDegree.heightAnchor.constraint(equalTo: tempUpdateView.heightAnchor, multiplier: 0.1).isActive = true
+        tempDegree.leadingAnchor.constraint(equalTo: temperatureValue.trailingAnchor, constant: 4).isActive = true
+               tempDegree.topAnchor.constraint(equalTo: tempUpdateView.topAnchor, constant: 15).isActive = true
         
         navigationController?.navigationBar.isHidden = true
         
