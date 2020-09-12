@@ -18,6 +18,7 @@
 		4469B086250A06D200F1D57F /* SurvayQ3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B085250A06D200F1D57F /* SurvayQ3ViewController.swift */; };
 		4469B088250A0A9A00F1D57F /* SurvayQ4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B087250A0A9A00F1D57F /* SurvayQ4ViewController.swift */; };
 		4469B0AA250CFD3700F1D57F /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0A9250CFD3700F1D57F /* UpdateViewController.swift */; };
+		4469B0AD250D4FFD00F1D57F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0AC250D4FFD00F1D57F /* SettingsViewController.swift */; };
 		44DF6C4124FAE8E100199EBE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF6C4024FAE8E100199EBE /* LoginViewController.swift */; };
 		44F3C80224FA1C5500743B0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3C80124FA1C5500743B0E /* AppDelegate.swift */; };
 		44F3C80B24FA1C5500743B0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F3C80A24FA1C5500743B0E /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		4469B085250A06D200F1D57F /* SurvayQ3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvayQ3ViewController.swift; sourceTree = "<group>"; };
 		4469B087250A0A9A00F1D57F /* SurvayQ4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvayQ4ViewController.swift; sourceTree = "<group>"; };
 		4469B0A9250CFD3700F1D57F /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
+		4469B0AC250D4FFD00F1D57F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		44DF6C4024FAE8E100199EBE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44F3C7FE24FA1C5500743B0E /* NIBM COVID19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NIBM COVID19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F3C80124FA1C5500743B0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,14 @@
 			path = Survay;
 			sourceTree = "<group>";
 		};
+		4469B0AB250D4FC500F1D57F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4469B0AC250D4FFD00F1D57F /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		44DF6C3B24FACFF700199EBE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +205,7 @@
 		44DF6C3F24FAD01700199EBE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4469B0AB250D4FC500F1D57F /* Settings */,
 				4469B0802507F9DA00F1D57F /* Survay */,
 				4469B0412507BBCD00F1D57F /* Home */,
 				4449780F2504394B0046E178 /* Auth */,
@@ -508,6 +519,7 @@
 				444977ED24FC41180046E178 /* Extensions.swift in Sources */,
 				44F3C80224FA1C5500743B0E /* AppDelegate.swift in Sources */,
 				4469B0432507BBFF00F1D57F /* HomeViewController.swift in Sources */,
+				4469B0AD250D4FFD00F1D57F /* SettingsViewController.swift in Sources */,
 				4449780D24FFBC9C0046E178 /* CreateAccViewController.swift in Sources */,
 				4469B0AA250CFD3700F1D57F /* UpdateViewController.swift in Sources */,
 			);
