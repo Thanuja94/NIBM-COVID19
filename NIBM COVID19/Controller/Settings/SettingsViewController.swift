@@ -37,7 +37,54 @@ class SettingsViewController: UIViewController {
         button.tintColor = .black
         return button
     }()
+    
+    private let profileLable: UILabel = {
+        let label = UILabel()
+        label.text = "Profile"
+        label.font = UIFont(name: "Avenir-Light" , size: 22)
+        label.textColor = .black
+        
+        return label
+    }()
+    
+    let profileArrowButton: UIButton = {
+          let button = UIButton(type: .system)
+          button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+          button.tintColor = .black
+          return button
+      }()
 
+    private let aboutUsLable: UILabel = {
+        let label = UILabel()
+        label.text = "Contact Us/ About Us"
+        label.font = UIFont(name: "Avenir-Light" , size: 22)
+        label.textColor = .black
+        
+        return label
+    }()
+    
+    let aboutUsArrowButton: UIButton = {
+          let button = UIButton(type: .system)
+          button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+          button.tintColor = .black
+          return button
+      }()
+
+    private let shareWithLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Share with Friend"
+        label.font = UIFont(name: "Avenir-Light" , size: 22)
+        label.textColor = .black
+        
+        return label
+    }()
+    
+    let shareWithArrowButton: UIButton = {
+          let button = UIButton(type: .system)
+          button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+          button.tintColor = .black
+          return button
+      }()
      // MARK: - Lifecycale
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +106,7 @@ class SettingsViewController: UIViewController {
         titleLableView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1).isActive = true
         titleLableView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
         
-        profileView.backgroundColor = .red
+       
         view.addSubview(profileView)
         profileView.translatesAutoresizingMaskIntoConstraints = false
         profileView.topAnchor.constraint(equalTo: titleLableView.bottomAnchor, constant: 10).isActive = true
@@ -103,6 +150,33 @@ class SettingsViewController: UIViewController {
         backArrowButton.topAnchor.constraint(equalTo: titleLableView.topAnchor, constant: 10).isActive = true
         backArrowButton.leadingAnchor.constraint(equalTo: titleLableView.leadingAnchor, constant: 10).isActive = true
                 
+        profileView.addSubview(profileLable)
+               profileLable.translatesAutoresizingMaskIntoConstraints = false
+               profileLable.heightAnchor.constraint(equalTo: profileView.heightAnchor, multiplier: 0.5).isActive = true
+               profileLable.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 10).isActive = true
+               profileLable.leadingAnchor.constraint(equalTo: profileView.leadingAnchor, constant: 10).isActive = true
+        
+        profileView.addSubview(profileArrowButton)
+        profileArrowButton.translatesAutoresizingMaskIntoConstraints = false
+        profileArrowButton.heightAnchor.constraint(equalTo: profileView.heightAnchor, multiplier: 0.5).isActive = true
+        profileArrowButton.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 10).isActive = true
+        profileArrowButton.trailingAnchor.constraint(equalTo: profileView.trailingAnchor, constant: -10).isActive = true
+        
+        aboutUsView.addSubview(aboutUsLable)
+                      aboutUsLable.translatesAutoresizingMaskIntoConstraints = false
+                      aboutUsLable.heightAnchor.constraint(equalTo: aboutUsView.heightAnchor, multiplier: 0.5).isActive = true
+                      aboutUsLable.topAnchor.constraint(equalTo: aboutUsView.topAnchor, constant: 10).isActive = true
+                      aboutUsLable.leadingAnchor.constraint(equalTo: aboutUsView.leadingAnchor, constant: 10).isActive = true
+               
+               aboutUsView.addSubview(aboutUsArrowButton)
+               aboutUsArrowButton.translatesAutoresizingMaskIntoConstraints = false
+               aboutUsArrowButton.heightAnchor.constraint(equalTo: aboutUsView.heightAnchor, multiplier: 0.5).isActive = true
+               aboutUsArrowButton.topAnchor.constraint(equalTo: aboutUsView.topAnchor, constant: 10).isActive = true
+               aboutUsArrowButton.trailingAnchor.constraint(equalTo: aboutUsView.trailingAnchor, constant: -10).isActive = true
+        
+        
+               
+        
         navigationController?.navigationBar.isHidden = true
 
     }
