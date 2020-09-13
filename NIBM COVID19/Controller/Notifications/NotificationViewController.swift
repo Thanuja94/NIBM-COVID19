@@ -19,10 +19,9 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Notifications"
         setTableView()
 
-        navigationController?.navigationBar.isHidden = true
     }
     
         // MARK: - Functions

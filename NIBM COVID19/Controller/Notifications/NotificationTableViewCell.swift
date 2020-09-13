@@ -17,6 +17,26 @@ class NotificationTableViewCell: UITableViewCell {
         view.backgroundColor = UIColor.green
         return view
     }()
+    
+    lazy var notificationImage: UIImageView = {
+        let image = UIImageView(frame: CGRect(x: 4, y: 6, width: 108, height: 108))
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    
+    lazy var notificatonLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 116, y: 8, width: backView.frame.width - 116, height: 30))
+        label.textAlignment = .left
+        label.font = UIFont(name: "Avenir-Light" , size: 18)
+        return label
+        
+    }()
+    
+    override func layoutSubviews() {
+        contentView.backgroundColor = .clear
+        backgroundColor = .clear
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
