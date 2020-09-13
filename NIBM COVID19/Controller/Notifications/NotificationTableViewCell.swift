@@ -14,7 +14,7 @@ class NotificationTableViewCell: UITableViewCell {
     lazy var backView: UIView = {
         
         let view = UIView(frame: CGRect(x: 10, y: 6, width: UIScreen.main.bounds.size.width-20 , height: 110))
-        view.backgroundColor = UIColor.green
+        view.backgroundColor = UIColor.white
         return view
     }()
     
@@ -25,9 +25,10 @@ class NotificationTableViewCell: UITableViewCell {
     }()
     
     lazy var notificatonLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 116, y: 8, width: backView.frame.width - 116, height: 30))
+        let label = UILabel(frame: CGRect(x: 116, y: 10, width: backView.frame.width - 126, height: 30))
         label.textAlignment = .left
-        label.font = UIFont(name: "Avenir-Light" , size: 18)
+        label.font = UIFont(name: "Avenir-Light" , size: 15)
+        label.numberOfLines = 0
         return label
         
     }()
@@ -45,7 +46,9 @@ class NotificationTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         addSubview(backView)
-
+        backView.addSubview(notificationImage)
+        backView.addSubview(notificatonLabel)
+ 
         // Configure the view for the selected state
     }
 

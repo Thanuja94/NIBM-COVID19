@@ -8,19 +8,33 @@
 
 import UIKit
 
+class NotificationModal{
+    var notificationImage: UIImage?
+    var notifcationMsg: String?
+    
+    init(notificationImage: UIImage, notifcationMsg: String ) {
+        self.notificationImage = notificationImage
+        self.notifcationMsg = notifcationMsg
+    }
+}
+
 class NotificationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     
     // MARK: - Properties
        let tableView = UITableView()
-
+    
+    var notificationArray = [NotificationModal]()
+        
     // MARK: - Lifecycale
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notifications"
         setTableView()
+        
+        notificationArray.append(NotificationModal(notificationImage: #imageLiteral(resourceName: "notifyMail"), notifcationMsg: "NIBM Closed until further notice"))
 
     }
     
@@ -39,13 +53,14 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return notificationArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath)"
-        return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? NotificationTableViewCell else {fatalError("Unable to create the cell")}
+        cell.notificationImage.image = notificationArray[indexPath.row].notificationImage
+        cell.notificatonLabel.text = notificationArray[indexPath.row].notifcationMsg
+                return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
