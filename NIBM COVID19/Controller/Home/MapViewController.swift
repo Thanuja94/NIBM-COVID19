@@ -17,13 +17,15 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.addSubview(mapView)
-        mapView.frame = view.frame
+        setupUi()
 
         
     }
     
-
+    func setupUi() {
+        
+        view.addSubview(mapView)
+        mapView.frame = view.frame
+    }
   
 }
