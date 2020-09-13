@@ -23,6 +23,7 @@
 		4469B0B1250D7B9600F1D57F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0B0250D7B9600F1D57F /* ProfileViewController.swift */; };
 		4469B0B4250DF85900F1D57F /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0B3250DF85900F1D57F /* NotificationViewController.swift */; };
 		4469B0B6250E1D7000F1D57F /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0B5250E1D7000F1D57F /* NotificationTableViewCell.swift */; };
+		4469B0B8250E642500F1D57F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0B7250E642500F1D57F /* MapViewController.swift */; };
 		44DF6C4124FAE8E100199EBE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF6C4024FAE8E100199EBE /* LoginViewController.swift */; };
 		44F3C80224FA1C5500743B0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3C80124FA1C5500743B0E /* AppDelegate.swift */; };
 		44F3C80B24FA1C5500743B0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F3C80A24FA1C5500743B0E /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		4469B0B0250D7B9600F1D57F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4469B0B3250DF85900F1D57F /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		4469B0B5250E1D7000F1D57F /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		4469B0B7250E642500F1D57F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		44DF6C4024FAE8E100199EBE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44F3C7FE24FA1C5500743B0E /* NIBM COVID19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NIBM COVID19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F3C80124FA1C5500743B0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				4469B0422507BBFF00F1D57F /* HomeViewController.swift */,
 				4469B0A9250CFD3700F1D57F /* UpdateViewController.swift */,
+				4469B0B7250E642500F1D57F /* MapViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				444977ED24FC41180046E178 /* Extensions.swift in Sources */,
 				44F3C80224FA1C5500743B0E /* AppDelegate.swift in Sources */,
 				4469B0432507BBFF00F1D57F /* HomeViewController.swift in Sources */,
+				4469B0B8250E642500F1D57F /* MapViewController.swift in Sources */,
 				4469B0AD250D4FFD00F1D57F /* SettingsViewController.swift in Sources */,
 				4469B0B1250D7B9600F1D57F /* ProfileViewController.swift in Sources */,
 				4449780D24FFBC9C0046E178 /* CreateAccViewController.swift in Sources */,
