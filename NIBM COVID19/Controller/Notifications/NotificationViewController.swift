@@ -19,22 +19,23 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setTableView()
 
-       
+        navigationController?.navigationBar.isHidden = true
     }
     
         // MARK: - Functions
     
     func setTableView()  {
         tableView.frame = self.view.frame
-        tableView.backgroundColor = UIColor.clear
+        tableView.backgroundColor = UIColor.red
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorColor = UIColor.clear
         self.view.addSubview(tableView)
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(NotificationTableViewCell.self, forCellReuseIdentifier: "Cell")
         
     }
 
@@ -48,5 +49,8 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 118
+    }
 }
  
