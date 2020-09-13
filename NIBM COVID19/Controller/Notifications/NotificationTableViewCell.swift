@@ -19,15 +19,15 @@ class NotificationTableViewCell: UITableViewCell {
     }()
     
     lazy var notificationImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 4, y: 6, width: 108, height: 108))
+        let image = UIImageView(frame: CGRect(x: 4, y: 6, width: 108, height: 100))
         image.contentMode = .scaleAspectFill
         return image
     }()
     
     lazy var notificatonLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 116, y: 10, width: backView.frame.width - 126, height: 30))
+        let label = UILabel(frame: CGRect(x: 116, y: 40, width: backView.frame.width - 126, height: 30))
         label.textAlignment = .left
-        label.font = UIFont(name: "Avenir-Light" , size: 15)
+        label.font = UIFont(name: "Avenir-Light" , size: 17)
         label.numberOfLines = 0
         return label
         

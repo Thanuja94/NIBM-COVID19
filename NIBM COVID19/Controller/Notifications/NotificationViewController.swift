@@ -35,14 +35,14 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
         setTableView()
         
         notificationArray.append(NotificationModal(notificationImage: #imageLiteral(resourceName: "notifyMail"), notifcationMsg: "NIBM Closed until further notice"))
-
+         notificationArray.append(NotificationModal(notificationImage: #imageLiteral(resourceName: "notifyMail"), notifcationMsg: "NIBM Closed until further notice"))
     }
     
         // MARK: - Functions
     
     func setTableView()  {
         tableView.frame = self.view.frame
-        tableView.backgroundColor = UIColor.red
+        tableView.backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorColor = UIColor.clear
