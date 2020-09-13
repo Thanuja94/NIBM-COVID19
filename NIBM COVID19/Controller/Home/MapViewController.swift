@@ -28,12 +28,15 @@ class MapViewController: UIViewController {
         
         view.addSubview(mapView)
         mapView.frame = view.frame
+        
+        mapView.showsUserLocation = true
+        mapView.userTrackingMode = .follow
     }
   
 }
 
 
-extension MapViewController {
+extension MapViewController: CLLocationManagerDelegate {
     func enableLocationServices() {
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
@@ -49,4 +52,7 @@ extension MapViewController {
             break
         }
     }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+           
+       }
 }
