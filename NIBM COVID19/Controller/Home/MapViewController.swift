@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private let mapView = MKMapView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(mapView)
+        mapView.frame = view.frame
 
         
     }
