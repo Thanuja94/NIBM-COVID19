@@ -133,6 +133,25 @@ class CreateAccViewController: UIViewController {
     
     // MARK: - Fuctions
     
+    func uploadUserDataAndShowHomeController(uid: String, values: [String: Any]) {
+        REF_USERS.child(uid).updateChildValues(values) { (error, ref) in
+             print("DEBUG: Successfuly Registerd and save data..")
+            //handle error
+            
+//            let keyWindow = UIApplication.shared.connectedScenes
+//            .filter({$0.activationState == .foregroundActive})
+//            .map({$0 as? UIWindowScene})
+//            .compactMap({$0})
+//            .first?.windows
+//            .filter({$0.isKeyWindow}).first
+//
+//            guard let controller = keyWindow?.rootViewController as? HomeViewController else { return }
+//            controller.configure()
+//
+//            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     func setupUI(){
         view.backgroundColor = colors.silver
         
@@ -162,7 +181,7 @@ class CreateAccViewController: UIViewController {
         guard let firstname = firstNameTextFiled.text else { return }
         guard let lastname = LastNameTextFiled.text else { return }
         guard let email = emailTextFiled.text else { return }
-        guard let role = roleTextFiled.text else { return }
+         let role = roleSegmentedControl.selectedSegmentIndex
         
         guard let password = passwordTextFiled.text else { return }
         
@@ -183,9 +202,10 @@ class CreateAccViewController: UIViewController {
                        
                        ] as [String : Any]
                    
-            Database.database().reference().child("users").child(uid).updateChildValues(values) { (error, ref) in
-                         print("DEBUG: Successfuly Registerd and save data..")
-                     }
+//            Database.database().reference().child("users").child(uid).updateChildValues(values) { (error, ref) in
+//                         print("DEBUG: Successfuly Registerd and save data..")
+//                     }
+             self.uploadUserDataAndShowHomeController(uid: uid, values: values)
         }
         
     }
