@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = CreateAccViewController()
-//        window?.rootViewController = UINavigationController(rootViewController: NotificationViewController())
+//        window?.rootViewController = CreateAccViewController()
+        window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
         //window?.rootViewController = SurvayQ1ViewController()
         return true
     }

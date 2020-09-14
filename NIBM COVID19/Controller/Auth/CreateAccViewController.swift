@@ -15,7 +15,7 @@ class CreateAccViewController: UIViewController {
     
     // MARK: - Properties
     
-//    private var location = LocationHandler.shared.locationManager.location
+    private var location = LocationHandler.shared.locationManager.location
     
     private let CreateAccLabel: UILabel = {
         let label = UILabel()
@@ -139,6 +139,11 @@ class CreateAccViewController: UIViewController {
     func uploadUserDataAndShowHomeController(uid: String, values: [String: Any]) {
         REF_USERS.child(uid).updateChildValues(values) { (error, ref) in
              print("DEBUG: Successfuly Registerd and save data..")
+            
+            if let error = error {
+                           print("DEBUG: failto save \(error)")
+                           return
+                       }
             //handle error
             
 //            let keyWindow = UIApplication.shared.connectedScenes
@@ -205,17 +210,25 @@ class CreateAccViewController: UIViewController {
                        
                        ] as [String : Any]
             
-//            let geoFire = GeoFire(firebaseRef: REF_USER_LOCATIONS)
-//            
+//                     let geoFire = GeoFire(firebaseRef: REF_USER_LOCATIONS)
+//
 //            guard let location = self.location else { return }
-//            
+//
 //            geoFire.setLocation(location, forKey: uid, withCompletionBlock: { (error) in
+//                 print("DEBUG: laction save")
 //                self.uploadUserDataAndShowHomeController(uid: uid, values: values)
+//                if let error = error {
+//                    print("DEBUG: fail to save loc \(error)")
+//                    return
+//                }
+//
 //            })
+
                    
 //            Database.database().reference().child("users").child(uid).updateChildValues(values) { (error, ref) in
 //                         print("DEBUG: Successfuly Registerd and save data..")
 //                     }
+            
              self.uploadUserDataAndShowHomeController(uid: uid, values: values)
         }
         

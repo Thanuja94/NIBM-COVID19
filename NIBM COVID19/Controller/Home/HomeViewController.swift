@@ -113,6 +113,9 @@ class HomeViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         button.tintColor = .black
+        
+        button.addTarget(self, action: #selector(showNotifications), for: .touchUpInside)
+
         return button
     }()
 
@@ -124,7 +127,8 @@ class HomeViewController: UIViewController {
                let button = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "See More >> ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: colors.cynaite])
                
-               
+               //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+
                button.setAttributedTitle(attributedTitle, for: .normal)
          
                return button
@@ -503,4 +507,11 @@ class HomeViewController: UIViewController {
                navigationController?.pushViewController(updateViewController, animated: true)
       
            }
+    @objc func showNotifications() {
+               let notificationViewController = NotificationViewController()
+               navigationController?.pushViewController(notificationViewController, animated: true)
+      
+           }
+    
+    
 }

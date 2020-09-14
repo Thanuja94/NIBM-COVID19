@@ -36,6 +36,8 @@ class NotificationViewController: UIViewController, UITableViewDelegate, UITable
         
         notificationArray.append(NotificationModal(notificationImage: #imageLiteral(resourceName: "notifyMail"), notifcationMsg: "NIBM Closed until further notice"))
          notificationArray.append(NotificationModal(notificationImage: #imageLiteral(resourceName: "notifyMail"), notifcationMsg: "NIBM Closed until further notice"))
+        
+         navigationController?.navigationBar.isHidden = false
     }
     
         // MARK: - Functions
