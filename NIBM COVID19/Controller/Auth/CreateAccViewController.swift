@@ -9,10 +9,13 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import GeoFire
 
 class CreateAccViewController: UIViewController {
     
     // MARK: - Properties
+    
+//    private var location = LocationHandler.shared.locationManager.location
     
     private let CreateAccLabel: UILabel = {
         let label = UILabel()
@@ -201,6 +204,14 @@ class CreateAccViewController: UIViewController {
                        "role": role,
                        
                        ] as [String : Any]
+            
+//            let geoFire = GeoFire(firebaseRef: REF_USER_LOCATIONS)
+//            
+//            guard let location = self.location else { return }
+//            
+//            geoFire.setLocation(location, forKey: uid, withCompletionBlock: { (error) in
+//                self.uploadUserDataAndShowHomeController(uid: uid, values: values)
+//            })
                    
 //            Database.database().reference().child("users").child(uid).updateChildValues(values) { (error, ref) in
 //                         print("DEBUG: Successfuly Registerd and save data..")
