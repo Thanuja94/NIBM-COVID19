@@ -64,8 +64,8 @@ class CreateAccViewController: UIViewController {
     }()
     
     private lazy var RoleContainerView: UIView = {
-        let view = UIView().inputContainerView(image:#imageLiteral(resourceName: "ic_account_box_white_2x") , textField: roleTextFiled )
-        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        let view = UIView().inputContainerView(image:#imageLiteral(resourceName: "ic_account_box_white_2x") , segentedControl: roleSegmentedControl )
+        view.heightAnchor.constraint(equalToConstant: 100).isActive = true
         return view
     }()
     
@@ -112,6 +112,15 @@ class CreateAccViewController: UIViewController {
         
         return button
     }()
+    
+    private let roleSegmentedControl: UISegmentedControl = {
+           let sc = UISegmentedControl(items: ["Student", "Lecturer"])
+           sc.backgroundColor = colors.cynaite
+           sc.tintColor = UIColor(white: 1, alpha: 0.87)
+           sc.selectedSegmentIndex = 0
+           
+           return sc
+       }()
     // MARK: - LifeCycles
     
     
@@ -134,7 +143,7 @@ class CreateAccViewController: UIViewController {
         
         
         
-        let stack = UIStackView(arrangedSubviews: [firstnameContainerView, LastnameContainerView, emailContainerView, RoleContainerView, passwordContainerView, SignupButton,BysigninLabel,alreadyhaveButton])
+        let stack = UIStackView(arrangedSubviews: [firstnameContainerView, LastnameContainerView, emailContainerView, passwordContainerView, RoleContainerView, SignupButton,BysigninLabel,alreadyhaveButton])
         stack.axis = .vertical
         stack.distribution = .fillEqually
         stack.spacing = 16
