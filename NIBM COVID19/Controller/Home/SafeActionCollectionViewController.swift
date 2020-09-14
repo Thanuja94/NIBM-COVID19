@@ -11,6 +11,8 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class SafeActionCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
+    
+    let imageNames = ["safeAction","safeAction2"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +31,14 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
-        return 4
+        return imageNames.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SafeActionCollectionViewCell
+        
+        let imageName = imageNames[indexPath.item]
+        cell.safeActionPic.image = UIImage(named: imageName)
     
 
         return cell
