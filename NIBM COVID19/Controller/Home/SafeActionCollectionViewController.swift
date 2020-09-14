@@ -14,12 +14,14 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Safe Actions"
         collectionView?.backgroundColor = .green
 
         collectionView?.register(SafeActionCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         collectionView?.isPagingEnabled = true
+        
+        navigationController?.navigationBar.isHidden = false
 
     }
 
