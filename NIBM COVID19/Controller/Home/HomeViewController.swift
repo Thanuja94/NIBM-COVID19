@@ -65,7 +65,9 @@ class HomeViewController: UIViewController {
             let button = UIButton(type: .system)
             let attributedTitle = NSMutableAttributedString(string: "Safe actions > ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
             
-            
+            button.addTarget(self, action: #selector(showSafeActions), for: .touchUpInside)
+
+        
             button.setAttributedTitle(attributedTitle, for: .normal)
       
             return button
@@ -519,6 +521,16 @@ class HomeViewController: UIViewController {
          
               }
     
+    @objc func showSafeActions() {
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let safeactionviewcontroller = SafeActionCollectionViewController(collectionViewLayout: layout)
+        
+        
+                     navigationController?.pushViewController(safeactionviewcontroller, animated: true)
+            
+                 }
     
     
 }

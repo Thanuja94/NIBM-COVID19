@@ -18,6 +18,8 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
         collectionView?.backgroundColor = .green
 
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        collectionView?.isPagingEnabled = true
 
     }
 

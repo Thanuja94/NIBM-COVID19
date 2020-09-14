@@ -20,13 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-//        window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
+        window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
         //window?.rootViewController = SurvayQ1ViewController()
         
-        let layout = UICollectionViewFlowLayout()
-        let safeactionviewcontroller = SafeActionCollectionViewController(collectionViewLayout: layout)
         
-        window?.rootViewController = safeactionviewcontroller
+        
         
         return true
     }
