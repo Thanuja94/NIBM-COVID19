@@ -26,7 +26,7 @@ class SafeActionCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    private let instruction: UILabel = {
+     let instruction: UILabel = {
              let label = UILabel()
              label.text = "Please follow Above instruction to safe from COVID 19"
              label.font = UIFont(name: "Avenir-Light" , size: 25)

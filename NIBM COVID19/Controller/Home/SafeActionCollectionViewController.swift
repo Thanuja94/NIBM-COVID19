@@ -13,6 +13,7 @@ private let reuseIdentifier = "Cell"
 class SafeActionCollectionViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     
     let imageNames = ["safeAction","safeAction2"]
+    let instructions = ["Clean your Self" , "Follow above instructions to wear and remove mask correctly"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
         
         let imageName = imageNames[indexPath.item]
         cell.safeActionPic.image = UIImage(named: imageName)
+        cell.instruction.text =   instructions[indexPath.item]
     
 
         return cell
