@@ -27,6 +27,7 @@
 		4469B0BA250EBFF500F1D57F /* SharedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0B9250EBFF500F1D57F /* SharedService.swift */; };
 		4469B0BC250F434100F1D57F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0BB250F434100F1D57F /* User.swift */; };
 		4469B0BE250F59DE00F1D57F /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0BD250F59DE00F1D57F /* LocationHandler.swift */; };
+		4469B0C0250F8C8900F1D57F /* SafeActionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0BF250F8C8900F1D57F /* SafeActionCollectionViewController.swift */; };
 		44DF6C4124FAE8E100199EBE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF6C4024FAE8E100199EBE /* LoginViewController.swift */; };
 		44F3C80224FA1C5500743B0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3C80124FA1C5500743B0E /* AppDelegate.swift */; };
 		44F3C80B24FA1C5500743B0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F3C80A24FA1C5500743B0E /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		4469B0B9250EBFF500F1D57F /* SharedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedService.swift; sourceTree = "<group>"; };
 		4469B0BB250F434100F1D57F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4469B0BD250F59DE00F1D57F /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
+		4469B0BF250F8C8900F1D57F /* SafeActionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeActionCollectionViewController.swift; sourceTree = "<group>"; };
 		44DF6C4024FAE8E100199EBE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44F3C7FE24FA1C5500743B0E /* NIBM COVID19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NIBM COVID19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F3C80124FA1C5500743B0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				4469B0422507BBFF00F1D57F /* HomeViewController.swift */,
 				4469B0A9250CFD3700F1D57F /* UpdateViewController.swift */,
 				4469B0B7250E642500F1D57F /* MapViewController.swift */,
+				4469B0BF250F8C8900F1D57F /* SafeActionCollectionViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				4469B0BC250F434100F1D57F /* User.swift in Sources */,
 				4469B0B6250E1D7000F1D57F /* NotificationTableViewCell.swift in Sources */,
 				4469B0842509554800F1D57F /* SurvayQ2ViewController.swift in Sources */,
+				4469B0C0250F8C8900F1D57F /* SafeActionCollectionViewController.swift in Sources */,
 				4449780B24FFAB5E0046E178 /* AppColors.swift in Sources */,
 				4469B0BE250F59DE00F1D57F /* LocationHandler.swift in Sources */,
 				444977ED24FC41180046E178 /* Extensions.swift in Sources */,

@@ -210,19 +210,19 @@ class CreateAccViewController: UIViewController {
                        
                        ] as [String : Any]
             
-//                     let geoFire = GeoFire(firebaseRef: REF_USER_LOCATIONS)
-//
-//            guard let location = self.location else { return }
-//
-//            geoFire.setLocation(location, forKey: uid, withCompletionBlock: { (error) in
-//                 print("DEBUG: laction save")
-//                self.uploadUserDataAndShowHomeController(uid: uid, values: values)
-//                if let error = error {
-//                    print("DEBUG: fail to save loc \(error)")
-//                    return
-//                }
-//
-//            })
+                     let geoFire = GeoFire(firebaseRef: REF_USER_LOCATIONS)
+
+            guard let location = self.location else { return }
+
+            geoFire.setLocation(location, forKey: uid, withCompletionBlock: { (error) in
+                 print("DEBUG: laction save")
+                self.uploadUserDataAndShowHomeController(uid: uid, values: values)
+                if let error = error {
+                    print("DEBUG: fail to save loc \(error)")
+                    return
+                }
+
+            })
 
                    
 //            Database.database().reference().child("users").child(uid).updateChildValues(values) { (error, ref) in
