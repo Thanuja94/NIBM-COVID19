@@ -31,6 +31,8 @@ class MapViewController: UIViewController {
         
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
+        
+         navigationController?.navigationBar.isHidden = false
     }
   
 }

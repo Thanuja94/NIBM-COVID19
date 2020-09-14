@@ -127,7 +127,7 @@ class HomeViewController: UIViewController {
                let button = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "See More >> ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15), NSAttributedString.Key.foregroundColor: colors.cynaite])
                
-               //button.addTarget(self, action: #selector(loginview), for: .touchUpInside)
+               button.addTarget(self, action: #selector(showMap), for: .touchUpInside)
 
                button.setAttributedTitle(attributedTitle, for: .normal)
          
@@ -512,6 +512,13 @@ class HomeViewController: UIViewController {
                navigationController?.pushViewController(notificationViewController, animated: true)
       
            }
+    
+    @objc func showMap() {
+                  let mapViewController = MapViewController()
+                  navigationController?.pushViewController(mapViewController, animated: true)
+         
+              }
+    
     
     
 }
