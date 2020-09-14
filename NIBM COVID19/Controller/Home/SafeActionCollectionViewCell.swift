@@ -26,6 +26,18 @@ class SafeActionCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    private let instruction: UILabel = {
+             let label = UILabel()
+             label.text = "Please follow Above instruction to safe from COVID 19"
+             label.font = UIFont(name: "Avenir-Light" , size: 25)
+             label.textColor = .black//UIColor(white: 1, alpha: 0.8)
+             label.numberOfLines = 0
+             label.textAlignment = .center
+            
+             
+             return label
+         }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,19 +56,15 @@ class SafeActionCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: topAnchor, constant: 65).isActive = true
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
-        
         imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
-        
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
         
-        instructionView.backgroundColor = .red
+        
         addSubview(instructionView)
         instructionView.translatesAutoresizingMaskIntoConstraints = false
         instructionView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 40).isActive = true
         instructionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        
         instructionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2).isActive = true
-        
         instructionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
         
         addSubview(nextButton)
@@ -69,10 +77,16 @@ class SafeActionCollectionViewCell: UICollectionViewCell {
         safeActionPic.translatesAutoresizingMaskIntoConstraints = false
         safeActionPic.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 30).isActive = true
         safeActionPic.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 20).isActive = true
-        
         safeActionPic.heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 0.8).isActive = true
-        
         safeActionPic.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -20).isActive = true
+        
+        instructionView.addSubview(instruction)
+               instruction.translatesAutoresizingMaskIntoConstraints = false
+               instruction.topAnchor.constraint(equalTo: instructionView.topAnchor, constant: 30).isActive = true
+               instruction.leadingAnchor.constraint(equalTo: instructionView.leadingAnchor, constant: 20).isActive = true
+               instruction.heightAnchor.constraint(equalTo: instructionView.heightAnchor, multiplier: 0.8).isActive = true
+               instruction.trailingAnchor.constraint(equalTo: instructionView.trailingAnchor, constant: -20).isActive = true
+        instruction.centerXAnchor.constraint(equalTo: instructionView.centerXAnchor).isActive = true
         
         
         

@@ -15,7 +15,7 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Safe Actions"
-        collectionView?.backgroundColor = .green
+        collectionView?.backgroundColor = .white
 
         collectionView?.register(SafeActionCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
