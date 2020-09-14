@@ -17,7 +17,7 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
         
         collectionView?.backgroundColor = .green
 
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView?.register(SafeActionCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         collectionView?.isPagingEnabled = true
 
@@ -32,7 +32,7 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    cell.backgroundColor = .red
+    
 
         return cell
     }
