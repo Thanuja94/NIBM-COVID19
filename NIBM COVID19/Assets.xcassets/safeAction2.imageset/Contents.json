@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "how-to-wear-remove-surgical-mask-properly-step-infographic-illustration-medical-flat-design-177752344.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "how-to-wear-remove-surgical-mask-properly-step-infographic-illustration-medical-flat-design-177752345.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "how-to-wear-remove-surgical-mask-properly-step-infographic-illustration-medical-flat-design-177752346.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

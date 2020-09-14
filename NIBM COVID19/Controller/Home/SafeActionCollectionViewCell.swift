@@ -13,7 +13,7 @@ class SafeActionCollectionViewCell: UICollectionViewCell {
     let imageView = UIView()
     let instructionView = UIView()
     
-    let safeActionPic = UIImageView(image: #imageLiteral(resourceName: "safeAction1"))
+    let safeActionPic = UIImageView(image: #imageLiteral(resourceName: "safeAction"))
     
     let nextButton: UIButton = {
         let button = UIButton(type: .system)
