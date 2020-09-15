@@ -19,7 +19,7 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
            let button = UIButton(type: .system)
            let attributedTitle = NSMutableAttributedString(string: "Next", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
            
-           //button.addTarget(self, action: #selector(handleYes), for: .touchUpInside)
+           button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
            
            
            button.setAttributedTitle(attributedTitle, for: .normal)
@@ -37,6 +37,8 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
            
            return pc
        }()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +55,12 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
 
     }
 
-   
+   override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+
+            let x = targetContentOffset.pointee.x
+
+            pageControl.currentPage = Int(x / view.frame.width)
+        }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
@@ -77,13 +84,30 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
     return CGSize(width: view.frame.width, height: view.frame.height)
      }
     
+   
+    
 
     func setupUI()  {
         view.addSubview(nextButton)
                nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20).isActive = true
+        nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 15).isActive = true
         nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         nextButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
+        
+        view.addSubview(pageControl)
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+               pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 5).isActive = true
+               pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+               pageControl.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
+        
                
+    }
+    
+    @objc private  func handleNext(){
+        let Index = min(pageControl.currentPage + 1, imageNames.count - 1)
+        
+        let indexPath = IndexPath(item: Index, section: 0)
+        pageControl.currentPage = Index
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
