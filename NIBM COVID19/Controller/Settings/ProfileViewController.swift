@@ -51,6 +51,7 @@ class ProfileViewController: UIViewController {
            textfield.borderStyle = .line
            textfield.textColor = .black
         textfield.placeholder = "Name"
+        textfield.font = UIFont.systemFont(ofSize: 25)
            
            
            return textfield
@@ -62,11 +63,22 @@ class ProfileViewController: UIViewController {
               textfield.borderStyle = .line
               textfield.textColor = .black
            textfield.placeholder = "Index"
+        textfield.font = UIFont.systemFont(ofSize: 25)
+
               
               
               return textfield
               
           }()
+
+    let backArrowButton: UIButton = {
+          let button = UIButton(type: .system)
+          button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+          button.tintColor = .black
+          button.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+          return button
+          
+      }()
 
 
     // MARK: - LifeCycles
@@ -168,14 +180,25 @@ class ProfileViewController: UIViewController {
                indexTextFiled.trailingAnchor.constraint(equalTo: indexTextView.trailingAnchor, constant: -10).isActive = true
                indexTextFiled.leadingAnchor.constraint(equalTo: indexTextView.leadingAnchor, constant: 10).isActive = true
 
+        profileNameView.addSubview(backArrowButton)
+        backArrowButton.translatesAutoresizingMaskIntoConstraints = false
+        backArrowButton.heightAnchor.constraint(equalTo: profileNameView.heightAnchor, multiplier: 0.5).isActive = true
+        backArrowButton.topAnchor.constraint(equalTo: profileNameView.topAnchor, constant: 10).isActive = true
+        backArrowButton.leadingAnchor.constraint(equalTo: profileNameView.leadingAnchor, constant: 10).isActive = true
+                
+
         
         
-        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.isHidden = true
         
         
         
     }
     
+    @objc func handleBack() {
+        
+         navigationController?.popViewController(animated: true)
+    }
 
     
 }
