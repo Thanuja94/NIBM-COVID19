@@ -9,6 +9,12 @@
 import UIKit
 import MapKit
 
+extension UIColor {
+static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat? = 1.0) -> UIColor {
+    return UIColor.init(red: red/255, green: green/255, blue: blue/255, alpha: alpha!)
+}
+}
+
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
@@ -71,6 +77,13 @@ extension UIView {
           heightAnchor.constraint(equalToConstant: height).isActive = true
           widthAnchor.constraint(equalToConstant: width).isActive = true
       }
+    
+    func addShadow() {
+           layer.shadowColor = UIColor.black.cgColor
+           layer.shadowOpacity = 0.55
+           layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+           layer.masksToBounds = false
+       }
     
     func inputContainerView(image: UIImage, textField: UITextField? = nil, segentedControl: UISegmentedControl? = nil) -> UIView {
         let view = UIView()

@@ -44,6 +44,9 @@ class MapViewController: UIViewController {
       private var actionButtonConfig = ActionButtonConfiguration()
       private let tableView = UITableView()
       private var searchResults = [MKPlacemark]()
+    private final let locationInputViewHeight: CGFloat = 200
+    private let locationInputView = LocationInputView()
+     private var route: MKRoute?
 
     override func viewDidLoad() {
         super.viewDidLoad()
