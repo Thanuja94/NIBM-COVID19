@@ -15,16 +15,7 @@ class SafeActionCollectionViewCell: UICollectionViewCell {
     
     let safeActionPic = UIImageView(image: #imageLiteral(resourceName: "safeAction"))
     
-    let nextButton: UIButton = {
-        let button = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Next", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
-        
-        //button.addTarget(self, action: #selector(handleYes), for: .touchUpInside)
-        
-        
-        button.setAttributedTitle(attributedTitle, for: .normal)
-        return button
-    }()
+   
     
     let instruction: UILabel = {
         let label = UILabel()
@@ -67,12 +58,7 @@ class SafeActionCollectionViewCell: UICollectionViewCell {
         instructionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2).isActive = true
         instructionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
         
-        addSubview(nextButton)
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 20).isActive = true
-        nextButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        nextButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2).isActive = true
-        
+       
         imageView.addSubview(safeActionPic)
         safeActionPic.translatesAutoresizingMaskIntoConstraints = false
         safeActionPic.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 30).isActive = true

@@ -14,6 +14,29 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
     
     let imageNames = ["safeAction","safeAction2"]
     let instructions = ["Clean your Self" , "Follow above instructions to wear and remove mask correctly"]
+    
+    let nextButton: UIButton = {
+           let button = UIButton(type: .system)
+           let attributedTitle = NSMutableAttributedString(string: "Next", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
+           
+           //button.addTarget(self, action: #selector(handleYes), for: .touchUpInside)
+           
+           
+           button.setAttributedTitle(attributedTitle, for: .normal)
+           return button
+       }()
+    
+    
+    private lazy var pageControl: UIPageControl = {
+           let pc = UIPageControl()
+           pc.numberOfPages = imageNames.count
+           pc.currentPage = 0
+           pc.currentPageIndicatorTintColor = colors.aquavelvet
+           pc.pageIndicatorTintColor = .gray
+           
+           
+           return pc
+       }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +48,8 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
         collectionView?.isPagingEnabled = true
         
         navigationController?.navigationBar.isHidden = false
+        
+        setupUI()
 
     }
 
@@ -53,4 +78,12 @@ class SafeActionCollectionViewController: UICollectionViewController,UICollectio
      }
     
 
+    func setupUI()  {
+        view.addSubview(nextButton)
+               nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20).isActive = true
+        nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nextButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
+               
+    }
 }
