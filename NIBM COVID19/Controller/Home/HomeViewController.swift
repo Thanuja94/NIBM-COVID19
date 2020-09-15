@@ -242,7 +242,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkIsUserLoggedIn()
+        
        setupUI()
         
        
@@ -499,12 +499,14 @@ class HomeViewController: UIViewController {
             }
     
     @objc func handleSetting() {
+        checkIsUserLoggedIn()
             let settingViewController = SettingsViewController()
             navigationController?.pushViewController(settingViewController, animated: true)
    
         }
     
     @objc func handleUpdate() {
+        checkIsUserLoggedIn()
                let updateViewController = UpdateViewController()
                navigationController?.pushViewController(updateViewController, animated: true)
       

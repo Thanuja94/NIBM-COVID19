@@ -144,6 +144,10 @@ class CreateAccViewController: UIViewController {
                            print("DEBUG: failto save \(error)")
                            return
                        }
+            
+            
+                
+
             //handle error
             
 //            let keyWindow = UIApplication.shared.connectedScenes
@@ -227,6 +231,9 @@ class CreateAccViewController: UIViewController {
              self.uploadUserDataAndShowHomeController(uid: uid, values: values)
         }
         
+        
+        let homeviewcontroller = HomeViewController()
+                      navigationController?.pushViewController(homeviewcontroller, animated: true)
     }
     
     
