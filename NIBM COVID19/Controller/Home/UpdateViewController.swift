@@ -41,6 +41,7 @@ class UpdateViewController: UIViewController {
         button.tintColor = .black
         
         button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(handleClose), for: .touchUpInside)
         
         return button
     }()
@@ -340,4 +341,10 @@ class UpdateViewController: UIViewController {
         
         
     }
+    
+    @objc func handleClose() {
+        
+         navigationController?.popViewController(animated: true)
+    }
+
 }
