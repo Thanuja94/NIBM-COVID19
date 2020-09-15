@@ -30,6 +30,7 @@
 		4469B0C0250F8C8900F1D57F /* SafeActionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0BF250F8C8900F1D57F /* SafeActionCollectionViewController.swift */; };
 		4469B0C2250FAF1700F1D57F /* SafeActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0C1250FAF1700F1D57F /* SafeActionCollectionViewCell.swift */; };
 		4469B0C42511322000F1D57F /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0C32511321F00F1D57F /* UserAnnotation.swift */; };
+		4469B0C6251152BA00F1D57F /* LocationInputActivationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4469B0C5251152BA00F1D57F /* LocationInputActivationUIView.swift */; };
 		44DF6C4124FAE8E100199EBE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF6C4024FAE8E100199EBE /* LoginViewController.swift */; };
 		44F3C80224FA1C5500743B0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3C80124FA1C5500743B0E /* AppDelegate.swift */; };
 		44F3C80B24FA1C5500743B0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F3C80A24FA1C5500743B0E /* Assets.xcassets */; };
@@ -83,6 +84,7 @@
 		4469B0BF250F8C8900F1D57F /* SafeActionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeActionCollectionViewController.swift; sourceTree = "<group>"; };
 		4469B0C1250FAF1700F1D57F /* SafeActionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeActionCollectionViewCell.swift; sourceTree = "<group>"; };
 		4469B0C32511321F00F1D57F /* UserAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
+		4469B0C5251152BA00F1D57F /* LocationInputActivationUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputActivationUIView.swift; sourceTree = "<group>"; };
 		44DF6C4024FAE8E100199EBE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44F3C7FE24FA1C5500743B0E /* NIBM COVID19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NIBM COVID19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F3C80124FA1C5500743B0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		44DF6C3D24FAD00E00199EBE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4469B0C5251152BA00F1D57F /* LocationInputActivationUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				4469B0842509554800F1D57F /* SurvayQ2ViewController.swift in Sources */,
 				4469B0C0250F8C8900F1D57F /* SafeActionCollectionViewController.swift in Sources */,
 				4449780B24FFAB5E0046E178 /* AppColors.swift in Sources */,
+				4469B0C6251152BA00F1D57F /* LocationInputActivationUIView.swift in Sources */,
 				4469B0BE250F59DE00F1D57F /* LocationHandler.swift in Sources */,
 				444977ED24FC41180046E178 /* Extensions.swift in Sources */,
 				44F3C80224FA1C5500743B0E /* AppDelegate.swift in Sources */,
