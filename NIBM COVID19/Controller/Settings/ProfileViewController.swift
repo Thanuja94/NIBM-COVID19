@@ -14,7 +14,7 @@ class ProfileViewController: UIViewController {
     
     let profileNameView = UIView()
     
-    let profilePicView = UIView()
+     let profilePicView = UIView()
     
     let profileDetailView = UIView()
     
@@ -79,6 +79,15 @@ class ProfileViewController: UIViewController {
           return button
           
       }()
+     
+    
+  let profilepicImageView = UIImageView(image: #imageLiteral(resourceName: "camera"))
+        
+         
+        
+    
+    
+
 
 
     // MARK: - LifeCycles
@@ -104,8 +113,7 @@ class ProfileViewController: UIViewController {
         profileNameView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.1).isActive = true
         profileNameView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -5).isActive = true
         
-        profilePicView.backgroundColor = .green
-        view.addSubview(profilePicView)
+                view.addSubview(profilePicView)
         profilePicView.translatesAutoresizingMaskIntoConstraints = false
         profilePicView.topAnchor.constraint(equalTo: profileNameView.bottomAnchor, constant: 5).isActive = true
         profilePicView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 5).isActive = true
@@ -186,7 +194,12 @@ class ProfileViewController: UIViewController {
         backArrowButton.topAnchor.constraint(equalTo: profileNameView.topAnchor, constant: 10).isActive = true
         backArrowButton.leadingAnchor.constraint(equalTo: profileNameView.leadingAnchor, constant: 10).isActive = true
                 
-
+        profilePicView.addSubview(profilepicImageView)
+              profilepicImageView.translatesAutoresizingMaskIntoConstraints = false
+              profilepicImageView.heightAnchor.constraint(equalTo: profilePicView.heightAnchor, multiplier: 0.4).isActive = true
+              profilepicImageView.topAnchor.constraint(equalTo: profilePicView.topAnchor, constant: 10).isActive = true
+              profilepicImageView.centerXAnchor.constraint(equalTo: profilePicView.centerXAnchor).isActive = true
+              profilepicImageView.centerYAnchor.constraint(equalTo: profilePicView.centerYAnchor).isActive = true
         
         
         navigationController?.navigationBar.isHidden = true
