@@ -11,6 +11,8 @@ import MapKit
 import Firebase
 
 private let annotationIdentifier = "UserAnnotation"
+private let reuseIdentifier = "LocationCell"
+
 
 private enum ActionButtonConfiguration {
     case showMenu
@@ -39,12 +41,15 @@ class MapViewController: UIViewController {
       }()
     
       private let inputActivationUIView = LocationInputActivationUIView()
+      private var actionButtonConfig = ActionButtonConfiguration()
+      private let tableView = UITableView()
+      private var searchResults = [MKPlacemark]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUi()
         enableLocationServices()
-        fetchUsers()
+        config()
 
         
     }
@@ -105,8 +110,90 @@ class MapViewController: UIViewController {
               }
           }
       }
+    
+    func removeAnnotationsAndOverlays() {
+          mapView.annotations.forEach { (annotation) in
+              if let anno = annotation as? MKPointAnnotation {
+                  mapView.removeAnnotation(anno)
+              }
+          }
+          
+          if mapView.overlays.count > 0 {
+              mapView.removeOverlay(mapView.overlays[0])
+          }
+      }
+    
+    fileprivate func configureActionButton(config: ActionButtonConfiguration) {
+        switch config {
+        case .showMenu:
+            self.actionButton.setImage(#imageLiteral(resourceName: "baseline_menu_black_36dp").withRenderingMode(.alwaysOriginal), for: .normal)
+            self.actionButtonConfig = .showMenu
+        case .dismissActionView:
+            actionButton.setImage(#imageLiteral(resourceName: "baseline_arrow_back_black_36dp").withRenderingMode(.alwaysOriginal), for: .normal)
+            actionButtonConfig = .dismissActionView
+        }
+    }
+    
+    func config() {
+        configureUi()
+      //fetchUserData()
+        fetchUsers()
+    
+    }
+    func configureUi() {
+          setupUi()
+        
+          view.addSubview(actionButton)
+          actionButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor,
+                              paddingTop: 16, paddingLeft: 20, height: 30, width: 30)
+
+          
+          configureTableView()
+
+      }
+    func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.rowHeight = 60
+        tableView.tableFooterView = UIView()
+        
+        let height = view.frame.height - locationInputViewHeight
+        tableView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: height)
+        
+        view.addSubview(tableView)
+    }
+    
+    func dismissLocationView(completion: ((Bool) -> Void)? = nil) {
+          UIView.animate(withDuration: 0.3, animations: {
+              self.locationInputView.alpha = 0
+              self.tableView.frame.origin.y = self.view.frame.height
+              self.locationInputView.removeFromSuperview()
+              
+          }, completion: completion)
+      }
 }
 
+// MARK: - MapView Functions
+private extension MapViewController {
+    
+    func generatePolyline(toDestination destination: MKMapItem) {
+         let request = MKDirections.Request()
+         request.source = MKMapItem.forCurrentLocation()
+         request.destination = destination
+         request.transportType = .automobile
+         
+         let directionRequest = MKDirections(request: request)
+         directionRequest.calculate { (response, error) in
+             guard let response = response else { return }
+             
+             self.route = response.routes[0]
+             guard let polyline = self.route?.polyline else { return }
+             self.mapView.addOverlay(polyline)
+         }
+     }
+}
 
 extension MapViewController: CLLocationManagerDelegate {
     func enableLocationServices() {
@@ -142,5 +229,50 @@ extension MapViewController: MKMapViewDelegate {
         return nil
     }
 
+}
+
+// MARK: - UITableViewDelegate/DataSource
+extension MapViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Searching places"
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return section == 0 ? 2 : searchResults.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! LocationTableViewCell
+        
+        if indexPath.section == 1 {
+            cell.placemark = searchResults[indexPath.row]
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedPlacemark = searchResults[indexPath.row]
+        
+        configureActionButton(config: .dismissActionView)
+        
+        let destination = MKMapItem(placemark: selectedPlacemark)
+        generatePolyline(toDestination: destination)
+        
+        dismissLocationView { _ in
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = selectedPlacemark.coordinate
+            self.mapView.addAnnotation(annotation)
+            self.mapView.selectAnnotation(annotation, animated: true)
+            
+            let annotations = self.mapView.annotations.filter({ !$0.isKind(of: UserAnnotation.self) })
+            self.mapView.zoomToFit(annotations: annotations)
+        }
+        
+    }
 }
 

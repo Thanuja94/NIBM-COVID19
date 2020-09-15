@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,
@@ -64,6 +65,12 @@ extension UIView {
                anchor(left: left, paddingLeft: paddingLeft)
            }
        }
+    
+    func setDimensions(height: CGFloat, width: CGFloat) {
+          translatesAutoresizingMaskIntoConstraints = false
+          heightAnchor.constraint(equalToConstant: height).isActive = true
+          widthAnchor.constraint(equalToConstant: width).isActive = true
+      }
     
     func inputContainerView(image: UIImage, textField: UITextField? = nil, segentedControl: UISegmentedControl? = nil) -> UIView {
         let view = UIView()
@@ -142,3 +149,20 @@ func alignImageAndTitleVertically(padding: CGFloat ) {
     )
     }
 }
+
+extension MKMapView {
+func zoomToFit(annotations: [MKAnnotation]) {
+    var zoomRect = MKMapRect.null
+    
+    annotations.forEach { (annotation) in
+        let annotationPoint = MKMapPoint(annotation.coordinate)
+        let pointRect = MKMapRect(x: annotationPoint.x, y: annotationPoint.y,
+                                  width: 0.01, height: 0.01)
+        zoomRect = zoomRect.union(pointRect)
+    }
+    
+    let insets = UIEdgeInsets(top: 100, left: 100, bottom: 300, right: 100)
+    setVisibleMapRect(zoomRect, edgePadding: insets, animated: true)
+}
+}
+
