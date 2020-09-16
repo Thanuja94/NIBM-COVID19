@@ -178,7 +178,7 @@ class ProfileViewController: UIViewController {
         nameLable.heightAnchor.constraint(equalTo: profileNameView.heightAnchor, multiplier: 0.5).isActive = true
         nameLable.topAnchor.constraint(equalTo: profileNameView.topAnchor, constant: 10).isActive = true
         nameLable.centerXAnchor.constraint(equalTo: profileNameView.centerXAnchor).isActive = true
-        nameLable.centerYAnchor.constraint(equalTo: profileNameView.centerYAnchor).isActive = true
+        //nameLable.centerYAnchor.constraint(equalTo: profileNameView.centerYAnchor).isActive = true
         
         
         profileNameTextView.addSubview(nameTextFiled)
@@ -201,12 +201,13 @@ class ProfileViewController: UIViewController {
         backArrowButton.topAnchor.constraint(equalTo: profileNameView.topAnchor, constant: 10).isActive = true
         backArrowButton.leadingAnchor.constraint(equalTo: profileNameView.leadingAnchor, constant: 10).isActive = true
                 
+        profilepicImageView.backgroundColor = .gray
         profilePicView.addSubview(profilepicImageView)
               profilepicImageView.translatesAutoresizingMaskIntoConstraints = false
               profilepicImageView.heightAnchor.constraint(equalTo: profilePicView.heightAnchor, multiplier: 0.4).isActive = true
               profilepicImageView.topAnchor.constraint(equalTo: profilePicView.topAnchor, constant: 10).isActive = true
               profilepicImageView.centerXAnchor.constraint(equalTo: profilePicView.centerXAnchor).isActive = true
-              profilepicImageView.centerYAnchor.constraint(equalTo: profilePicView.centerYAnchor).isActive = true
+              //profilepicImageView.centerYAnchor.constraint(equalTo: profilePicView.centerYAnchor).isActive = true
         
         
         navigationController?.navigationBar.isHidden = true
@@ -229,12 +230,40 @@ extension ProfileViewController :  UIImagePickerControllerDelegate , UINavigatio
     @objc func handleProfilePic()  {
         let imagePicker = UIImagePickerController()
         
+        
         imagePicker.delegate = self
+        imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
   
     }
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+         
+         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+         
+         
+         var selectedImageFromPicker: UIImage?
+         
+         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+             selectedImageFromPicker = editedImage
+         } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+             
+             selectedImageFromPicker = originalImage
+         }
+         
+         if let selectedImage = selectedImageFromPicker {
+             profilepicImageView.image = selectedImage
+         }
+         
+         dismiss(animated: true, completion: nil)
+         
+     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("Cancel")
+        dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+        return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
     }
 }
