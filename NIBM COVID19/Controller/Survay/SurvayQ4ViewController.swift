@@ -107,16 +107,16 @@ class SurvayQ4ViewController: UIViewController {
     @objc func handleYes() {
         
         saveSurvayWeight(question: "Q4", value: 6)
-        let updateViewController = UpdateViewController()
-        navigationController?.pushViewController(updateViewController, animated: true)
+        let homeViewController = HomeViewController()
+        navigationController?.pushViewController(homeViewController, animated: true)
         
     }
     
     
     @objc func handleNo() {
         saveSurvayWeight(question: "Q4", value: 1)
-        let updateViewController = UpdateViewController()
-        navigationController?.pushViewController(updateViewController, animated: true)
+        let homeViewController = HomeViewController()
+        navigationController?.pushViewController(homeViewController, animated: true)
         
     }
     
