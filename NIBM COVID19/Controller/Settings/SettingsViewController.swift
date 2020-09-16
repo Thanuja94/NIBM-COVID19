@@ -218,6 +218,9 @@ class SettingsViewController: UIViewController {
         } catch {
             print("DEBUG: sign out error")
         }
+        
+        let homeviewcontroller = HomeViewController()
+        navigationController?.pushViewController(homeviewcontroller, animated: true)
     }
     
     @objc func handleBack() {
