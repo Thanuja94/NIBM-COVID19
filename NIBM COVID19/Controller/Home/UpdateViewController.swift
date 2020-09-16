@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class UpdateViewController: UIViewController {
     
@@ -163,8 +164,8 @@ class UpdateViewController: UIViewController {
         button.setTitleColor(UIColor(white: 1, alpha: 1), for: .normal)
         button.backgroundColor = colors.cynaite
         button.layer.cornerRadius = 10
-        //           button.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        //button.addTarget(self, action: #selector(handlesignin), for: .touchUpInside)
+//                   button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        button.addTarget(self, action: #selector(handleUpdate), for: .touchUpInside)
         
         return button
     }()
@@ -354,4 +355,25 @@ class UpdateViewController: UIViewController {
         let survayQ1ViewContrller = SurvayQ1ViewController()
         navigationController?.pushViewController(survayQ1ViewContrller, animated: true)
     }
+    
+    @objc func handleUpdate()  {
+        guard let temp = temperatureTextFiled.text else { return }
+       if (Double(temp) == nil){
+           let uialert = UIAlertController(title: "Error", message: "Please check the temperature again" , preferredStyle: UIAlertController.Style.alert)
+           uialert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+           self.present(uialert, animated: true, completion: nil)
+       }
+       else {
+        let values = [
+                    "bodyTemperature": temp,
+                    ] as [String : Any]
+        
+       guard let userID = Auth.auth().currentUser?.uid else { return }
+        return REF_USERS.child(userID ?? "").updateChildValues(values)
+
+        }
+        
+    }
+    
+    
 }
