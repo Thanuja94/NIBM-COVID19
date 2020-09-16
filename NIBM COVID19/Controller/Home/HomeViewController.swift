@@ -140,8 +140,8 @@ class HomeViewController: UIViewController {
     private let caseUpdateLabel: UILabel = {
             let label = UILabel()
             label.text = "University Case Updates"
-        label.font = UIFont(name: "Avenir-Light" , size: 18)
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont(name: "Avenir-Light" , size: 15)
+        label.font = UIFont.boldSystemFont(ofSize: 15)
             label.textColor = .black
          label.numberOfLines = 0
             
@@ -151,7 +151,7 @@ class HomeViewController: UIViewController {
     private let caseUpdateTimeLabel: UILabel = {
         let label = UILabel()
         label.text = "1 mins ago"
-    label.font = UIFont(name: "Avenir-Light" , size: 15)
+    label.font = UIFont(name: "Avenir-Light" , size: 12)
     
         label.textColor = .black
      label.numberOfLines = 0
@@ -187,7 +187,7 @@ class HomeViewController: UIViewController {
     private let infectedCount: UILabel = {
         let label = UILabel()
         label.text = "0"
-    label.font = UIFont(name: "Avenir-Light" , size: 55)
+    label.font = UIFont(name: "Avenir-Light" , size: 45)
     
         label.textColor = .black
      label.numberOfLines = 0
@@ -209,7 +209,7 @@ class HomeViewController: UIViewController {
     private let deathCount: UILabel = {
         let label = UILabel()
         label.text = "0"
-    label.font = UIFont(name: "Avenir-Light" , size: 55)
+    label.font = UIFont(name: "Avenir-Light" , size: 45)
     
         label.textColor = .black
      label.numberOfLines = 0
@@ -231,7 +231,7 @@ class HomeViewController: UIViewController {
     private let recoveredCount: UILabel = {
         let label = UILabel()
         label.text = "0"
-    label.font = UIFont(name: "Avenir-Light" , size: 55)
+    label.font = UIFont(name: "Avenir-Light" , size: 45)
     
         label.textColor = .black
      label.numberOfLines = 0
@@ -398,7 +398,7 @@ class HomeViewController: UIViewController {
          
         caseUpdateTitleView.addSubview(caseUpdateTimeLabel)
         caseUpdateTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        caseUpdateTimeLabel.topAnchor.constraint(equalTo: caseUpdateLabel.topAnchor, constant: 15).isActive = true
+        caseUpdateTimeLabel.topAnchor.constraint(equalTo: caseUpdateLabel.bottomAnchor, constant: 1).isActive = true
          caseUpdateTimeLabel.leadingAnchor.constraint(equalTo: caseUpdateTitleView.leadingAnchor, constant: 5).isActive = true
         caseUpdateTimeLabel.trailingAnchor.constraint(equalTo: caseUpdateTitleView.trailingAnchor, constant: -5).isActive = true
          
