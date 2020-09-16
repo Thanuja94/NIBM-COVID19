@@ -247,7 +247,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Home"
        setupUI()
         addMap()
         fetchUsers()
@@ -501,7 +501,7 @@ class HomeViewController: UIViewController {
         
        
         
-         navigationController?.navigationBar.isHidden = true
+         navigationController?.navigationBar.isHidden = false
         
             }
     
