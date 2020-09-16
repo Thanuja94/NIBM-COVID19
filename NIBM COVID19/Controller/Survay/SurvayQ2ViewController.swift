@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SurvayQ2ViewController: UIViewController {
     
@@ -95,7 +96,15 @@ class SurvayQ2ViewController: UIViewController {
          navigationController?.navigationBar.isHidden = true
        }
     
+    func createSurvey(question: String, value: Int){
+          guard let userID = Auth.auth().currentUser?.uid else { return }
+          return REF_USERS.child(userID ?? "").updateChildValues([question:value])
+          
+      }
+    
     @objc func handleYes() {
+        
+        createSurvey(question: "Q2", value: 4)
                let survayq3viewconntroller = SurvayQ3ViewController()
                navigationController?.pushViewController(survayq3viewconntroller, animated: true)
                 
@@ -103,6 +112,8 @@ class SurvayQ2ViewController: UIViewController {
        
 
        @objc func handleNo() {
+        
+        createSurvey(question: "Q2", value: 0)
                   let survayq3viewconntroller = SurvayQ3ViewController()
                   navigationController?.pushViewController(survayq3viewconntroller, animated: true)
                    
