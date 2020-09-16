@@ -142,7 +142,7 @@ class MapViewController: UIViewController {
     
     func config() {
         configureUi()
-      //fetchUserData()
+      
         fetchUsers()
     
     }
@@ -197,7 +197,7 @@ class MapViewController: UIViewController {
         locationInputView.delegate = self
            
            view.addSubview(locationInputView)
-           locationInputView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: locationInputViewHeight)
+           locationInputView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 47, height: locationInputViewHeight)
            locationInputView.alpha = 0
            
            UIView.animate(withDuration: 0.5, animations: {
