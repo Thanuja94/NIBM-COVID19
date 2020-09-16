@@ -105,7 +105,7 @@ class SurvayQ1ViewController: UIViewController {
         
     }
     
-    func createSurvey(question: String, value: Int){
+    func saveSurvayWeight(question: String, value: Int){
         guard let userID = Auth.auth().currentUser?.uid else { return }
         return REF_USERS.child(userID ?? "").updateChildValues([question:value])
         
@@ -113,7 +113,7 @@ class SurvayQ1ViewController: UIViewController {
 
      @objc func handleYes() {
         
-        createSurvey(question:"Q1", value: 6)
+        saveSurvayWeight(question:"Q1", value: 6)
             let survayq2viewconntroller = SurvayQ2ViewController()
             navigationController?.pushViewController(survayq2viewconntroller, animated: true)
              
@@ -121,7 +121,7 @@ class SurvayQ1ViewController: UIViewController {
     
 
     @objc func handleNo() {
-        createSurvey(question:"Q1", value: 0)
+        saveSurvayWeight(question:"Q1", value: 1)
                let survayq2viewconntroller = SurvayQ2ViewController()
                navigationController?.pushViewController(survayq2viewconntroller, animated: true)
                 

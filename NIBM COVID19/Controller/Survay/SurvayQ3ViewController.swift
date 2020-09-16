@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SurvayQ3ViewController: UIViewController {
 
@@ -92,7 +93,15 @@ class SurvayQ3ViewController: UIViewController {
          navigationController?.navigationBar.isHidden = true
        }
 
+    func saveSurvayWeight(question: String, value: Int){
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        return REF_USERS.child(userID ?? "").updateChildValues([question:value])
+        
+    }
+    
     @objc func handleYes() {
+        
+        saveSurvayWeight(question: "Q3", value: 4)
                   let survayq4viewconntroller = SurvayQ4ViewController()
                   navigationController?.pushViewController(survayq4viewconntroller, animated: true)
                    
@@ -100,6 +109,7 @@ class SurvayQ3ViewController: UIViewController {
           
 
           @objc func handleNo() {
+            saveSurvayWeight(question: "Q3", value: 1)
                      let survayq4viewconntroller = SurvayQ4ViewController()
                      navigationController?.pushViewController(survayq4viewconntroller, animated: true)
                       
