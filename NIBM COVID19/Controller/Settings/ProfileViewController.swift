@@ -85,6 +85,7 @@ class ProfileViewController: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "camera")
         imageView.contentMode = .scaleAspectFill
+         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleProfilePic)))
         imageView.isUserInteractionEnabled = true
         return imageView
@@ -201,10 +202,12 @@ class ProfileViewController: UIViewController {
         backArrowButton.topAnchor.constraint(equalTo: profileNameView.topAnchor, constant: 10).isActive = true
         backArrowButton.leadingAnchor.constraint(equalTo: profileNameView.leadingAnchor, constant: 10).isActive = true
                 
-        profilepicImageView.backgroundColor = .gray
-        profilePicView.addSubview(profilepicImageView)
+      
+        view.addSubview(profilepicImageView)
               profilepicImageView.translatesAutoresizingMaskIntoConstraints = false
-              profilepicImageView.heightAnchor.constraint(equalTo: profilePicView.heightAnchor, multiplier: 0.4).isActive = true
+              profilepicImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        profilepicImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+               
               profilepicImageView.topAnchor.constraint(equalTo: profilePicView.topAnchor, constant: 10).isActive = true
               profilepicImageView.centerXAnchor.constraint(equalTo: profilePicView.centerXAnchor).isActive = true
               //profilepicImageView.centerYAnchor.constraint(equalTo: profilePicView.centerYAnchor).isActive = true
