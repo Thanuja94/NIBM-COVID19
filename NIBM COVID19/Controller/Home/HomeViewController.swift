@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import MapKit
 
 class HomeViewController: UIViewController {
  
@@ -164,7 +165,7 @@ class HomeViewController: UIViewController {
     
     let recoveredView = UIView()
     
-    let mapView = UIView()
+    let mapHomeView = UIView()
     
     let infectedSymbol = UIImageView(image: #imageLiteral(resourceName: "infectedWarning"))
     
@@ -237,6 +238,10 @@ class HomeViewController: UIViewController {
         
         return label
     }()
+    
+    
+    private let mapView = MKMapView()
+    private let locationManager = LocationHandler.shared.locationManager
 
        // MARK: - Lifecycale
     
@@ -244,6 +249,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
        setupUI()
+        addMap()
+        fetchUsers()
         
        
     }
@@ -422,14 +429,14 @@ class HomeViewController: UIViewController {
         recoveredView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.3).isActive = true
         recoveredView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.2).isActive = true
         
-        mapView.backgroundColor = .red
-        view.addSubview(mapView)
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        mapView.topAnchor.constraint(equalTo: deathsView.bottomAnchor, constant: 10).isActive = true
-        mapView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 5).isActive = true
-        mapView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1).isActive = true
-        mapView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.25).isActive = true
-        mapView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -5).isActive = true
+        
+        view.addSubview(mapHomeView)
+        mapHomeView.translatesAutoresizingMaskIntoConstraints = false
+        mapHomeView.topAnchor.constraint(equalTo: deathsView.bottomAnchor, constant: 10).isActive = true
+        mapHomeView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 5).isActive = true
+        mapHomeView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1).isActive = true
+        mapHomeView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.25).isActive = true
+        mapHomeView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -5).isActive = true
 
         infectedView.addSubview(infectedSymbol)
         infectedSymbol.translatesAutoresizingMaskIntoConstraints = false
@@ -498,6 +505,53 @@ class HomeViewController: UIViewController {
         
             }
     
+    func addMap()  {
+        
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+       
+            mapHomeView.addSubview(mapView)
+            NSLayoutConstraint.activate([
+                mapView.topAnchor.constraint(equalTo: mapHomeView.topAnchor),
+                mapView.leadingAnchor.constraint(equalTo: mapHomeView.leadingAnchor),
+                mapView.trailingAnchor.constraint(equalTo: mapHomeView.trailingAnchor),
+                mapView.bottomAnchor.constraint(equalTo: mapHomeView.bottomAnchor)
+            ])
+            mapView.frame = mapHomeView.frame
+            
+            mapView.showsUserLocation = true
+            mapView.userTrackingMode = .follow
+        
+
+
+    }
+    
+    func fetchUsers() {
+             
+             guard let location = locationManager?.location else { return }
+             Service.shared.fetchUsersLocation(location: location) { (user) in
+                 guard let coordinate = user.location?.coordinate else { return }
+                 let annotation = UserAnnotation(uid: user.uid, coordinate: coordinate)
+                 
+                 var userIsVisible: Bool {
+                     
+                     return self.mapView.annotations.contains { (annotation) -> Bool in
+                         guard let userAnno = annotation as? UserAnnotation else { return false }
+                         
+                         if userAnno.uid == user.uid {
+                             userAnno.updateAnnotationPosition(withCoordinate: coordinate)
+                             return true
+                         }
+                         
+                         return false
+                     }
+                 }
+                 
+                 if !userIsVisible {
+                     self.mapView.addAnnotation(annotation)
+                 }
+             }
+         }
+    
     @objc func handleSetting() {
         checkIsUserLoggedIn()
             let settingViewController = SettingsViewController()
@@ -535,4 +589,24 @@ class HomeViewController: UIViewController {
                  }
     
     
+}
+
+extension HomeViewController {
+    
+    func  accessLocationServices() {
+
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            locationManager?.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            break
+        case .authorizedWhenInUse:
+            locationManager?.requestAlwaysAuthorization()
+        case .authorizedAlways:
+            locationManager?.startUpdatingLocation()
+            locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        default:
+            break
+        }
+    }
 }
