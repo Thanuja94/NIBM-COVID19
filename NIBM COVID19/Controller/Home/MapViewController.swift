@@ -50,9 +50,12 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUi()
+//        setupUi()
+         config()
+        configureLocationInputActivationView()
         enableLocationServices()
-        config()
+        
+       
 
         
     }
@@ -61,7 +64,7 @@ class MapViewController: UIViewController {
     @objc func actionButtonPressed() {
          switch actionButtonConfig {
          case .showMenu:
-             print("DEBUG: Show menu")
+             //print("DEBUG: Show menu")
              break
          case .dismissActionView:
              removeAnnotationsAndOverlays()
@@ -82,7 +85,7 @@ class MapViewController: UIViewController {
         
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
-        
+        mapView.delegate = self
          navigationController?.navigationBar.isHidden = false
     }
   
@@ -154,6 +157,19 @@ class MapViewController: UIViewController {
           configureTableView()
 
       }
+    func configureLocationInputActivationView() {
+        view.addSubview(inputActivationUIView)
+        inputActivationUIView.centerX(inView: view)
+        inputActivationUIView.setDimensions(height: 50, width: view.frame.width - 64)
+        inputActivationUIView.anchor(top: actionButton.bottomAnchor, paddingTop: 32)
+        inputActivationUIView.alpha = 0
+        inputActivationUIView.delegate = self
+        
+        UIView.animate(withDuration: 2) {
+            self.inputActivationUIView.alpha = 1
+        }
+    }
+    
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -176,6 +192,22 @@ class MapViewController: UIViewController {
               
           }, completion: completion)
       }
+    
+    func configureLocationInputView () {
+        locationInputView.delegate = self
+           
+           view.addSubview(locationInputView)
+           locationInputView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, height: locationInputViewHeight)
+           locationInputView.alpha = 0
+           
+           UIView.animate(withDuration: 0.5, animations: {
+               self.locationInputView.alpha = 1
+           }) { _ in
+               UIView.animate(withDuration: 0.3) {
+                   self.tableView.frame.origin.y = self.locationInputViewHeight
+               }
+           }
+       }
 }
 
 // MARK: - MapView Functions
@@ -196,6 +228,27 @@ private extension MapViewController {
              self.mapView.addOverlay(polyline)
          }
      }
+    
+    func searchBy(naturalLanguageQuery: String, completion: @escaping([MKPlacemark]) -> Void) {
+          var results = [MKPlacemark]()
+          
+          let request = MKLocalSearch.Request()
+          request.region = mapView.region
+          request.naturalLanguageQuery = naturalLanguageQuery
+          
+          let search = MKLocalSearch(request: request)
+          search.start { (response, error) in
+              guard let response = response else { return }
+              
+              response.mapItems.forEach({ item in
+                  results.append(item.placemark)
+              })
+              
+              completion(results)
+          }
+      }
+    
+    
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -219,20 +272,60 @@ extension MapViewController: CLLocationManagerDelegate {
        }
 }
 
-
+// MARK: - MKMapViewDelegate
 extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? UserAnnotation {
             let view = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-            view.image = #imageLiteral(resourceName: "pin")
+            view.image = #imageLiteral(resourceName: "chevron-sign-to-right")
             return view
         }
         
         return nil
     }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+         if let route = self.route {
+             let polyline = route.polyline
+             let lineRenderer = MKPolylineRenderer(overlay: polyline)
+            lineRenderer.strokeColor = colors.cynaite
+             lineRenderer.lineWidth = 4
+             return lineRenderer
+         }
+         return MKOverlayRenderer()
+     }
 
 }
+
+// MARK: - LocationInputViewDelegate
+extension MapViewController: LocationInputViewDelegate {
+    func executeSearch(query: String) {
+        searchBy(naturalLanguageQuery: query) { (results) in
+            self.searchResults = results
+            self.tableView.reloadData()
+        }
+    }
+    
+    func dismissLocationInputView() {
+        dismissLocationView { _ in
+            UIView.animate(withDuration: 0.5) {
+                self.inputActivationUIView.alpha = 1
+            }
+        }
+    }
+}
+
+// MARK: - LocationInputActivationUIViewDelegate
+ extension MapViewController: LocationInputActivationUIViewDelegate {
+    func presentLocationInputView() {
+        inputActivationUIView.alpha = 0
+        configureLocationInputView()
+    }
+
+}
+
+
 
 // MARK: - UITableViewDelegate/DataSource
 extension MapViewController: UITableViewDelegate, UITableViewDataSource {
