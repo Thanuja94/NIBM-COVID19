@@ -81,7 +81,14 @@ class ProfileViewController: UIViewController {
       }()
      
     
-  let profilepicImageView = UIImageView(image: #imageLiteral(resourceName: "camera"))
+    lazy var profilepicImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "camera")
+        imageView.contentMode = .scaleAspectFill
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleProfilePic)))
+        imageView.isUserInteractionEnabled = true
+        return imageView
+    }()
         
          
         
@@ -213,5 +220,21 @@ class ProfileViewController: UIViewController {
          navigationController?.popViewController(animated: true)
     }
 
+
     
+}
+
+extension ProfileViewController :  UIImagePickerControllerDelegate , UINavigationControllerDelegate{
+    
+    @objc func handleProfilePic()  {
+        let imagePicker = UIImagePickerController()
+        
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+  
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("Cancel")
+    }
 }
