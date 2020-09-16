@@ -50,6 +50,7 @@ class UpdateViewController: UIViewController {
         let label = UILabel()
         label.text = "Create Notifications"
         label.font = UIFont(name: "Avenir-Light" , size: 20)
+        
         label.textColor = .black
         
         return label
@@ -59,6 +60,7 @@ class UpdateViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         button.tintColor = .black
+//        button.addTarget(self, action: #selector(handlesignin), for: .touchUpInside)
         return button
     }()
     
@@ -75,6 +77,7 @@ class UpdateViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         button.tintColor = .black
+        button.addTarget(self, action: #selector(showSurvay), for: .touchUpInside)
         return button
     }()
     
@@ -347,4 +350,8 @@ class UpdateViewController: UIViewController {
          navigationController?.popViewController(animated: true)
     }
 
+    @objc func showSurvay()  {
+        let survayQ1ViewContrller = SurvayQ1ViewController()
+        navigationController?.pushViewController(survayQ1ViewContrller, animated: true)
+    }
 }
