@@ -47,6 +47,9 @@ class MapViewController: UIViewController {
     private final let locationInputViewHeight: CGFloat = 200
     private let locationInputView = LocationInputView()
      private var route: MKRoute?
+    
+    var alertsArray = [String]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,6 +120,75 @@ class MapViewController: UIViewController {
           }
       }
     
+    func fetchUserLocations() {
+        
+        var weightSum = 0
+        var temperature = 0.0
+        guard let location = locationManager?.location else { return }
+        
+        Service.shared.fetchUsersLocation(location: location) { (user) in
+            guard let coordinate = user.location?.coordinate else { return }
+            let annotation = UserAnnotation(uid: user.uid, coordinate: coordinate)
+            
+            weightSum = user.Q1 + user.Q2 + user.Q3 + user.Q4
+            temperature = Double(user.temperature)!
+            
+            var userIsVisible: Bool {
+                
+                return self.mapView.annotations.contains { (annotation) -> Bool in
+                    guard let userAnno = annotation as? UserAnnotation else { return false }
+                    if userAnno.uid == user.uid {
+                    
+                        if weightSum >= 9 {
+                            userAnno.updateAnnotationPosition(withCoordinate: coordinate)
+                            self.alertsArray.append(user.uid)
+                            
+                            let uialert = UIAlertController(title: "Warning", message: "You are near to suspect of a covid 19. Avoid the Danger" , preferredStyle: UIAlertController.Style.alert)
+                                           uialert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+                                           self.present(uialert, animated: true, completion: nil)
+                            
+                            
+                        } else if temperature > 38 {
+                            userAnno.updateAnnotationPosition(withCoordinate: coordinate)
+                            self.alertsArray.append(user.uid)
+                            
+                            let uialert = UIAlertController(title: "Warning", message: "You are near to suspect of a covid 19. Avoid the Danger" , preferredStyle: UIAlertController.Style.alert)
+                            uialert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+                            self.present(uialert, animated: true, completion: nil)
+                            
+                        } else {
+                            
+                            if let index = self.alertsArray.firstIndex(of: user.uid) {
+                                self.alertsArray.remove(at: index)
+                            }
+                            self.mapView.removeAnnotation(annotation)
+                        }
+
+                        return true
+                    }
+                    return false
+                }
+            }
+            if !userIsVisible {
+                
+                if weightSum >= 9 {
+                    self.mapView.addAnnotation(annotation)
+                    self.alertsArray.append(user.uid)
+                } else if temperature > 37.5 {
+                    self.mapView.addAnnotation(annotation)
+                    self.alertsArray.append(user.uid)
+                } else {
+                    if let index = self.alertsArray.firstIndex(of: user.uid) {
+                        self.alertsArray.remove(at: index)
+                    }
+                    self.mapView.removeAnnotation(annotation)
+                }
+                
+            }
+        }
+    }
+    
+    
     func removeAnnotationsAndOverlays() {
           mapView.annotations.forEach { (annotation) in
               if let anno = annotation as? MKPointAnnotation {
@@ -144,6 +216,8 @@ class MapViewController: UIViewController {
         configureUi()
       
         fetchUsers()
+        
+        fetchUserLocations()
     
     }
     func configureUi() {

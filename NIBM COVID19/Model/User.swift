@@ -37,7 +37,7 @@ struct User {
         if let index = dictionary["accountType"] as? Int {
             self.accountType = AccountType(rawValue: index)
         }
-        self.temperature = dictionary["bodyTemperature"] as? String ?? ""
+        self.temperature = dictionary["bodyTemperature"] as? String ?? "0.0"
         self.country = dictionary["country"] as? String ?? ""
         self.Q1 = dictionary["Q1"] as? Int ?? 0
         self.Q2 = dictionary["Q2"] as? Int ?? 0
