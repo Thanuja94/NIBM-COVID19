@@ -18,7 +18,7 @@ class LocationInputView: UIView {
     // MARK: - Properties
     
     var user: User? {
-        didSet { titleLabel.text = user?.fullName }
+        didSet { titleLabel.text = user?.firstName }
     }
     
     var delegate: LocationInputViewDelegate?

@@ -14,7 +14,8 @@ enum AccountType: Int {
 }
 
 struct User {
-    let fullName: String
+    let firstName: String
+    let lastName: String
     let email: String
     var accountType: AccountType!
     var location: CLLocation?
@@ -23,7 +24,8 @@ struct User {
     
     init(uid: String, dictionary: [String: Any]) {
         self.uid = uid
-        self.fullName = dictionary["fullName"] as? String ?? ""
+        self.firstName = dictionary["firstname"] as? String ?? ""
+        self.lastName = dictionary["lastname"] as? String ?? ""
         self.email = dictionary["email"] as? String ?? ""
         
         if let index = dictionary["accountType"] as? Int {
