@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+
 
 class SurvayQ2ViewController: UIViewController {
     
@@ -97,7 +97,7 @@ class SurvayQ2ViewController: UIViewController {
     }
     
     func saveSurvayWeight(question: String, value: Int){
-        guard let userID = Auth.auth().currentUser?.uid else { return }
+        guard let userID = Service.shared.currentUserID else { return }
         return REF_USERS.child(userID ?? "").updateChildValues([question:value])
         
     }
