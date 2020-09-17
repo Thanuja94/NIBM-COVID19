@@ -134,6 +134,7 @@ class ProfileViewController: UIViewController {
         title = "profile"
         
         setupUI()
+        showDetails()
         
         
     }
@@ -274,6 +275,13 @@ class ProfileViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+  func showDetails()  {
+       Service.shared.fetchUserData(uid: Service.shared.currentUserID ?? ""){(user)in
+
+        self.nameLable.text = user.firstName + " " + user.lastName
+       }
+   }
+    
     
     
 }
@@ -282,7 +290,7 @@ extension ProfileViewController :  UIImagePickerControllerDelegate , UINavigatio
     
     @objc func handleProfilePic()  {
         let imagePicker = UIImagePickerController()
-        
+//
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
@@ -319,4 +327,6 @@ extension ProfileViewController :  UIImagePickerControllerDelegate , UINavigatio
     fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
         return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
     }
+    
+    
 }
