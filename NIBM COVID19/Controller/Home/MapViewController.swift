@@ -174,7 +174,7 @@ class MapViewController: UIViewController {
                 if weightSum >= 9 {
                     self.mapView.addAnnotation(annotation)
                     self.alertsArray.append(user.uid)
-                } else if temperature > 37.5 {
+                } else if temperature > 38 {
                     self.mapView.addAnnotation(annotation)
                     self.alertsArray.append(user.uid)
                 } else {

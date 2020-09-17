@@ -389,6 +389,8 @@ class UpdateViewController: UIViewController {
               let updateValues = [
                   "updated": dateFormatter.string(from: updateDate)
                   ] as [String : Any]
+        
+       
               
               return REF_USER_LOCATIONS.child(userID ?? "").updateChildValues(updateValues)
         
