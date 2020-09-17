@@ -19,6 +19,7 @@ struct User {
     var accountType: AccountType!
     var location: CLLocation?
     let uid: String
+    let temperature: String
     
     init(uid: String, dictionary: [String: Any]) {
         self.uid = uid
@@ -28,5 +29,6 @@ struct User {
         if let index = dictionary["accountType"] as? Int {
             self.accountType = AccountType(rawValue: index)
         }
+        self.temperature = dictionary["bodyTemperature"] as? String ?? ""
     }
 }

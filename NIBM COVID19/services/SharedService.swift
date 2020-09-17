@@ -8,6 +8,8 @@
 
 import Firebase
 import GeoFire
+import FirebaseAuth
+
 
 
 let DB_REF = Database.database().reference()
@@ -18,11 +20,14 @@ struct Service {
     
     static let shared = Service()
     
+     let currentUserID = Auth.auth().currentUser?.uid ;
+    
     func fetchUserData(uid: String, completion: @escaping(User) -> Void) {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             let uid = snapshot.key
             let user = User(uid: uid, dictionary: dictionary)
+           
             completion(user)
         }
     }

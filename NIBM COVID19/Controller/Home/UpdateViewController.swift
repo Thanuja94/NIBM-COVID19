@@ -176,6 +176,7 @@ class UpdateViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        showTemp()
         
         
     }
@@ -346,12 +347,12 @@ class UpdateViewController: UIViewController {
         
     }
     
-//    func showTemp()  {
-//        Service.shared.fetchUserData(uid: Service.shared.user ?? ""){(user)in
-//
-//            self.temperatureValue.text = user.bodyTemperature + " Cº"
-//        }
-//    }
+    func showTemp()  {
+        Service.shared.fetchUserData(uid: Service.shared.currentUserID ?? ""){(user)in
+
+            self.temperatureValue.text = user.temperature
+        }
+    }
     
     @objc func handleClose() {
         
@@ -376,8 +377,9 @@ class UpdateViewController: UIViewController {
                     ] as [String : Any]
         
          self.temperatureTextFiled.text = nil
+        showTemp()
         
-       guard let userID = Auth.auth().currentUser?.uid else { return }
+       guard let userID = Service.shared.currentUserID else { return }
         return REF_USERS.child(userID ?? "").updateChildValues(values)
 
        
