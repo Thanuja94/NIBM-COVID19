@@ -282,7 +282,7 @@ extension ProfileViewController :  UIImagePickerControllerDelegate , UINavigatio
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("Cancel")
+//        print("Cancel")
         dismiss(animated: true, completion: nil)
     }
     

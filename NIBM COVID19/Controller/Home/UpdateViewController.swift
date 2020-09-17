@@ -346,6 +346,10 @@ class UpdateViewController: UIViewController {
         
     }
     
+//    func showTemp()  {
+//
+//    }
+    
     @objc func handleClose() {
         
          navigationController?.popViewController(animated: true)
@@ -368,9 +372,14 @@ class UpdateViewController: UIViewController {
                     "bodyTemperature": temp,
                     ] as [String : Any]
         
+         self.temperatureTextFiled.text = nil
+        
        guard let userID = Auth.auth().currentUser?.uid else { return }
         return REF_USERS.child(userID ?? "").updateChildValues(values)
 
+       
+        
+        
         }
         
     }

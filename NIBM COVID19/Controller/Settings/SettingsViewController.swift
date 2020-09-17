@@ -219,8 +219,8 @@ class SettingsViewController: UIViewController {
             print("DEBUG: sign out error")
         }
         
-        let homeviewcontroller = HomeViewController()
-        navigationController?.pushViewController(homeviewcontroller, animated: true)
+        let loginviewcontroller = LoginViewController()
+        navigationController?.pushViewController(loginviewcontroller, animated: true)
     }
     
     @objc func handleBack() {
