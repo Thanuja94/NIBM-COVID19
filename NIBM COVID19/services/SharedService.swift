@@ -45,6 +45,11 @@ struct Service {
                })
            }
        }
+    
+    func updateProfileDetails(imageUrl: String, name: String, index:String, country: String){
+        
+        return REF_USERS.child(currentUserID ?? "").updateChildValues(["image":imageUrl, "firstname":name,"index":index,"country":country])
+    }
 }
 
 

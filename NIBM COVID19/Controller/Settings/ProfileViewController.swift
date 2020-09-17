@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class ProfileViewController: UIViewController {
     // MARK: - Properties
@@ -30,7 +31,7 @@ class ProfileViewController: UIViewController {
         let button = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "UPDATE", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20), NSAttributedString.Key.foregroundColor: colors.aquavelvet])
         
-        // button.addTarget(self, action: #selector(signOut), for: .touchUpInside)
+         button.addTarget(self, action: #selector(handleUpdate), for: .touchUpInside)
         
         
         button.setAttributedTitle(attributedTitle, for: .normal)
@@ -272,13 +273,20 @@ class ProfileViewController: UIViewController {
     
     @objc func handleBack() {
         
-        navigationController?.popViewController(animated: true)
+       navigationController?.popViewController(animated: true)
     }
+    
+    @objc func handleUpdate() {
+           saveDetails()
+          
+       }
     
   func showDetails()  {
        Service.shared.fetchUserData(uid: Service.shared.currentUserID ?? ""){(user)in
 
         self.nameLable.text = user.firstName + " " + user.lastName
+        self.tempLable.text = user.temperature + " ºC"
+        self.countryLable.text = user.country
        }
    }
     
@@ -329,4 +337,57 @@ extension ProfileViewController :  UIImagePickerControllerDelegate , UINavigatio
     }
     
     
+    
+    func saveDetails()  {
+        
+                 guard
+                     let name = nameTextFiled.text,
+                     let country = countryTextFiled.text,
+                     let index = indexTextFiled.text else {
+                     
+//                         let uialert = UIAlertController(title: "Error", message: "Please check all the fields filled" , preferredStyle: UIAlertController.Style.alert)
+//                                   uialert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+//                                   self.present(uialert, animated: true, completion: nil)
+//
+                     return
+                 }
+        
+        guard let uid = Service.shared.currentUserID else {
+                        return
+                    }
+        
+                    //successfully authenticated user
+                    let imageName = NSUUID().uuidString
+                    let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).png")
+        
+                    if let uploadData = self.profilepicImageView.image!.pngData() {
+        
+                        storageRef.putData(uploadData, metadata: nil, completion: { (_, err) in
+        
+                            if let error = err {
+                                print(error)
+                                return
+                            }
+        
+                            storageRef.downloadURL(completion: { (url, err) in
+                                if let err = err {
+                                    print(err)
+                                    return
+                                }
+        
+                                guard let url = url else { return }
+                                let values = ["name": name, "index": index, "profileImageUrl": url.absoluteString, "country":country]
+        
+                                self.savedDetailstoDb(uid, values: values as [String : AnyObject])
+                            })
+        
+                        })
+                    }
+
+    }
+    
+    fileprivate func savedDetailstoDb(_ uid: String, values: [String: AnyObject]) {
+           
+           Service.shared.updateProfileDetails(imageUrl:values["profileImageUrl"] as! String, name: values["name"] as! String, index: values["index"] as! String, country: values["country"] as! String)
+       }
 }
