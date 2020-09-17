@@ -22,6 +22,11 @@ struct User {
     let uid: String
     let temperature: String
     let country: String
+    let Q1: Int
+    let Q2: Int
+    let Q3: Int
+    let Q4: Int
+    
     
     init(uid: String, dictionary: [String: Any]) {
         self.uid = uid
@@ -34,6 +39,9 @@ struct User {
         }
         self.temperature = dictionary["bodyTemperature"] as? String ?? ""
         self.country = dictionary["country"] as? String ?? ""
-
+        self.Q1 = dictionary["Q1"] as? Int ?? 0
+        self.Q2 = dictionary["Q2"] as? Int ?? 0
+        self.Q3 = dictionary["Q3"] as? Int ?? 0
+        self.Q4 = dictionary["Q4"] as? Int ?? 0
     }
 }
