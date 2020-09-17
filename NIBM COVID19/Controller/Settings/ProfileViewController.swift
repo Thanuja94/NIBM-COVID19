@@ -344,11 +344,16 @@ extension ProfileViewController :  UIImagePickerControllerDelegate , UINavigatio
                      let name = nameTextFiled.text,
                      let country = countryTextFiled.text,
                      let index = indexTextFiled.text else {
-                     
-//                         let uialert = UIAlertController(title: "Error", message: "Please check all the fields filled" , preferredStyle: UIAlertController.Style.alert)
-//                                   uialert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-//                                   self.present(uialert, animated: true, completion: nil)
+                        
+//                        if (name != nil || country != nil || index <> nil ){
+//                             let uialert = UIAlertController(title: "Error", message: "Please check all the fields filled" , preferredStyle: UIAlertController.Style.alert)
+//                                                               uialert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+//                                                               self.present(uialert, animated: true, completion: nil)
 //
+//
+//                        }
+                     
+
                      return
                  }
         

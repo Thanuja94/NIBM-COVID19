@@ -380,9 +380,17 @@ class UpdateViewController: UIViewController {
         showTemp()
         
        guard let userID = Service.shared.currentUserID else { return }
-        return REF_USERS.child(userID ?? "").updateChildValues(values)
+         REF_USERS.child(userID ?? "").updateChildValues(values)
 
-       
+       let updateDate = Date()
+              let dateFormatter = DateFormatter()
+              dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+              
+              let updateValues = [
+                  "updated": dateFormatter.string(from: updateDate)
+                  ] as [String : Any]
+              
+              return REF_USER_LOCATIONS.child(userID ?? "").updateChildValues(updateValues)
         
         
         }

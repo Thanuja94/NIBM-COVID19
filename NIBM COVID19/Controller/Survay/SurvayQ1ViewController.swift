@@ -107,7 +107,9 @@ class SurvayQ1ViewController: UIViewController {
     
     func saveSurvayWeight(question: String, value: Int){
         guard let userID = Service.shared.currentUserID else { return }
-        return REF_USERS.child(userID ?? "").updateChildValues([question:value])
+       return  REF_USERS.child(userID ?? "").updateChildValues([question:value])
+        
+        
         
     }
     
