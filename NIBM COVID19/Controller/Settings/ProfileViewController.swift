@@ -46,6 +46,23 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
+    private let tempLable: UILabel = {
+         let label = UILabel()
+         label.text = "34.5"
+         label.font = UIFont(name: "Avenir-Light" , size: 25)
+         label.textColor = .black
+         
+         return label
+     }()
+    
+    private let countryLable: UILabel = {
+            let label = UILabel()
+            label.text = "USA"
+            label.font = UIFont(name: "Avenir-Light" , size: 25)
+            label.textColor = .gray
+            
+            return label
+        }()
     private let nameTextFiled: UITextField = {
         let textfield = UITextField()
         textfield.borderStyle = .line
@@ -141,7 +158,7 @@ class ProfileViewController: UIViewController {
         profilePicView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.25).isActive = true
         profilePicView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -5).isActive = true
         
-        profileDetailView.backgroundColor = .blue
+        
         view.addSubview(profileDetailView)
         profileDetailView.translatesAutoresizingMaskIntoConstraints = false
         profileDetailView.topAnchor.constraint(equalTo: profilePicView.bottomAnchor, constant: 5).isActive = true
@@ -232,6 +249,19 @@ class ProfileViewController: UIViewController {
         profilepicImageView.centerXAnchor.constraint(equalTo: profilePicView.centerXAnchor).isActive = true
         //profilepicImageView.centerYAnchor.constraint(equalTo: profilePicView.centerYAnchor).isActive = true
         
+        
+        profileDetailView.addSubview(tempLable)
+        tempLable.translatesAutoresizingMaskIntoConstraints = false
+               tempLable.heightAnchor.constraint(equalTo: profileDetailView.heightAnchor, multiplier: 0.3).isActive = true
+               tempLable.topAnchor.constraint(equalTo: profileDetailView.topAnchor, constant: 10).isActive = true
+               tempLable.centerXAnchor.constraint(equalTo: profileDetailView.centerXAnchor).isActive = true
+        
+        profileDetailView.addSubview(countryLable)
+        countryLable.translatesAutoresizingMaskIntoConstraints = false
+        countryLable.heightAnchor.constraint(equalTo: profileDetailView.heightAnchor, multiplier: 0.3).isActive = true
+        countryLable.topAnchor.constraint(equalTo: tempLable.bottomAnchor, constant: 3).isActive = true
+        countryLable.centerXAnchor.constraint(equalTo: profileDetailView.centerXAnchor).isActive = true
+
         
         navigationController?.navigationBar.isHidden = true
         

@@ -347,7 +347,10 @@ class UpdateViewController: UIViewController {
     }
     
 //    func showTemp()  {
+//        Service.shared.fetchUserData(uid: Service.shared.user ?? ""){(user)in
 //
+//            self.temperatureValue.text = user.bodyTemperature + " Cº"
+//        }
 //    }
     
     @objc func handleClose() {
