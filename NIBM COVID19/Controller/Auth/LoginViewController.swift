@@ -96,6 +96,10 @@ class LoginViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
             
         }
+//        let nav = UINavigationController(rootViewController: HomeViewController())
+//                   nav.modalPresentationStyle = .fullScreen
+//                   self.present(nav, animated: true, completion: nil)
+//
         let homeViewController = HomeViewController()
    navigationController?.pushViewController(homeViewController, animated: true)
         }

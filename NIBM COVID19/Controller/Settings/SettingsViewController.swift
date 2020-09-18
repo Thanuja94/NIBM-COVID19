@@ -215,12 +215,18 @@ class SettingsViewController: UIViewController {
     @objc func signOut() {
         do {
             try Auth.auth().signOut()
+            
+//            let nav = UINavigationController(rootViewController: LoginViewController())
+//            nav.modalPresentationStyle = .fullScreen
+//            self.present(nav, animated: true, completion: nil)
+//
+            let loginviewcontroller = LoginViewController()
+            navigationController?.pushViewController(loginviewcontroller, animated: true)
         } catch {
             print("DEBUG: sign out error")
         }
         
-        let loginviewcontroller = LoginViewController()
-        navigationController?.pushViewController(loginviewcontroller, animated: true)
+        
     }
     
     @objc func handleBack() {
