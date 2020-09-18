@@ -100,6 +100,7 @@ class LoginViewController: UIViewController {
 //                   nav.modalPresentationStyle = .fullScreen
 //                   self.present(nav, animated: true, completion: nil)
 //
+//        Service.shared.currentUserID = Auth.auth().currentUser?.uid
         let homeViewController = HomeViewController()
    navigationController?.pushViewController(homeViewController, animated: true)
         }
