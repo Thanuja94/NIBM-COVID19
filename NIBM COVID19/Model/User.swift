@@ -26,6 +26,7 @@ struct User {
     let Q2: Int
     let Q3: Int
     let Q4: Int
+    let profilePicUrl: String
     
     
     init(uid: String, dictionary: [String: Any]) {
@@ -43,5 +44,7 @@ struct User {
         self.Q2 = dictionary["Q2"] as? Int ?? 0
         self.Q3 = dictionary["Q3"] as? Int ?? 0
         self.Q4 = dictionary["Q4"] as? Int ?? 0
+        self.profilePicUrl = dictionary["image"] as? String ?? ""
+
     }
 }

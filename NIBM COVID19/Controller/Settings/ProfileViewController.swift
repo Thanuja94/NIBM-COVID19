@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseStorage
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     // MARK: - Properties
@@ -136,6 +137,9 @@ class ProfileViewController: UIViewController {
         
         setupUI()
         showDetails()
+        
+        
+       
         
         
     }
@@ -278,6 +282,7 @@ class ProfileViewController: UIViewController {
     
     @objc func handleUpdate() {
            saveDetails()
+         navigationController?.popViewController(animated: true)
           
        }
     
@@ -287,6 +292,10 @@ class ProfileViewController: UIViewController {
         self.nameLable.text = user.firstName + " " + user.lastName
         self.tempLable.text = user.temperature + " ºC"
         self.countryLable.text = user.country
+        
+        if(user.profilePicUrl != ""){
+                   self.setProfilePic(from: URL(string: user.profilePicUrl)!)
+               }
        }
    }
     
@@ -337,6 +346,23 @@ extension ProfileViewController :  UIImagePickerControllerDelegate , UINavigatio
     }
     
     
+    func setProfilePic(from url: URL) {
+          
+          getImageFromFireBase(from: url) { data, response, error in
+              guard let data = data, error == nil else { return }
+              print(response?.suggestedFilename ?? url.lastPathComponent)
+    
+              DispatchQueue.main.async() { [weak self] in
+                  self?.profilepicImageView.image = UIImage(data: data)
+                  self?.profilepicImageView.layer.cornerRadius = 50
+              }
+          }
+      }
+    
+    
+    func getImageFromFireBase(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
     
     func saveDetails()  {
         
