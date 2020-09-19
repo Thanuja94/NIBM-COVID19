@@ -82,27 +82,47 @@ class LoginViewController: UIViewController {
     // MARK: - Fuctions
     
     @objc func handlesignin() {
-        guard let email = emailTextFiled.text else { return }
-        guard let password = passwordTextFiled.text else { return }
-        
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                print("DEBUG: Faild to login user with error \(error.localizedDescription)")
-                return
-            }
-            
-            //  guard let uid = result?.user.uid else { return }
-            print("DEBUG: Login Successful..")
-//            self.dismiss(animated: true, completion: nil)
-            
-        }
-//        let nav = UINavigationController(rootViewController: HomeViewController())
-//                   nav.modalPresentationStyle = .fullScreen
-//                   self.present(nav, animated: true, completion: nil)
+//        guard let email = emailTextFiled.text else { return }
+//        guard let password = passwordTextFiled.text else { return }
 //
-        Service.shared.currentUserID = Auth.auth().currentUser?.uid
-        let homeViewController = HomeViewController()
-   navigationController?.pushViewController(homeViewController, animated: true)
+//        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+//            if let error = error {
+//                print("DEBUG: Faild to login user with error \(error.localizedDescription)")
+//                return
+//            }
+//
+//            //  guard let uid = result?.user.uid else { return }
+//            print("DEBUG: Login Successful..")
+////            self.dismiss(animated: true, completion: nil)
+//
+//        }
+////        let nav = UINavigationController(rootViewController: HomeViewController())
+////                   nav.modalPresentationStyle = .fullScreen
+////                   self.present(nav, animated: true, completion: nil)
+////
+//        Service.shared.currentUserID = Auth.auth().currentUser?.uid
+//        let homeViewController = HomeViewController()
+//   navigationController?.pushViewController(homeViewController, animated: true)
+        
+        guard let email = emailTextFiled.text else { return }
+                guard let password = passwordTextFiled.text else { return }
+                
+                Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+                    if let error = error {
+                        print("DEBUG: Faild to login user with error \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    //  guard let uid = result?.user.uid else { return }
+                    print("DEBUG: Login Successful..")
+        //            self.dismiss(animated: true, completion: nil)
+                    Service.shared.currentUserID = Auth.auth().currentUser?.uid
+                    let nav = UINavigationController(rootViewController: HomeViewController())
+                                      nav.modalPresentationStyle = .fullScreen
+                                       self.present(nav, animated: true, completion: nil)
+                    
+                    }
+        
         }
      
     @objc func ShowCreateAcc() {
