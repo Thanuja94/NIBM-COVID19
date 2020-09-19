@@ -18,9 +18,9 @@ let REF_USER_LOCATIONS = DB_REF.child("locations")
 
 struct Service {
     
-    static let shared = Service()
+    static var shared = Service()
     
-     let currentUserID = Auth.auth().currentUser?.uid ;
+     var currentUserID = Auth.auth().currentUser?.uid ;
     
     func fetchUserData(uid: String, completion: @escaping(User) -> Void) {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { (snapshot) in

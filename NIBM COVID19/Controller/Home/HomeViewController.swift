@@ -186,7 +186,7 @@ class HomeViewController: UIViewController {
     
     private let infectedCount: UILabel = {
         let label = UILabel()
-        label.text = "0"
+        label.text = "2"
     label.font = UIFont(name: "Avenir-Light" , size: 45)
     
         label.textColor = .black
@@ -230,7 +230,7 @@ class HomeViewController: UIViewController {
     
     private let recoveredCount: UILabel = {
         let label = UILabel()
-        label.text = "0"
+        label.text = "1"
     label.font = UIFont(name: "Avenir-Light" , size: 45)
     
         label.textColor = .black
@@ -257,7 +257,7 @@ class HomeViewController: UIViewController {
     
     // MARK: - Functions
     
-    func checkIsUserLoggedIn() {
+    func checkIsUserLoggedInSettings() {
         if(Auth.auth().currentUser?.uid == nil) {
             DispatchQueue.main.async {
                            let navigation = UINavigationController(rootViewController: LoginViewController())
@@ -266,9 +266,31 @@ class HomeViewController: UIViewController {
                        }
         } else {
             print("DEBUG: User is logged in..")
+            let settingViewController = SettingsViewController()
+                       navigationController?.pushViewController(settingViewController, animated: true)
         }
     }
     
+    
+    func checkIsUserLoggedInUpdate() {
+        if( Service.shared.currentUserID == nil)
+//          if(Auth.auth().currentUser?.uid == nil)
+          {
+           
+            let loginViewController = LoginViewController()
+            navigationController?.pushViewController(loginViewController, animated: true)
+            
+//
+//              DispatchQueue.main.async {
+//                             let navigation = UINavigationController(rootViewController: LoginViewController())
+//                              navigation.modalPresentationStyle = .fullScreen
+//                             self.present(navigation, animated: true, completion: nil)
+//                         }
+          } else {
+             let updateViewController = UpdateViewController()
+              navigationController?.pushViewController(updateViewController, animated: true)
+          }
+      }
     
 
     func setupUI()   {
@@ -553,16 +575,16 @@ class HomeViewController: UIViewController {
          }
     
     @objc func handleSetting() {
-        checkIsUserLoggedIn()
-            let settingViewController = SettingsViewController()
-            navigationController?.pushViewController(settingViewController, animated: true)
+        checkIsUserLoggedInSettings()
+//            let settingViewController = SettingsViewController()
+//            navigationController?.pushViewController(settingViewController, animated: true)
    
         }
     
     @objc func handleUpdate() {
-        checkIsUserLoggedIn()
-               let updateViewController = UpdateViewController()
-               navigationController?.pushViewController(updateViewController, animated: true)
+        checkIsUserLoggedInUpdate()
+//               let updateViewController = UpdateViewController()
+//               navigationController?.pushViewController(updateViewController, animated: true)
       
            }
     @objc func showNotifications() {

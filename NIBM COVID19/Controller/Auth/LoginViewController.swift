@@ -93,14 +93,14 @@ class LoginViewController: UIViewController {
             
             //  guard let uid = result?.user.uid else { return }
             print("DEBUG: Login Successful..")
-            self.dismiss(animated: true, completion: nil)
+//            self.dismiss(animated: true, completion: nil)
             
         }
 //        let nav = UINavigationController(rootViewController: HomeViewController())
 //                   nav.modalPresentationStyle = .fullScreen
 //                   self.present(nav, animated: true, completion: nil)
 //
-//        Service.shared.currentUserID = Auth.auth().currentUser?.uid
+        Service.shared.currentUserID = Auth.auth().currentUser?.uid
         let homeViewController = HomeViewController()
    navigationController?.pushViewController(homeViewController, animated: true)
         }
