@@ -147,6 +147,9 @@ class CreateAccViewController: UIViewController {
             
             
                 
+                                          let nav = UINavigationController(rootViewController: HomeViewController())
+                                                            nav.modalPresentationStyle = .fullScreen
+                                                             self.present(nav, animated: true, completion: nil)
 
             //handle error
             
@@ -206,6 +209,7 @@ class CreateAccViewController: UIViewController {
             
              guard let uid = result?.user.uid else { return }
             
+            Service.shared.currentUserID = uid
             let values = [
                        "firstname": firstname,
                        "lastname": lastname,
@@ -231,11 +235,11 @@ class CreateAccViewController: UIViewController {
              self.uploadUserDataAndShowHomeController(uid: uid, values: values)
         }
         
+       
         
-        let homeviewcontroller = HomeViewController()
-                      navigationController?.pushViewController(homeviewcontroller, animated: true)
+//
+//        let homeviewcontroller = HomeViewController()
+//                      navigationController?.pushViewController(homeviewcontroller, animated: true)
     }
-    
-    
     
 }
