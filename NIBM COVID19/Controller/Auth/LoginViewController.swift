@@ -124,8 +124,9 @@ class LoginViewController: UIViewController {
                         
                                                         DispatchQueue.main.async {
                                                             Service.shared.currentUserID = Auth.auth().currentUser?.uid
-                                                            let vc = HomeViewController()
-                                                            self.navigationController?.pushViewController(vc, animated: true)
+                                                           let nav = UINavigationController(rootViewController: HomeViewController())
+                                                                                    nav.modalPresentationStyle = .fullScreen
+                                                                                    self.present(nav, animated: true, completion: nil)
                                                         }
 //
 //                        print("DEBUG: Login Successful..")
