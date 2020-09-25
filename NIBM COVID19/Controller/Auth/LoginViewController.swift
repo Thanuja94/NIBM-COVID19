@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import LocalAuthentication
 
 class LoginViewController: UIViewController {
     
@@ -51,7 +52,7 @@ class LoginViewController: UIViewController {
         button.backgroundColor = colors.cynaite
         button.layer.cornerRadius = 10
         button.heightAnchor.constraint(equalToConstant: 60).isActive = true
-         button.addTarget(self, action: #selector(handlesignin), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlesignin), for: .touchUpInside)
         
         return button
     }()
@@ -82,53 +83,77 @@ class LoginViewController: UIViewController {
     // MARK: - Fuctions
     
     @objc func handlesignin() {
-//        guard let email = emailTextFiled.text else { return }
-//        guard let password = passwordTextFiled.text else { return }
-//
-//        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-//            if let error = error {
-//                print("DEBUG: Faild to login user with error \(error.localizedDescription)")
-//                return
-//            }
-//
-//            //  guard let uid = result?.user.uid else { return }
-//            print("DEBUG: Login Successful..")
-////            self.dismiss(animated: true, completion: nil)
-//
-//        }
-////        let nav = UINavigationController(rootViewController: HomeViewController())
-////                   nav.modalPresentationStyle = .fullScreen
-////                   self.present(nav, animated: true, completion: nil)
-////
-//        Service.shared.currentUserID = Auth.auth().currentUser?.uid
-//        let homeViewController = HomeViewController()
-//   navigationController?.pushViewController(homeViewController, animated: true)
+        //        guard let email = emailTextFiled.text else { return }
+        //        guard let password = passwordTextFiled.text else { return }
+        //
+        //        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+        //            if let error = error {
+        //                print("DEBUG: Faild to login user with error \(error.localizedDescription)")
+        //                return
+        //            }
+        //
+        //            //  guard let uid = result?.user.uid else { return }
+        //            print("DEBUG: Login Successful..")
+        ////            self.dismiss(animated: true, completion: nil)
+        //
+        //        }
+        ////        let nav = UINavigationController(rootViewController: HomeViewController())
+        ////                   nav.modalPresentationStyle = .fullScreen
+        ////                   self.present(nav, animated: true, completion: nil)
+        ////
+        //        Service.shared.currentUserID = Auth.auth().currentUser?.uid
+        //        let homeViewController = HomeViewController()
+        //   navigationController?.pushViewController(homeViewController, animated: true)
         
         guard let email = emailTextFiled.text else { return }
-                guard let password = passwordTextFiled.text else { return }
-                
-                Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-                    if let error = error {
-                        print("DEBUG: Faild to login user with error \(error.localizedDescription)")
-                        return
-                    }
-                    
-                    //  guard let uid = result?.user.uid else { return }
-                    print("DEBUG: Login Successful..")
-        //            self.dismiss(animated: true, completion: nil)
-                    Service.shared.currentUserID = Auth.auth().currentUser?.uid
-                    let nav = UINavigationController(rootViewController: HomeViewController())
-                                      nav.modalPresentationStyle = .fullScreen
-                                       self.present(nav, animated: true, completion: nil)
-                    
-                    }
+        guard let password = passwordTextFiled.text else { return }
         
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("DEBUG: Faild to login user with error \(error.localizedDescription)")
+                return
+            }
+            
+            
+            let context = LAContext()
+            
+            if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil){
+                context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Message"){(good, error) in
+                    
+                    if(good){
+                        
+                                                        DispatchQueue.main.async {
+                                                            Service.shared.currentUserID = Auth.auth().currentUser?.uid
+                                                           let nav = UINavigationController(rootViewController: HomeViewController())
+                                                                                    nav.modalPresentationStyle = .fullScreen
+                                                                                    self.present(nav, animated: true, completion: nil)
+                                                        }
+//
+//                        print("DEBUG: Login Successful..")
+//                        //            self.dismiss(animated: true, completion: nil)
+//                        Service.shared.currentUserID = Auth.auth().currentUser?.uid
+//                        let nav = UINavigationController(rootViewController: HomeViewController())
+//                        nav.modalPresentationStyle = .fullScreen
+//                        self.present(nav, animated: true, completion: nil)
+                        
+                        
+                    }else{
+                        let ac = UIAlertController(title: "Authentication failed", message: "Invalid Face Id.", preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        self.present(ac, animated: true)                      }
+                }
+            }
+            
+            //  guard let uid = result?.user.uid else { return }
+            
         }
-     
+        
+    }
+    
     @objc func ShowCreateAcc() {
         let createaccviewcontroller = CreateAccViewController()
         navigationController?.pushViewController(createaccviewcontroller, animated: true)
-//         navigationController?.popViewController(animated: true)
+        //         navigationController?.popViewController(animated: true)
     }
     
     func setupUI(){
